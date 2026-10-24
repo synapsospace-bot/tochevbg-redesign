@@ -104,6 +104,33 @@
       color: #FFFFFF !important;
     }
 
+    /* Bulletproof Theme Toggle Button */
+    #themeToggleBtn {
+      cursor: pointer;
+    }
+    .dark #themeToggleBtn {
+      background-color: rgba(30, 41, 59, 0.9) !important;
+      border-color: rgba(71, 85, 105, 0.7) !important;
+      color: #FCD34D !important;
+    }
+    .dark #themeToggleBtn:hover {
+      background-color: rgba(51, 65, 85, 0.95) !important;
+      border-color: #38BDF8 !important;
+    }
+    .light #themeToggleBtn {
+      background-color: #F1F5F9 !important;
+      border-color: #CBD5E1 !important;
+      color: #334155 !important;
+    }
+    .light #themeToggleBtn:hover {
+      background-color: #E2E8F0 !important;
+      border-color: #94A3B8 !important;
+    }
+    .dark #sunIcon { display: block !important; }
+    .dark #moonIcon { display: none !important; }
+    .light #sunIcon { display: none !important; }
+    .light #moonIcon { display: block !important; }
+
     /* ========================================================
        LIGHT MODE: CERAMIC PEARL AESTHETIC
        ======================================================== */
@@ -473,7 +500,7 @@
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Максимален бюджет</label>
-              <select id="filterPrice" onchange="runFilter()" class="w-full bg-slate-50 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+              <select id="filterPrice" onchange="runFilter()" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
                 <option value="all">Без ограничение</option>
                 <option value="60000">до 60 000 €</option>
                 <option value="90000">до 90 000 €</option>
