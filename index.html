@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tochev & Co. | High-Tech Bento Redesign (Pearlescent & Theme Switcher)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+    :root {
+      --font-heading: 'Manrope', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    h1, h2, h3, h4, .font-heading {
+      font-family: var(--font-heading);
+    }
+
+    /* DARK MODE: PEARLESCENT TITANIUM MESH */
+    .dark body {
+      background-color: #080C14;
+      color: #E2E8F0;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+        radial-gradient(at 85% 10%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(20, 184, 166, 0.05) 0px, transparent 65%),
+        radial-gradient(at 80% 85%, rgba(14, 165, 233, 0.07) 0px, transparent 50%),
+        radial-gradient(at 10% 90%, rgba(147, 51, 234, 0.06) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .dark .bento-card {
+      background: linear-gradient(135deg, rgba(20, 27, 45, 0.72) 0%, rgba(13, 19, 33, 0.85) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .dark .bento-card:hover {
+      border-color: rgba(56, 189, 248, 0.45);
+      box-shadow: 0 16px 36px -10px rgba(2, 132, 199, 0.35), inset 0 1px 2px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .dark .glass-nav {
+      background: rgba(8, 12, 20, 0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* LIGHT MODE: CERAMIC PEARL AESTHETIC */
+    .light body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      background-image: 
+        radial-gradient(at 10% 10%, rgba(224, 242, 254, 0.8) 0px, transparent 50%),
+        radial-gradient(at 90% 15%, rgba(238, 242, 255, 0.7) 0px, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(204, 251, 241, 0.6) 0px, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    .light .bento-card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04), 0 4px 6px -2px rgba(15, 23, 42, 0.02);
+    }
+
+    .light .bento-card:hover {
+      border-color: rgba(14, 165, 233, 0.4);
+      box-shadow: 0 20px 35px -10px rgba(2, 132, 199, 0.12);
+    }
+
+    .light .glass-nav {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    /* Status badges */
+    .badge-act16 {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .badge-act14 {
+      background: rgba(245, 158, 11, 0.15);
+      color: #F59E0B;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .badge-construction {
+      background: rgba(14, 165, 233, 0.15);
+      color: #0284C7;
+      border: 1px solid rgba(14, 165, 233, 0.3);
+    }
+
+    /* Chessboard Unit Buttons */
+    .unit-free {
+      background: rgba(16, 185, 129, 0.18);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #10B981;
+    }
+    .dark .unit-free {
+      color: #6EE7B7;
+    }
+    .unit-free:hover {
+      background: #10B981;
+      color: #FFFFFF;
+      transform: scale(1.04);
+    }
+    .unit-reserved {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #D97706;
+      cursor: not-allowed;
+    }
+    .unit-sold {
+      background: rgba(148, 163, 184, 0.15);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: #94A3B8;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+<body class="transition-colors duration-300">
+
+  <!-- TOP HEADER -->
+  <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Sub-Bar -->
+      <div class="hidden md:flex justify-between items-center py-1.5 border-b border-slate-200 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400">
+        <div class="flex items-center space-x-6">
+          <span class="flex items-center text-emerald-600 dark:text-emerald-400 font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
+            Директни продажби от строителя • 0% комисионна
+          </span>
+          <span class="flex items-center">
+            <svg class="w-3.5 h-3.5 mr-1 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+            гр. Бургас, ул. Хаджи Димитър 8 - партер
+          </span>
+        </div>
+        <div class="flex items-center space-x-4">
+          <a href="mailto:office@tochevbg.com" class="hover:text-sky-500 transition flex items-center">
+            <svg class="w-3.5 h-3.5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            office@tochevbg.com
+          </a>
+          <span class="text-slate-300 dark:text-slate-700">|</span>
+          <div class="flex items-center space-x-2">
+            <span class="font-bold text-sky-500">BG</span>
+            <span>/</span>
+            <span class="hover:text-slate-900 dark:hover:text-white cursor-pointer transition">EN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Navigation -->
+      <div class="flex justify-between items-center py-3">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-teal-400 to-indigo-500 flex items-center justify-center font-extrabold text-white text-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition">
+            T
+          </div>
+          <div>
+            <div class="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-tight">
+              TOCHEV <span class="text-sky-500">&amp; CO.</span>
+            </div>
+            <div class="text-[10px] tracking-wider text-slate-500 dark:text-slate-400 uppercase font-medium">Строителна компания • Бургас</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation with links to separate pages -->
+        <nav class="hidden lg:flex items-center space-x-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
+          <a href="#" class="px-3 py-2 rounded-lg text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-slate-800/80 transition">Начало</a>
+          <a href="#objects" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Обекти</a>
+          <a href="panorama.html" class="px-3 py-2 rounded-lg text-emerald-600 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 transition flex items-center">
+            <span>Сграда «Панорама»</span>
+            <span class="ml-1.5 px-1.5 py-0.5 text-[10px] font-bold rounded bg-emerald-500/20 border border-emerald-500/30">Детайли</span>
+          </a>
+          <a href="#chessboard" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Шахматка</a>
+          <a href="#calculator" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Калкулатор</a>
+          <a href="contacts.html" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition flex items-center">
+            <span>Контакти</span>
+          </a>
+        </nav>
+
+        <!-- Right Controls: Theme Toggle & Contacts -->
+        <div class="flex items-center space-x-3">
+          <!-- Light / Dark Theme Switcher Button -->
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition" title="Превключване на светла/тъмна тема" aria-label="Toggle Theme">
+            <!-- Sun Icon (shown in dark mode) -->
+            <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <!-- Moon Icon (shown in light mode) -->
+            <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+          </button>
+
+          <!-- Viber & WhatsApp -->
+          <a href="https://wa.me/359899144080" target="_blank" class="hidden sm:flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 text-xs font-bold transition">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+
+          <!-- Direct Call Button -->
+          <a href="tel:+359899144080" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-xs font-bold shadow-md shadow-sky-500/20 transition transform hover:-translate-y-0.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <span class="hidden sm:inline">+359 899 144 080</span>
+            <span class="sm:hidden">Обади се</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION: PEARLESCENT BENTO HUB -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+
+    <!-- Top Headline & Pitch -->
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-8 gap-4">
+      <div>
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-600 dark:text-sky-400 text-xs font-semibold mb-3">
+          <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+          <span>Нов стандарт за жилищно строителство в Бургас</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+          Директни имоти <br />
+          <span class="bg-gradient-to-r from-sky-500 via-teal-400 to-indigo-500 bg-clip-text text-transparent">от инвеститора Точев &amp; Co.</span>
+        </h1>
+      </div>
+      <div class="text-sm text-slate-600 dark:text-slate-400 max-w-md">
+        Над 25 години безупречно строителство в Бургас, Крайморие, Поморие и София. Всички обекти с гарантирано собствено финансиране, Акт 14 и Акт 16.
+      </div>
+    </div>
+
+    <!-- BENTO GRID CONTAINER -->
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+
+      <!-- BENTO 1: FLAGSHIP PROJECT 2x2 -->
+      <div class="bento-card md:col-span-2 lg:col-span-2 lg:row-span-2 p-6 flex flex-col justify-between relative overflow-hidden group">
+        <!-- Image overlay -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+             style="background-image: linear-gradient(180deg, rgba(8,12,20,0.2) 0%, rgba(8,12,20,0.92) 85%), url('https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.jpg?itok=i2s4rwEO');">
+        </div>
+
+        <!-- Badges -->
+        <div class="relative z-10 flex justify-between items-start">
+          <span class="px-3 py-1.5 rounded-xl badge-act14 text-xs font-bold uppercase tracking-wider backdrop-blur-md">
+            Строеж • Акт 14
+          </span>
+          <span class="px-3 py-1.5 rounded-xl bg-slate-900/80 border border-slate-700/80 text-xs font-bold text-slate-200 backdrop-blur-md">
+            ж.к. Изгрев, Бургас
+          </span>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 pt-48 sm:pt-60">
+          <div class="flex items-center space-x-2 mb-2 text-xs text-sky-400 font-semibold uppercase tracking-wider">
+            <span>Флагмански обект 2026</span>
+            <span>•</span>
+            <span>До магазин Пежо</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">
+            Сграда «ПАНОРАМА»
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 mb-4 line-clamp-2">
+            Модерна 10-етажна сграда с панорамен изглед към Бургаския залив, подземен паркинг и висок клас топло- и шумоизолация.
+          </p>
+
+          <!-- Live Progress Tracker -->
+          <div class="p-3.5 rounded-xl bg-slate-900/90 border border-slate-700/80 mb-4">
+            <div class="flex justify-between items-center text-xs mb-1.5 font-medium">
+              <span class="text-slate-300">Напредък на строителството:</span>
+              <span class="text-emerald-400 font-bold">78% (Груб строеж завършен)</span>
+            </div>
+            <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+              <div class="bg-gradient-to-r from-sky-400 to-emerald-400 h-2 rounded-full" style="width: 78%"></div>
+            </div>
+          </div>
+
+          <!-- Bottom Actions -->
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[11px] text-slate-400 block">Цени директно от строител</span>
+              <span class="text-xl sm:text-2xl font-extrabold text-white">1 250 € <span class="text-xs text-slate-400 font-normal">/ м²</span></span>
+            </div>
+            <div class="flex space-x-2">
+              <a href="panorama.html" class="px-3.5 py-2.5 rounded-xl bg-slate-800/90 hover:bg-slate-700 text-white font-bold text-xs flex items-center space-x-1 border border-slate-600 transition">
+                <span>Пълен преглед</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+              <a href="#chessboard" onclick="selectObject('panorama')" class="px-4 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs flex items-center space-x-1.5 shadow-lg shadow-sky-500/30 transition">
+                <span>Свободни жилища</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BENTO 2: REAL ESTATE EXPRESS FILTER (2x1) -->
+      <div class="bento-card md:col-span-1 lg:col-span-2 p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center">
+              <svg class="w-5 h-5 mr-2 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+              Интелигентен филтър на имоти
+            </h3>
+            <span class="text-xs px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">Намерени: <strong id="matchCount" class="text-emerald-500">38</strong></span>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Район / Локация</label>
+              <select id="filterDistrict" onchange="runFilter()" class="w-full bg-slate-50 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+                <option value="all">Всички райони</option>
+                <option value="izgrev">ж.к. Изгрев (Бургас)</option>
+                <option value="meden">ж.к. Меден Рудник</option>
+                <option value="kraimorie">кв. Крайморие (Море)</option>
+                <option value="vazrazhdane">ж.к. Възраждане</option>
+                <option value="center">Централна част</option>
+                <option value="pomorie">гр. Поморие</option>
+                <option value="sofia">гр. София</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Тип жилище</label>
+              <select id="filterType" onchange="runFilter()" class="w-full bg-slate-50 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+                <option value="all">Всички типове</option>
+                <option value="1">1-стаен / Студио</option>
+                <option value="2">2-стаен апартамент</option>
+                <option value="3">3-стаен апартамент</option>
+                <option value="garage">Гараж / Паркомясто</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Етап на готовност</label>
+              <select id="filterAct" onchange="runFilter()" class="w-full bg-slate-50 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+                <option value="all">Всички етапи</option>
+                <option value="act16">Готови (Акт 16)</option>
+                <option value="act14">Пред завършване (Акт 14)</option>
+                <option value="construction">В начален строеж</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1">Максимален бюджет</label>
+              <select id="filterPrice" onchange="runFilter()" class="w-full bg-slate-50 dark:bg-slate-900/90 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+                <option value="all">Без ограничение</option>
+                <option value="60000">до 60 000 €</option>
+                <option value="90000">до 90 000 €</option>
+                <option value="120000">до 120 000 €</option>
+                <option value="150000">до 150 000 €</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="document.getElementById('chessboard').scrollIntoView({behavior: 'smooth'})" class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-sky-600 dark:text-sky-400 font-bold text-xs flex items-center justify-center space-x-2 transition border border-slate-200 dark:border-slate-700">
+          <span>Покажи жилищата в Шахматката</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+      </div>
+
+      <!-- BENTO 3: TRUST METRICS & GUARANTEES (1x1) -->
+      <div class="bento-card p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-xs uppercase font-bold tracking-wider text-slate-400 mb-1 block">Надеждност &amp; Опит</span>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Защо Точев &amp; Co.?</h3>
+
+          <div class="space-y-3">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm">
+                25+
+              </div>
+              <div class="text-xs">
+                <strong class="text-slate-900 dark:text-white block">Години опит на пазара</strong>
+                <span class="text-slate-500 dark:text-slate-400">Утвърден строител в региона</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-lg bg-sky-500/15 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold text-sm">
+                30+
+              </div>
+              <div class="text-xs">
+                <strong class="text-slate-900 dark:text-white block">Завършени сгради</strong>
+                <span class="text-slate-500 dark:text-slate-400">С въведени в експлоатация Акт 16</span>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm">
+                0%
+              </div>
+              <div class="text-xs">
+                <strong class="text-slate-900 dark:text-white block">Без брокерска комисионна</strong>
+                <span class="text-slate-500 dark:text-slate-400">Спестявате 3-5% при покупка</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
+          ✓ Собствено финансиране без банкови тежести
+        </div>
+      </div>
+
+      <!-- BENTO 4: DIRECT CHAT WIDGET (1x1) -->
+      <div class="bento-card p-6 flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-500 flex items-center justify-center mb-3">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white mb-1">Бърза консултация</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
+            Изпратете запитване за свободен апартамент и получете пълно разпределение и оферта до 15 минути.
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <a href="https://wa.me/359899144080?text=Здравейте,%20интересувам%20се%20от%20имотите%20на%20Точев%20и%20Ко" target="_blank" class="w-full py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold flex items-center justify-center space-x-2 transition shadow-md shadow-emerald-900/20">
+            <span>Чат в WhatsApp</span>
+          </a>
+          <a href="viber://chat?number=%2B359899144080" class="w-full py-2 px-3 rounded-xl bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold flex items-center justify-center space-x-2 transition">
+            <span>Чат във Viber</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- INTERACTIVE CHESSBOARD SECTION (ШАХМАТКА) -->
+  <section id="chessboard" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-200 dark:border-slate-800">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+      <div>
+        <div class="inline-flex items-center space-x-2 text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">
+          <span>Интерактивен избор</span>
+          <span>•</span>
+          <span>Поповерхово разпределение</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+          Изберете апартамент по етажи
+        </h2>
+      </div>
+
+      <!-- Building Selector -->
+      <div class="flex items-center space-x-3">
+        <label class="text-xs text-slate-500 dark:text-slate-400">Сграда:</label>
+        <select id="selectedBuilding" onchange="updateChessboard(this.value)" class="bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2 text-xs text-slate-900 dark:text-white font-medium focus:outline-none focus:border-sky-500 shadow-sm">
+          <option value="panorama">Сграда «Панорама» (ж.к. Изгрев) - Акт 14</option>
+          <option value="trapezica">Обект «Трапезица» (до Елкабел) - Строеж</option>
+          <option value="kraimorie">Комплекс «Крайморие» (ул. Лорна) - Морски</option>
+          <option value="meden">ж.к. Меден Рудник (Битака) - Акт 14</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Grid + Detail Drawer -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- Chessboard Left (8 cols) -->
+      <div class="lg:col-span-8 bento-card p-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-200 dark:border-slate-800 text-xs">
+          <div class="font-bold text-slate-900 dark:text-slate-200">
+            Обект: <span id="currentBuildingTitle" class="text-sky-500">Сграда «Панорама»</span>
+          </div>
+          <!-- Legend -->
+          <div class="flex items-center space-x-4">
+            <span class="flex items-center"><span class="w-3 h-3 rounded unit-free mr-1.5 inline-block"></span> Свободен</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded unit-reserved mr-1.5 inline-block"></span> Резерве</span>
+            <span class="flex items-center"><span class="w-3 h-3 rounded unit-sold mr-1.5 inline-block"></span> Продаден</span>
+          </div>
+        </div>
+
+        <!-- Matrix table container -->
+        <div class="overflow-x-auto">
+          <div class="min-w-[540px] space-y-2.5" id="chessboardGrid">
+            <!-- Floor 7 -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Етаж 7</span>
+              <button onclick="showApartment('А-21', 7, '2-стаен', 62.84, 84834, 'free', 'Изток / Панорама море')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-21 (62.8 м²)</button>
+              <button onclick="showApartment('А-22', 7, '2-стаен', 60.95, 82280, 'free', 'Юг / Парк')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-22 (61.0 м²)</button>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-23 (Пентхаус)</button>
+            </div>
+            <!-- Floor 6 -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Етаж 6</span>
+              <button onclick="showApartment('А-18', 6, '3-стаен', 89.20, 111500, 'free', 'Югоизток')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-18 (89.2 м²)</button>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-19 (Продаден)</button>
+              <button onclick="showApartment('А-20', 6, '2-стаен', 58.40, 73000, 'free', 'Североизток')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-20 (58.4 м²)</button>
+            </div>
+            <!-- Floor 5 -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Етаж 5</span>
+              <button onclick="showApartment('А-11', 5, '3-стаен', 85.97, 107463, 'free', 'Югоизток')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center ring-2 ring-sky-400">А-11 (86.0 м²)</button>
+              <button onclick="showApartment('А-12', 5, '2-стаен', 64.10, 80125, 'reserved', 'Юг')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-reserved text-center">А-12 (Резерве)</button>
+              <button onclick="showApartment('А-13', 5, '1-стаен', 45.20, 56500, 'free', 'Изток')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-13 (45.2 м²)</button>
+            </div>
+            <!-- Floor 4 -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Етаж 4</span>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-08 (Продаден)</button>
+              <button onclick="showApartment('А-09', 4, '2-стаен', 65.00, 81250, 'free', 'Юг')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-09 (65.0 м²)</button>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-10 (Продаден)</button>
+            </div>
+            <!-- Floor 3 -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Етаж 3</span>
+              <button onclick="showApartment('А-05', 3, '3-стаен', 89.06, 111325, 'free', 'Югоизток')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-05 (89.1 м²)</button>
+              <button onclick="showApartment('А-06', 3, '2-стаен', 58.70, 73375, 'free', 'Юг')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-06 (58.7 м²)</button>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-07 (Продаден)</button>
+            </div>
+            <!-- Floor 2 -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Етаж 2</span>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-02 (Продаден)</button>
+              <button onclick="showApartment('А-03', 2, '2-стаен', 60.10, 75125, 'free', 'Юг')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">А-03 (60.1 м²)</button>
+              <button class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-sold text-center">А-04 (Продаден)</button>
+            </div>
+            <!-- Floor 0: Ground -->
+            <div class="flex items-center space-x-2">
+              <span class="w-16 text-xs font-bold text-slate-500 dark:text-slate-400 text-right pr-2">Партер</span>
+              <button onclick="showApartment('Магазин 01', 0, 'Търговски обект', 112.40, 168600, 'free', 'Лице към булевард')" class="flex-[2] py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">Магазин 1 (112.4 м²)</button>
+              <button onclick="showApartment('Паркоместа', 0, 'Паркомясто', 16.00, 12000, 'free', 'Вътрешен двор')" class="flex-1 py-2 rounded-lg text-xs font-bold unit-box unit-free text-center">Паркоместа (5 бр.)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 text-[11px] text-slate-500 italic">
+          💡 Кликнете върху свободен апартамент (зелен), за да заредите детайлните параметри, чертеж и директна заявка.
+        </div>
+      </div>
+
+      <!-- Detail Right Panel (4 cols) -->
+      <div class="lg:col-span-4 bento-card p-6 border-sky-500/30" id="unitDetailPanel">
+        <div class="flex justify-between items-start mb-3">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-sky-500 block" id="unitSubtitle">Сграда Панорама • Етаж 5</span>
+            <h3 class="text-2xl font-extrabold text-slate-900 dark:text-white" id="unitTitle">Апартамент А-11</h3>
+          </div>
+          <span id="unitStatusBadge" class="px-2.5 py-1 rounded-md badge-act16 text-xs font-bold">Свободен</span>
+        </div>
+
+        <!-- 2D Blueprint preview -->
+        <div class="w-full h-44 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex items-center justify-center p-3 mb-4 relative overflow-hidden">
+          <svg class="w-full h-full text-slate-400 dark:text-slate-600" viewBox="0 0 200 120" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="10" y="10" width="180" height="100" stroke-dasharray="2 2" />
+            <rect x="15" y="15" width="105" height="55" />
+            <text x="35" y="45" fill="currentColor" stroke="none" class="text-[10px] font-sans">Дневна + Бокс 28.5 м²</text>
+            <rect x="125" y="15" width="60" height="55" />
+            <text x="135" y="45" fill="currentColor" stroke="none" class="text-[9px] font-sans">Спалня 15 м²</text>
+            <rect x="15" y="75" width="90" height="30" stroke-width="2" />
+            <text x="35" y="93" fill="currentColor" stroke="none" class="text-[9px] font-sans">Тераса 8.2 м²</text>
+            <rect x="110" y="75" width="75" height="30" />
+            <text x="125" y="93" fill="currentColor" stroke="none" class="text-[9px] font-sans">Баня/WC</text>
+          </svg>
+          <div class="absolute bottom-2 right-2 text-[10px] px-2 py-0.5 rounded bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            Схема: 2D Чертеж
+          </div>
+        </div>
+
+        <!-- Metric Table -->
+        <div class="space-y-2 text-xs mb-5">
+          <div class="flex justify-between py-1.5 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-slate-500 dark:text-slate-400">Тип:</span>
+            <strong class="text-slate-900 dark:text-white font-medium" id="unitTypeVal">3-стаен апартамент</strong>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-slate-500 dark:text-slate-400">Обща площ:</span>
+            <strong class="text-slate-900 dark:text-white font-medium" id="unitAreaVal">85.97 кв.м.</strong>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-slate-500 dark:text-slate-400">Изложение:</span>
+            <strong class="text-slate-900 dark:text-white font-medium" id="unitExposureVal">Югоизток (Слънчев)</strong>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-200 dark:border-slate-800">
+            <span class="text-slate-500 dark:text-slate-400">Цена на кв.м:</span>
+            <strong class="text-sky-600 dark:text-sky-400 font-bold">1 250 € / м²</strong>
+          </div>
+          <div class="flex justify-between py-2 items-center bg-slate-100 dark:bg-slate-900/60 px-3 rounded-lg">
+            <span class="text-xs text-slate-700 dark:text-slate-300 font-bold">Обща цена:</span>
+            <div class="text-right">
+              <span class="text-xl font-extrabold text-emerald-600 dark:text-emerald-400 block" id="unitPriceVal">107 463 €</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400" id="unitPriceBgnVal">≈ 210 178 лв.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Form -->
+        <form onsubmit="handleUnitInquiry(event)" class="space-y-2.5">
+          <input type="text" placeholder="Вашето име" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
+          <input type="tel" placeholder="Телефон за връзка (напр. 089 914 4080)" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
+          <button type="submit" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-bold text-xs shadow-md transition">
+            Заяви безплатен оглед / Брошура
+          </button>
+        </form>
+        <div id="inquirySuccess" class="hidden mt-2 p-2 rounded-lg bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 text-xs text-center border border-emerald-500/40">
+          ✓ Заявката е приета! Отдел продажби ще се свърже с Вас.
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INSTALLMENT CALCULATOR -->
+  <section id="calculator" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-200 dark:border-slate-800">
+    <div class="bento-card p-6 sm:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Sliders -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center space-x-2 text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">
+            <span>Финансова гъвкавост</span>
+            <span>•</span>
+            <span>0% оскъпяване в периода на строеж</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mb-2">
+            Калкулатор за вноски и разсрочено плащане
+          </h2>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-6">
+            Предлагаме индивидуални схеми на плащане, съобразени с етапите на строителство (Акт 14, Акт 15, Акт 16).
+          </p>
+
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between items-center text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                <span>Стойност на имота:</span>
+                <span class="text-base font-bold text-sky-500" id="calcPriceDisplay">85 000 €</span>
+              </div>
+              <input type="range" min="40000" max="250000" step="5000" value="85000" id="calcPriceRange" oninput="calculateMortgage()" class="w-full accent-sky-500 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                <span>Първоначална вноска при предварителен договор:</span>
+                <span class="text-base font-bold text-emerald-500" id="calcDownpayDisplay">30% (25 500 €)</span>
+              </div>
+              <input type="range" min="20" max="70" step="5" value="30" id="calcDownpayRange" oninput="calculateMortgage()" class="w-full accent-emerald-500 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer" />
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
+                <span>Срок на разсрочване (до завършване на сградата):</span>
+                <span class="text-base font-bold text-amber-500" id="calcMonthsDisplay">24 месеца</span>
+              </div>
+              <input type="range" min="12" max="36" step="6" value="24" id="calcMonthsRange" oninput="calculateMortgage()" class="w-full accent-amber-500 h-2 bg-slate-200 dark:bg-slate-800 rounded-lg cursor-pointer" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="lg:col-span-5 p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-center">
+          <span class="text-xs font-semibold text-slate-500 dark:text-slate-400 block mb-1">Ориентировъчна месечна вноска:</span>
+          <div class="text-3xl sm:text-4xl font-extrabold text-sky-500 mb-1" id="calcMonthlyResult">
+            2 479 € <span class="text-xs text-slate-500 dark:text-slate-400 font-normal">/ месец</span>
+          </div>
+          <span class="text-xs text-slate-500 block mb-6" id="calcMonthlyResultBgn">≈ 4 848 лв.</span>
+
+          <div class="text-left space-y-2 p-3.5 rounded-xl bg-white dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs mb-6">
+            <div class="flex justify-between text-slate-600 dark:text-slate-300">
+              <span>При предварителен договор:</span>
+              <strong class="text-slate-900 dark:text-white" id="calcBreakdownInitial">25 500 €</strong>
+            </div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-300">
+              <span>При достигане на Акт 14:</span>
+              <strong class="text-slate-900 dark:text-white" id="calcBreakdownAct14">25 500 €</strong>
+            </div>
+            <div class="flex justify-between text-slate-600 dark:text-slate-300">
+              <span>При Акт 15 / 16 (Окончателно):</span>
+              <strong class="text-emerald-500" id="calcBreakdownAct16">34 000 €</strong>
+            </div>
+          </div>
+
+          <a href="tel:+359899144080" class="w-full py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs uppercase tracking-wider block transition shadow-lg shadow-sky-500/20">
+            Съгласувай индивидуален план
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALL ACTIVE OBJECTS GRID -->
+  <section id="objects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-slate-200 dark:border-slate-800">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+      <div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">
+          Обекти в строеж и готови сгради
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+          Строителни проекти в най-перспективните райони на гр. Бургас, Черноморието и София
+        </p>
+      </div>
+      <div class="flex space-x-2">
+        <button class="px-3 py-1.5 rounded-lg bg-sky-500 text-white text-xs font-semibold">Всички (8)</button>
+        <button class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold">Акт 14</button>
+        <button class="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-semibold">Акт 16</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Object 1 -->
+      <div class="bento-card overflow-hidden group">
+        <div class="h-52 bg-slate-800 relative overflow-hidden">
+          <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.jpg?itok=i2s4rwEO" alt="Сграда Панорама" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute top-3 left-3">
+            <span class="px-2.5 py-1 rounded-md badge-act14 text-xs font-bold">Акт 14</span>
+          </div>
+          <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-slate-900/90 text-xs text-white font-bold border border-slate-700">
+            от 1 250 € / м²
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="text-xs text-sky-500 font-semibold mb-1">ж.к. Изгрев, гр. Бургас</div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Сграда «ПАНОРАМА»</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">
+            До магазин Пежо. Свободни 2-стайни и 3-стайни апартаменти с просторни тераси и подземен паркинг.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-xs text-slate-600 dark:text-slate-300">Свободни: <strong class="text-emerald-500">12 жилища</strong></span>
+            <a href="panorama.html" class="text-xs text-sky-500 hover:text-sky-400 font-bold flex items-center">
+              Детайли на сградата →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Object 2 -->
+      <div class="bento-card overflow-hidden group">
+        <div class="h-52 bg-slate-800 relative overflow-hidden">
+          <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.jpg?itok=b0eGl3xO" alt="Обект Трапезица" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute top-3 left-3">
+            <span class="px-2.5 py-1 rounded-md badge-construction text-xs font-bold">В строеж</span>
+          </div>
+          <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-slate-900/90 text-xs text-white font-bold border border-slate-700">
+            от 1 180 € / м²
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="text-xs text-sky-500 font-semibold mb-1">кв. Трапезица, гр. Бургас</div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Сграда «Трапезица»</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">
+            В близост до Елкабел. Бърз достъп до центъра и изходните артерии. Свободни ателиета и паркоместа.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-xs text-slate-600 dark:text-slate-300">Свободни: <strong class="text-emerald-500">9 жилища</strong></span>
+            <button onclick="selectObject('trapezica')" class="text-xs text-sky-500 hover:text-sky-400 font-bold flex items-center">
+              Виж разпределения →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Object 3 -->
+      <div class="bento-card overflow-hidden group">
+        <div class="h-52 bg-slate-800 relative overflow-hidden">
+          <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-08/kraimorie-north.jpg?itok=f0Vw56wc" alt="Крайморие ул. Лорна" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          <div class="absolute top-3 left-3">
+            <span class="px-2.5 py-1 rounded-md badge-act14 text-xs font-bold">Акт 14</span>
+          </div>
+          <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-slate-900/90 text-xs text-white font-bold border border-slate-700">
+            от 1 300 € / м²
+          </div>
+        </div>
+        <div class="p-5">
+          <div class="text-xs text-sky-500 font-semibold mb-1">кв. Крайморие, ул. Лорна</div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">Резиденция «Крайморие»</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">
+            На 250 метра от морския бряг. Прекрасни панорамни тераси с гледка към морето, подходящи за почивка и отдаване под наем.
+          </p>
+          <div class="flex items-center justify-between pt-3 border-t border-slate-200 dark:border-slate-800">
+            <span class="text-xs text-slate-600 dark:text-slate-300">Свободни: <strong class="text-emerald-500">6 жилища</strong></span>
+            <button onclick="selectObject('kraimorie')" class="text-xs text-sky-500 hover:text-sky-400 font-bold flex items-center">
+              Виж разпределения →
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-500 dark:text-slate-400 text-xs py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <div class="font-heading font-extrabold text-lg text-slate-900 dark:text-white mb-2">
+            TOCHEV <span class="text-sky-500">&amp; CO.</span>
+          </div>
+          <p class="text-slate-500 mb-4">
+            Строителна компания с доказана репутация и над 25 години традиция в изграждането на модерни жилищни сгради в гр. Бургас.
+          </p>
+          <div class="text-slate-400">
+            ЕИК: 102148721 | Бургас
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-3">Обекти в Бургас</h4>
+          <ul class="space-y-2">
+            <li><a href="panorama.html" class="hover:text-sky-500 transition">Сграда «Панорама» (Изгрев)</a></li>
+            <li><a href="#" class="hover:text-sky-500 transition">Обект «Трапезица»</a></li>
+            <li><a href="#" class="hover:text-sky-500 transition">кв. Крайморие (ул. Лорна)</a></li>
+            <li><a href="#" class="hover:text-sky-500 transition">ж.к. Меден Рудник (Битака)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-3">Контакти &amp; Офис</h4>
+          <ul class="space-y-2">
+            <li>Адрес: гр. Бургас, ул. Хаджи Димитър 8</li>
+            <li>Тел: +359 899 144 080</li>
+            <li>Тел: +359 897 807 388</li>
+            <li>Email: office@tochevbg.com</li>
+            <li><a href="contacts.html" class="text-sky-500 font-bold hover:underline">Виж страница Контакти →</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-slate-900 dark:text-white font-bold mb-3">Правни документи</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="hover:text-sky-500 transition">Политика за поверителност</a></li>
+            <li><a href="#" class="hover:text-sky-500 transition">Условия за ползване</a></li>
+            <li><a href="#" class="hover:text-sky-500 transition">Карта на сайта</a></li>
+            <li><span class="text-emerald-500">✓ Защита по GDPR</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 border-t border-slate-200 dark:border-slate-900 flex flex-col sm:flex-row justify-between items-center text-slate-500 text-[11px]">
+        <div>© 2026 Tochev &amp; Co. Всички права запазени.</div>
+        <div class="mt-2 sm:mt-0">Шрифт Manrope + Plus Jakarta Sans | Перламутрова тема Drupal 11</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY ACTION BAR -->
+  <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 px-4 py-2 flex items-center justify-around shadow-lg">
+    <a href="tel:+359899144080" class="flex flex-col items-center text-sky-500 text-[11px] font-bold">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+      <span>Обади се</span>
+    </a>
+    <a href="https://wa.me/359899144080" class="flex flex-col items-center text-emerald-500 text-[11px] font-bold">
+      <svg class="w-5 h-5 mb-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#chessboard" class="flex flex-col items-center text-slate-700 dark:text-slate-200 text-[11px] font-bold">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+      <span>Шахматка</span>
+    </a>
+    <button onclick="toggleTheme()" class="flex flex-col items-center text-amber-500 text-[11px] font-bold">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+      <span>Тема</span>
+    </button>
+  </div>
+
+  <!-- JAVASCRIPT CONTROLLERS -->
+  <script>
+    // 1. Theme Switcher Logic (Dark / Light)
+    function initTheme() {
+      const savedTheme = localStorage.getItem('tochev_theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    }
+
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        localStorage.setItem('tochev_theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        localStorage.setItem('tochev_theme', 'dark');
+      }
+    }
+
+    initTheme();
+
+    // 2. Chessboard Logic
+    function showApartment(id, floor, type, area, price, status, exposure) {
+      document.getElementById('unitTitle').innerText = 'Апартамент ' + id;
+      document.getElementById('unitSubtitle').innerText = document.getElementById('currentBuildingTitle').innerText + ' • Етаж ' + (floor === 0 ? 'Партер' : floor);
+      document.getElementById('unitTypeVal').innerText = type;
+      document.getElementById('unitAreaVal').innerText = area + ' кв.м.';
+      document.getElementById('unitExposureVal').innerText = exposure;
+      document.getElementById('unitPriceVal').innerText = Number(price).toLocaleString('de-DE') + ' €';
+      document.getElementById('unitPriceBgnVal').innerText = '≈ ' + Number(Math.round(price * 1.95583)).toLocaleString('de-DE') + ' лв.';
+
+      const badge = document.getElementById('unitStatusBadge');
+      if (status === 'free') {
+        badge.innerText = 'Свободен';
+        badge.className = 'px-2.5 py-1 rounded-md badge-act16 text-xs font-bold';
+      } else if (status === 'reserved') {
+        badge.innerText = 'Резерве';
+        badge.className = 'px-2.5 py-1 rounded-md badge-act14 text-xs font-bold';
+      } else {
+        badge.innerText = 'Продаден';
+        badge.className = 'px-2.5 py-1 rounded-md bg-slate-800 text-slate-400 text-xs font-bold';
+      }
+
+      // Sync calculator
+      document.getElementById('calcPriceRange').value = price;
+      calculateMortgage();
+
+      if (window.innerWidth < 1024) {
+        document.getElementById('unitDetailPanel').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function selectObject(key) {
+      document.getElementById('selectedBuilding').value = key;
+      updateChessboard(key);
+      document.getElementById('chessboard').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateChessboard(key) {
+      const titles = {
+        panorama: 'Сграда «Панорама» (ж.к. Изгрев)',
+        trapezica: 'Обект «Трапезица» (до Елкабел)',
+        kraimorie: 'Морска Резиденция «Крайморие»',
+        meden: 'Сграда «Меден Рудник» (Битака)'
+      };
+      document.getElementById('currentBuildingTitle').innerText = titles[key] || 'Сграда «Панорама»';
+      showApartment('А-11', 5, '3-стаен', 85.97, 107463, 'free', 'Югоизток');
+    }
+
+    // 3. Mortgage Calculator
+    function calculateMortgage() {
+      const price = parseInt(document.getElementById('calcPriceRange').value);
+      const downPercent = parseInt(document.getElementById('calcDownpayRange').value);
+      const months = parseInt(document.getElementById('calcMonthsRange').value);
+
+      document.getElementById('calcPriceDisplay').innerText = price.toLocaleString('de-DE') + ' €';
+      const downpayAmount = Math.round(price * (downPercent / 100));
+      document.getElementById('calcDownpayDisplay').innerText = downPercent + '% (' + downpayAmount.toLocaleString('de-DE') + ' €)';
+      document.getElementById('calcMonthsDisplay').innerText = months + ' месеца';
+
+      const remaining = price - downpayAmount;
+      const monthly = Math.round(remaining / months);
+
+      document.getElementById('calcMonthlyResult').innerHTML = monthly.toLocaleString('de-DE') + ' € <span class="text-xs text-slate-500 font-normal">/ месец</span>';
+      document.getElementById('calcMonthlyResultBgn').innerText = '≈ ' + Math.round(monthly * 1.95583).toLocaleString('de-DE') + ' лв.';
+
+      const act14Amount = Math.round(price * 0.30);
+      const act16Amount = price - downpayAmount - act14Amount;
+      document.getElementById('calcBreakdownInitial').innerText = downpayAmount.toLocaleString('de-DE') + ' €';
+      document.getElementById('calcBreakdownAct14').innerText = act14Amount.toLocaleString('de-DE') + ' €';
+      document.getElementById('calcBreakdownAct16').innerText = (act16Amount > 0 ? act16Amount : 0).toLocaleString('de-DE') + ' €';
+    }
+
+    // 4. Quick filter simulation
+    function runFilter() {
+      const d = document.getElementById('filterDistrict').value;
+      const t = document.getElementById('filterType').value;
+      const a = document.getElementById('filterAct').value;
+      const p = document.getElementById('filterPrice').value;
+
+      let count = 38;
+      if (d !== 'all') count -= 12;
+      if (t !== 'all') count -= 8;
+      if (a !== 'all') count -= 6;
+      if (p !== 'all') count -= 4;
+      if (count < 3) count = 3;
+
+      document.getElementById('matchCount').innerText = count;
+    }
+
+    function handleUnitInquiry(e) {
+      e.preventDefault();
+      document.getElementById('inquirySuccess').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('inquirySuccess').classList.add('hidden');
+      }, 5000);
+    }
+
+    calculateMortgage();
+  </script>
+</body>
+</html>
