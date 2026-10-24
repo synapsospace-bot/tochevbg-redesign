@@ -82,6 +82,33 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
 
+    /* Bulletproof Theme Toggle Button */
+    #themeToggleBtn {
+      cursor: pointer;
+    }
+    .dark #themeToggleBtn {
+      background-color: rgba(30, 41, 59, 0.9) !important;
+      border-color: rgba(71, 85, 105, 0.7) !important;
+      color: #FCD34D !important;
+    }
+    .dark #themeToggleBtn:hover {
+      background-color: rgba(51, 65, 85, 0.95) !important;
+      border-color: #38BDF8 !important;
+    }
+    .light #themeToggleBtn {
+      background-color: #F1F5F9 !important;
+      border-color: #CBD5E1 !important;
+      color: #334155 !important;
+    }
+    .light #themeToggleBtn:hover {
+      background-color: #E2E8F0 !important;
+      border-color: #94A3B8 !important;
+    }
+    .dark #sunIcon { display: block !important; }
+    .dark #moonIcon { display: none !important; }
+    .light #sunIcon { display: none !important; }
+    .light #moonIcon { display: block !important; }
+
     /* LIGHT CERAMIC PEARL */
     html.light, .light body {
       background-color: #F8FAFC !important;
@@ -212,7 +239,7 @@
 
         <!-- Right Controls -->
         <div class="flex items-center space-x-3">
-          <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition shadow-sm" title="Превключи тема">
+          <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition shadow-sm" title="Превключи тема">
             <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
             <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
           </button>
@@ -250,10 +277,8 @@
 
     <!-- BENTO CONTACT MATRIX -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
       <!-- Left Column: Department Phones & Location Card (7 cols) -->
       <div class="lg:col-span-7 space-y-6">
-
         <!-- Bento Card: Main Office & Direct Phone Departments -->
         <div class="bento-card p-6">
           <div class="flex items-center space-x-3 mb-6">
@@ -333,12 +358,10 @@
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Right Column: Interactive Contact Webform & Messengers (5 cols) -->
       <div class="lg:col-span-5 space-y-6">
-
         <!-- Webform Card -->
         <div class="bento-card p-6 border-sky-500/30">
           <div class="mb-4">
@@ -411,7 +434,7 @@
             <a href="https://wa.me/359899144080" target="_blank" class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center space-x-2 transition shadow-md shadow-emerald-900/20">
               <span>WhatsApp Чат</span>
             </a>
-            <a href="viber://chat?number=%2B359899144080" class="py-2.5 px-3 rounded-xl bg-purple-700 hover:bg-purple-600 text-white font-bold text-xs flex items-center justify-center space-x-2 transition">
+            <a href="viber://chat?number=%2B359899144080" class="py-2.5 px-3 rounded-xl bg-purple-700 hover:purple-600 text-white font-bold text-xs flex items-center justify-center space-x-2 transition">
               <span>Viber Чат</span>
             </a>
           </div>
@@ -425,9 +448,7 @@
           <div>ДДС №: BG102148721</div>
           <div>Седалище и адрес на управление: гр. Бургас, ул. Хаджи Димитър 8</div>
         </div>
-
       </div>
-
     </div>
   </main>
 
