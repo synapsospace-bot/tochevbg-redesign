@@ -4,7 +4,24 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Сграда «Панорама» (ж.к. Изгрев) | Tochev & Co. Детайлен преглед</title>
+  <script>
+    tailwind = {
+      darkMode: 'class'
+    };
+  </script>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <script>
+    (function() {
+      const saved = localStorage.getItem('tochev_theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    })();
+  </script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
 
@@ -22,79 +39,149 @@
       font-family: var(--font-heading);
     }
 
-    /* DARK PEARLESCENT MESH */
-    .dark body {
-      background-color: #080C14;
-      color: #E2E8F0;
+    /* DARK PEARLESCENT MESH & HIGH CONTRAST */
+    html.dark, .dark body {
+      background-color: #080C14 !important;
+      color: #F1F5F9 !important;
       background-image: 
-        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
-        radial-gradient(at 85% 10%, rgba(99, 102, 241, 0.07) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(20, 184, 166, 0.05) 0px, transparent 65%),
-        radial-gradient(at 80% 85%, rgba(14, 165, 233, 0.07) 0px, transparent 50%);
+        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 85% 10%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(20, 184, 166, 0.08) 0px, transparent 65%),
+        radial-gradient(at 80% 85%, rgba(14, 165, 233, 0.10) 0px, transparent 50%);
       background-attachment: fixed;
+    }
+
+    .dark h1, .dark h2, .dark h3, .dark h4, .dark .font-heading {
+      color: #FFFFFF !important;
+    }
+    .dark .text-slate-900, .dark .text-slate-800 {
+      color: #FFFFFF !important;
+    }
+    .dark .text-slate-700 {
+      color: #F1F5F9 !important;
+    }
+    .dark .text-slate-600, .dark .text-slate-500 {
+      color: #CBD5E1 !important;
+    }
+    .dark .text-slate-400 {
+      color: #94A3B8 !important;
     }
 
     .dark .bento-card {
-      background: linear-gradient(135deg, rgba(20, 27, 45, 0.72) 0%, rgba(13, 19, 33, 0.85) 100%);
+      background: linear-gradient(135deg, rgba(20, 27, 45, 0.82) 0%, rgba(13, 19, 33, 0.94) 100%) !important;
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+      box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15) !important;
     }
 
     .dark .glass-nav {
-      background: rgba(8, 12, 20, 0.88);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 12, 20, 0.92) !important;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
     }
 
     /* LIGHT CERAMIC PEARL */
-    .light body {
-      background-color: #F8FAFC;
-      color: #0F172A;
+    html.light, .light body {
+      background-color: #F8FAFC !important;
+      color: #0F172A !important;
       background-image: 
-        radial-gradient(at 10% 10%, rgba(224, 242, 254, 0.8) 0px, transparent 50%),
-        radial-gradient(at 90% 15%, rgba(238, 242, 255, 0.7) 0px, transparent 50%),
-        radial-gradient(at 50% 80%, rgba(204, 251, 241, 0.6) 0px, transparent 60%);
+        radial-gradient(at 10% 10%, rgba(224, 242, 254, 0.85) 0px, transparent 50%),
+        radial-gradient(at 90% 15%, rgba(238, 242, 255, 0.75) 0px, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(204, 251, 241, 0.65) 0px, transparent 60%);
       background-attachment: fixed;
     }
 
+    .light h1, .light h2, .light h3, .light h4, .light .font-heading {
+      color: #0F172A !important;
+    }
+    .light .text-slate-900 {
+      color: #0F172A !important;
+    }
+    .light .text-slate-600 {
+      color: #334155 !important;
+    }
+    .light .text-slate-500 {
+      color: #475569 !important;
+    }
+
     .light .bento-card {
-      background: rgba(255, 255, 255, 0.94);
+      background: rgba(255, 255, 255, 0.94) !important;
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(226, 232, 240, 0.9);
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05) !important;
     }
 
     .light .glass-nav {
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94) !important;
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
+    }
+
+    /* MODERN NAVIGATION LINKS */
+    .nav-link-modern {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      padding: 8px 16px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+    .light .nav-link-modern {
+      color: #1E293B;
+    }
+    .light .nav-link-modern:hover {
+      color: #0284C7;
+      background-color: rgba(2, 132, 199, 0.08);
+      transform: translateY(-1px);
+    }
+    .light .nav-link-modern.active {
+      color: #0284C7;
+      background: rgba(2, 132, 199, 0.12);
+      border: 1px solid rgba(2, 132, 199, 0.25);
+    }
+    .dark .nav-link-modern {
+      color: #E2E8F0;
+    }
+    .dark .nav-link-modern:hover {
+      color: #38BDF8;
+      background-color: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
+    }
+    .dark .nav-link-modern.active {
+      color: #38BDF8;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
     }
 
     /* Status Badges */
     .badge-act16 {
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(16, 185, 129, 0.18);
       color: #10B981;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid rgba(16, 185, 129, 0.35);
     }
     .badge-act14 {
-      background: rgba(245, 158, 11, 0.15);
+      background: rgba(245, 158, 11, 0.18);
       color: #F59E0B;
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      border: 1px solid rgba(245, 158, 11, 0.35);
     }
 
     .unit-free {
       background: rgba(16, 185, 129, 0.18);
       border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #10B981;
+      color: #059669;
     }
     .dark .unit-free {
       color: #6EE7B7;
     }
     .unit-free:hover {
-      background: #10B981;
-      color: #FFFFFF;
+      background: #10B981 !important;
+      color: #FFFFFF !important;
       transform: scale(1.04);
     }
     .unit-sold {
@@ -113,53 +200,57 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Sub-Bar -->
-      <div class="hidden md:flex justify-between items-center py-1.5 border-b border-slate-200 dark:border-slate-800/80 text-xs text-slate-500 dark:text-slate-400">
+      <div class="hidden md:flex justify-between items-center py-2 border-b border-slate-200 dark:border-slate-800/80 text-[13px] text-slate-600 dark:text-slate-300">
         <div class="flex items-center space-x-6">
-          <span class="flex items-center text-emerald-600 dark:text-emerald-400 font-medium">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
+          <span class="flex items-center text-emerald-600 dark:text-emerald-400 font-bold">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
             Официален инвеститор: Точев &amp; Co. ООД
           </span>
-          <span>Разрешение за строеж № 142 / 2024</span>
+          <span class="text-slate-600 dark:text-slate-300">Разрешение за строеж № 142 / 2024</span>
         </div>
         <div class="flex items-center space-x-4">
-          <a href="mailto:office@tochevbg.com" class="hover:text-sky-500 transition">office@tochevbg.com</a>
+          <a href="mailto:office@tochevbg.com" class="hover:text-sky-500 transition font-medium">office@tochevbg.com</a>
           <span class="text-slate-300 dark:text-slate-700">|</span>
-          <span class="font-bold text-sky-500">BG / EN</span>
+          <div class="flex items-center space-x-2 font-bold text-xs">
+            <span class="text-sky-500">BG</span>
+            <span class="text-slate-400">/</span>
+            <span class="text-slate-500 dark:text-slate-400 hover:text-sky-400 cursor-pointer transition">EN</span>
+          </div>
         </div>
       </div>
 
       <!-- Main Navigation -->
-      <div class="flex justify-between items-center py-3">
-        <a href="index.html" class="flex items-center space-x-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 via-teal-400 to-indigo-500 flex items-center justify-center font-extrabold text-white text-xl shadow-lg shadow-sky-500/20 group-hover:scale-105 transition">
+      <div class="flex justify-between items-center py-3.5">
+        <a href="index.html" class="flex items-center space-x-3.5 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 via-teal-400 to-indigo-500 flex items-center justify-center font-extrabold text-white text-2xl shadow-lg shadow-sky-500/25 group-hover:scale-105 transition">
             T
           </div>
           <div>
-            <div class="font-heading font-extrabold text-lg sm:text-xl tracking-tight text-slate-900 dark:text-white leading-tight">
+            <div class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white leading-tight">
               TOCHEV <span class="text-sky-500">&amp; CO.</span>
             </div>
-            <div class="text-[10px] tracking-wider text-slate-500 dark:text-slate-400 uppercase font-medium">Строителна компания</div>
+            <div class="text-[11px] tracking-wider text-slate-500 dark:text-slate-400 uppercase font-semibold">Строителна компания</div>
           </div>
         </a>
 
         <!-- Desktop Menu -->
-        <nav class="hidden lg:flex items-center space-x-1 text-sm font-semibold text-slate-600 dark:text-slate-300">
-          <a href="index.html" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">← Начало</a>
-          <a href="index.html#objects" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Всички обекти</a>
-          <a href="#object-passport" class="px-3 py-2 rounded-lg text-sky-600 dark:text-sky-400 bg-sky-50 dark:bg-slate-800/80 transition">Паспорт</a>
-          <a href="#object-chessboard" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Шахматка на сградата</a>
-          <a href="#construction-timeline" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Хронология на строежа</a>
-          <a href="contacts.html" class="px-3 py-2 rounded-lg hover:text-sky-500 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition">Контакти</a>
+        <nav class="hidden lg:flex items-center space-x-1.5 font-medium">
+          <a href="index.html" class="nav-link-modern">← Начало</a>
+          <a href="index.html#objects" class="nav-link-modern">Всички обекти</a>
+          <a href="#object-passport" class="nav-link-modern active">Паспорт</a>
+          <a href="#object-chessboard" class="nav-link-modern">Шахматка на сградата</a>
+          <a href="#construction-timeline" class="nav-link-modern">Хронология на строежа</a>
+          <a href="contacts.html" class="nav-link-modern">Контакти</a>
         </nav>
 
         <!-- Right Controls -->
         <div class="flex items-center space-x-3">
-          <button onclick="toggleTheme()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition" title="Превключи тема">
+          <button onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition shadow-sm" title="Превключи тема">
             <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
             <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
           </button>
 
-          <a href="tel:+359899144080" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-xs font-bold shadow-md shadow-sky-500/20 transition">
+          <a href="tel:+359899144080" class="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-sm font-bold shadow-md shadow-sky-500/25 transition transform hover:-translate-y-0.5">
             <span>Запитване за Панорама</span>
           </a>
         </div>
