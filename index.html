@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tochev &amp; Co. | Строителна компания Бургас | Архитектурен редизайн</title>
   
-  <!-- Tailwind CSS CDN -->
+  <!-- Tailwind CSS Official CDN & Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind = {
+    tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -15,10 +16,10 @@
             arch: {
               bronze: '#C5A880',
               'bronze-hover': '#B39265',
-              dark: '#0B0C10',
-              surface: '#13151D',
+              dark: '#0A0C10',
+              surface: '#12151E',
               surfaceLight: '#FFFFFF',
-              borderDark: '#1E222D',
+              borderDark: '#232734',
               borderLight: '#E5E5E0',
               chalk: '#F8F8F6'
             }
@@ -27,7 +28,6 @@
       }
     };
   </script>
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   
   <!-- Immediate Theme Initialization -->
   <script>
@@ -48,7 +48,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <style>
+    <style>
     :root {
       --font-heading: 'Barlow Condensed', sans-serif;
       --font-display: 'Syne', sans-serif;
@@ -60,15 +60,9 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     
-    .font-condensed {
-      font-family: var(--font-heading);
-    }
+    .font-condensed { font-family: var(--font-heading); }
+    .font-display { font-family: var(--font-display); }
     
-    .font-display {
-      font-family: var(--font-display);
-    }
-    
-    /* Architectural Editorial Headings */
     h1, h2, h3, h4, .font-arch {
       font-family: var(--font-heading);
       letter-spacing: -0.01em;
@@ -93,6 +87,49 @@
         radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.06) 0%, transparent 60%);
       background-attachment: fixed;
     }
+
+    /* Bulletproof Header Styling in Dark & Light Modes */
+    html.dark header {
+      background-color: rgba(10, 12, 16, 0.94) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark header nav a, html.dark header .nav-link {
+      color: #F1F5F9 !important;
+    }
+    html.dark header nav a:hover {
+      color: #C5A880 !important;
+    }
+    html.light header {
+      background-color: rgba(255, 255, 255, 0.94) !important;
+      border-color: #E5E5E0 !important;
+    }
+    html.light header nav a {
+      color: #1E293B !important;
+    }
+    html.light header nav a:hover {
+      color: #B39265 !important;
+    }
+
+    /* Top Announcement Bar */
+    html.dark .top-announcement-bar {
+      background-color: rgba(255, 255, 255, 0.03) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      color: #CBD5E1 !important;
+    }
+    html.dark .top-announcement-bar a {
+      color: #FFFFFF !important;
+    }
+    html.dark .top-announcement-bar a:hover {
+      color: #C5A880 !important;
+    }
+    html.light .top-announcement-bar {
+      background-color: #F1F1ED !important;
+      border-color: #E5E5E0 !important;
+      color: #475569 !important;
+    }
+    html.light .top-announcement-bar a {
+      color: #0F172A !important;
+    }
     
     /* Dark mode text contrast enforcement */
     .dark h1, .dark h2, .dark h3, .dark h4 {
@@ -101,12 +138,16 @@
     .dark .arch-title {
       color: #FFFFFF !important;
     }
+    .dark p, .dark .text-body {
+      color: #CBD5E1 !important;
+    }
     .dark .arch-card {
       background: #11141D !important;
-      border: 1px solid rgba(255, 255, 255, 0.09) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
     .dark .arch-card:hover {
       border-color: rgba(197, 168, 128, 0.5) !important;
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(197, 168, 128, 0.15) !important;
     }
     
     /* Light mode text & card enforcement */
@@ -116,6 +157,9 @@
     .light .arch-title {
       color: #111215 !important;
     }
+    .light p, .light .text-body {
+      color: #334155 !important;
+    }
     .light .arch-card {
       background: #FFFFFF !important;
       border: 1px solid #E5E5E0 !important;
@@ -123,10 +167,80 @@
     }
     .light .arch-card:hover {
       border-color: #C5A880 !important;
-      box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.15);
+      box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.18);
+    }
+
+    /* Metric boxes in Hero */
+    .dark .metric-box {
+      background: rgba(255, 255, 255, 0.04) !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .dark .metric-box .metric-num {
+      color: #FFFFFF !important;
+    }
+    .dark .metric-box .metric-lbl {
+      color: #94A3B8 !important;
+    }
+    .light .metric-box {
+      background: #FFFFFF !important;
+      border: 1px solid #E5E5E0 !important;
+    }
+    .light .metric-box .metric-num {
+      color: #0F172A !important;
+    }
+    .light .metric-box .metric-lbl {
+      color: #64748B !important;
+    }
+
+    /* Form Inputs & Selects */
+    .dark input, .dark select, .dark textarea {
+      background-color: #12151E !important;
+      color: #FFFFFF !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    .dark input::placeholder, .dark textarea::placeholder {
+      color: #94A3B8 !important;
+    }
+    .light input, .light select, .light textarea {
+      background-color: #FFFFFF !important;
+      color: #0F172A !important;
+      border-color: #D1D5DB !important;
+    }
+    .light input::placeholder, .light textarea::placeholder {
+      color: #9CA3AF !important;
+    }
+
+    /* Scrim and slide text visibility */
+    .slide-scrim {
+      background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 60%, rgba(10,12,16,0.98) 100%) !important;
+    }
+    .slide-title {
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,0.8);
+    }
+    .slide-badge {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
     
-    /* Custom Scrollbar */
+    /* Horizontal Stream (Воронка) Utilities */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .stream-card {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      perspective: 1000px;
+    }
+    .stream-card:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+    
+    /* Custom Scrollbar for rest of page */
     ::-webkit-scrollbar {
       width: 7px;
       height: 7px;
@@ -147,7 +261,7 @@
 <body class="antialiased selection:bg-[#C5A880]/30 selection:text-[#C5A880]">
 
   <!-- TOP ANNOUNCEMENT BAR (Architectural Notice) -->
-  <div class="border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02] py-2 px-4 sm:px-8 text-[11px] uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
+  <div class="top-announcement-bar border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02] py-2 px-4 sm:px-8 text-[11px] uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
       <div class="flex items-center gap-2.5">
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -274,7 +388,7 @@
         <div class="lg:col-span-8">
           <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight text-neutral-900 dark:text-white font-condensed leading-[0.92]">
             ЗАЩОТО КАЧЕСТВЕНОТО<br/>
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-900 dark:from-white dark:via-neutral-300 dark:to-[#C5A880]">
+            <span class="text-transparent bg-clip-text" style="background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #C5A880 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
               СТРОИТЕЛСТВО НИ СВЪРЗВА
             </span>
           </h1>
@@ -305,7 +419,7 @@
             alt="Сграда Панорама Бургас - Точев и Ко" 
             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20"></div>
+          <div class="absolute inset-0 slide-scrim"></div>
           
           <!-- Top Floating Tags -->
           <div class="absolute top-4 sm:top-6 left-4 sm:left-6 right-4 sm:right-6 flex justify-between items-center pointer-events-none">
@@ -350,38 +464,38 @@
           
           <!-- Key Metrics Grid -->
           <div class="grid grid-cols-2 gap-3">
-            <div class="p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
-              <div class="text-3xl sm:text-4xl font-extrabold font-condensed text-neutral-900 dark:text-white leading-none">
+            <div class="metric-box p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
+              <div class="metric-num text-3xl sm:text-4xl font-extrabold font-condensed leading-none">
                 34
               </div>
-              <div class="text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
+              <div class="metric-lbl text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
                 Реализирани &amp; активни обекта
               </div>
             </div>
 
-            <div class="p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
-              <div class="text-3xl sm:text-4xl font-extrabold font-condensed text-[#C5A880] leading-none">
+            <div class="metric-box p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
+              <div class="metric-num text-3xl sm:text-4xl font-extrabold font-condensed text-[#C5A880] leading-none">
                 26
               </div>
-              <div class="text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
+              <div class="metric-lbl text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
                 Години строителна история
               </div>
             </div>
 
-            <div class="p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
-              <div class="text-3xl sm:text-4xl font-extrabold font-condensed text-emerald-600 dark:text-emerald-400 leading-none">
+            <div class="metric-box p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
+              <div class="metric-num text-3xl sm:text-4xl font-extrabold font-condensed text-emerald-600 dark:text-emerald-400 leading-none">
                 100%
               </div>
-              <div class="text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
+              <div class="metric-lbl text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
                 Въведени с Акт 16 в срок
               </div>
             </div>
 
-            <div class="p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
-              <div class="text-3xl sm:text-4xl font-extrabold font-condensed text-sky-600 dark:text-sky-400 leading-none">
+            <div class="metric-box p-5 rounded-xl border border-neutral-200 dark:border-white/10 bg-white/70 dark:bg-white/[0.03] backdrop-blur-md">
+              <div class="metric-num text-3xl sm:text-4xl font-extrabold font-condensed text-sky-600 dark:text-sky-400 leading-none">
                 0 лв.
               </div>
-              <div class="text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
+              <div class="metric-lbl text-[11px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-2 font-medium">
                 Комисиона за купувача
               </div>
             </div>
@@ -419,16 +533,16 @@
   </section>
 
   <!-- SECTION: COMPLETE ARCHITECTURAL CATALOG (ALL 34 PROJECTS) -->
-  <section id="catalog" class="py-20 border-b border-neutral-200 dark:border-white/[0.08]">
+  <section id="catalog" class="py-20 border-b border-neutral-200 dark:border-white/[0.08] relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-8">
       
-      <!-- Catalog Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <!-- Catalog Section Header & Search -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
         <div>
           <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C5A880] font-bold mb-2">
             <span>Пълно портфолио на компанията</span>
             <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-            <span>Всички 34 сгради</span>
+            <span>Всички 34 сгради от 1998 г.</span>
           </div>
           <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold uppercase font-condensed tracking-tight text-neutral-900 dark:text-white">
             КАТАЛОГ СГРАДИ &amp; ОБЕКТИ
@@ -442,54 +556,120 @@
             id="projectSearchInput" 
             oninput="applyFilters()" 
             placeholder="Търси сграда, квартал или улица..." 
-            class="w-full px-4 py-2.5 pl-10 rounded-full border border-neutral-300 dark:border-white/15 bg-white dark:bg-white/5 text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]"
+            class="w-full px-4 py-2.5 pl-10 rounded-full border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#12151E] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]"
           />
           <svg class="w-4 h-4 text-neutral-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
         </div>
       </div>
 
-      <!-- Category Filter Tabs (Rietveld Style with Counts) -->
-      <div class="flex flex-wrap items-center gap-2 pb-4 mb-4 border-b border-neutral-200 dark:border-white/10 text-xs font-condensed uppercase tracking-wider font-bold">
-        <button onclick="setCategoryFilter('all')" id="btn-cat-all" class="cat-filter-btn px-4 py-2 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition">
-          Всички проекти (<span id="count-all">34</span>)
-        </button>
-        <button onclick="setCategoryFilter('active')" id="btn-cat-active" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
-          В продажба &amp; строеж (<span id="count-active">7</span>)
-        </button>
-        <button onclick="setCategoryFilter('pre_act16')" id="btn-cat-pre_act16" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
-          Пред Акт 16 (<span id="count-pre_act16">3</span>)
-        </button>
-        <button onclick="setCategoryFilter('completed')" id="btn-cat-completed" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
-          Завършени с Акт 16 (<span id="count-completed">24</span>)
-        </button>
+      <!-- Controls Row 1: Category Filter Tabs & View Mode Switcher -->
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 mb-4 border-b border-neutral-200 dark:border-white/10">
+        
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 text-xs font-condensed uppercase tracking-wider font-bold">
+          <button onclick="setCategoryFilter('all')" id="btn-cat-all" class="cat-filter-btn px-4 py-2 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition">
+            Всички проекти (<span id="count-all">34</span>)
+          </button>
+          <button onclick="setCategoryFilter('active')" id="btn-cat-active" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+            В продажба &amp; строеж (<span id="count-active">7</span>)
+          </button>
+          <button onclick="setCategoryFilter('pre_act16')" id="btn-cat-pre_act16" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+            Пред Акт 16 (<span id="count-pre_act16">3</span>)
+          </button>
+          <button onclick="setCategoryFilter('completed')" id="btn-cat-completed" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+            Завършени с Акт 16 (<span id="count-completed">24</span>)
+          </button>
+        </div>
+
+        <!-- View Switcher (Воронка 3D Поток vs Пълна Мрежа) -->
+        <div class="flex items-center gap-2 bg-neutral-100 dark:bg-white/5 p-1 rounded-full border border-neutral-200 dark:border-white/10 self-start lg:self-auto">
+          <button onclick="setViewMode('funnel')" id="btnViewFunnel" class="px-4 py-1.5 rounded-full text-xs font-condensed uppercase tracking-wider font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <span>Архитектурна Воронка</span>
+          </button>
+          <button onclick="setViewMode('grid')" id="btnViewGrid" class="px-4 py-1.5 rounded-full text-xs font-condensed uppercase tracking-wider font-bold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            <span>Пълна Мрежа (34)</span>
+          </button>
+        </div>
+
       </div>
 
-      <!-- Regional Sub-Filter Pills -->
-      <div class="flex flex-wrap items-center gap-2 mb-8 text-[11px] uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
-        <span class="font-bold mr-1">Локация:</span>
-        <button onclick="setLocationFilter('all')" id="btn-loc-all" class="loc-filter-btn px-3 py-1 rounded-md bg-neutral-200 dark:bg-white/15 text-neutral-900 dark:text-white font-semibold">
-          Всички райони (34)
-        </button>
-        <button onclick="setLocationFilter('Бургас')" id="btn-loc-burgas" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
-          Бургас (27)
-        </button>
-        <button onclick="setLocationFilter('София')" id="btn-loc-sofia" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
-          София (2)
-        </button>
-        <button onclick="setLocationFilter('Крайморие')" id="btn-loc-kraimorie" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
-          Крайморие (1)
-        </button>
-        <button onclick="setLocationFilter('Поморие')" id="btn-loc-pomorie" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
-          Поморие &amp; Сл. Бряг (2)
-        </button>
-        <button onclick="setLocationFilter('Черни Връх')" id="btn-loc-chernivrah" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
-          Черни Връх (1)
-        </button>
+      <!-- Controls Row 2: Regional Sub-Filters & Stream Navigation Controls -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        
+        <!-- Regional Sub-Filter Pills -->
+        <div class="flex flex-wrap items-center gap-1.5 text-[11px] uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
+          <span class="font-bold mr-1 text-neutral-700 dark:text-neutral-300">Локация:</span>
+          <button onclick="setLocationFilter('all')" id="btn-loc-all" class="loc-filter-btn px-3 py-1 rounded-md bg-neutral-200 dark:bg-white/15 text-neutral-900 dark:text-white font-semibold">
+            Всички (34)
+          </button>
+          <button onclick="setLocationFilter('Бургас')" id="btn-loc-burgas" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
+            Бургас (27)
+          </button>
+          <button onclick="setLocationFilter('София')" id="btn-loc-sofia" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
+            София (2)
+          </button>
+          <button onclick="setLocationFilter('Крайморие')" id="btn-loc-kraimorie" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
+            Крайморие (1)
+          </button>
+          <button onclick="setLocationFilter('Поморие')" id="btn-loc-pomorie" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
+            Поморие (2)
+          </button>
+          <button onclick="setLocationFilter('Черни Връх')" id="btn-loc-chernivrah" class="loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition">
+            Черни Връх (1)
+          </button>
+        </div>
+
+        <!-- Funnel Navigation Controls -->
+        <div id="funnelNavControls" class="flex items-center gap-3">
+          <button id="btnAutoStream" onclick="toggleAutoStream()" class="px-3.5 py-1.5 rounded-full border border-neutral-300 dark:border-white/15 text-[11px] font-condensed uppercase tracking-wider font-bold text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition flex items-center gap-1.5">
+            <span id="autoStreamIcon">▶</span>
+            <span id="autoStreamText">Авто-поток</span>
+          </button>
+          
+          <div class="flex items-center gap-1.5">
+            <button onclick="scrollFunnel(-1)" aria-label="Предишен обект" class="w-9 h-9 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white hover:border-[#C5A880] hover:text-[#C5A880] transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <span id="streamCounter" class="font-mono text-xs font-bold text-neutral-800 dark:text-neutral-200 px-2 min-w-[70px] text-center">
+              01 / 34
+            </span>
+            <button onclick="scrollFunnel(1)" aria-label="Следващ обект" class="w-9 h-9 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white hover:border-[#C5A880] hover:text-[#C5A880] transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+        </div>
+
       </div>
 
-      <!-- 34 Projects Grid Container -->
-      <div id="projectsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        <!-- Rendered dynamically by JavaScript to guarantee interactive filtering and fast performance -->
+      <!-- VIEW 1: АРХИТЕКТУРНА ВОРОНКА (3D HORIZONTAL STREAM / CAROUSEL) -->
+      <div id="funnelViewWrapper" class="relative group/funnel">
+        
+        <!-- Funnel Horizontal Scroll Track -->
+        <div 
+          id="funnelScrollTrack" 
+          class="flex gap-6 overflow-x-auto no-scrollbar scroll-smooth py-4 cursor-grab select-none active:cursor-grabbing"
+          style="scroll-snap-type: x mandatory;"
+        >
+          <!-- Dynamically populated by renderProjects() -->
+        </div>
+
+        <!-- Architectural Progress Bar & Drag Helper -->
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-neutral-500">
+          <div class="flex-grow max-w-md h-1.5 bg-neutral-200 dark:bg-white/10 rounded-full overflow-hidden">
+            <div id="funnelProgressBar" class="h-full bg-gradient-to-r from-[#C5A880] to-[#E2E8F0] rounded-full transition-all duration-150" style="width: 15%;"></div>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-condensed uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-semibold">
+            <span>⟵ Плъзнете с мишката, завъртете колелцето или ползвайте стрелките ⟶</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- VIEW 2: ПЪЛНА МРЕЖА (34 ОБЕКТА GRID) -->
+      <div id="projectsGrid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pt-4">
+        <!-- Rendered dynamically by JavaScript -->
       </div>
 
       <!-- Empty State -->
@@ -1317,12 +1497,15 @@
     // 1. DATASET OF ALL 34 PROJECTS
     const ALL_PROJECTS = [{"id": "proj-01", "num": "01", "name": "Сграда «ПАНОРАМА»", "full_title": "ОБЕКТ В СТРОЕЖ ж.к.Изгрев, сграда ПАНОРАМА, до магазин Пежо с Акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "ж.к. Изгрев, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-zhkizgrev-sgrada-panorama-do-magazin-pezho-s-akt-14"}, {"id": "proj-02", "num": "02", "name": "Сграда «ТРАПЕЗИЦА»", "full_title": "ОБЕКТ В СТРОЕЖ Трапезица до Елkабел", "category": "construction", "status": "В строеж", "location": "кв. Трапезица, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.webp?itok=ESCb0sx4", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-trapezica-do-elkabel"}, {"id": "proj-03", "num": "03", "name": "Комплекс «БИТАКА»", "full_title": "ОБЕКТ В СТРОЕЖ ж.к.Меден Рудник - Битака", "category": "construction", "status": "В строеж", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2026-02/Image13.webp?itok=3iujD3Q5", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-zhkmeden-rudnik-bitaka"}, {"id": "proj-04", "num": "04", "name": "Морска Резиденция «КРАЙМОРИЕ»", "full_title": "ОБЕКТ В СТРОЕЖ кв.Крайморие, ул.Лорна, гр.Бургас", "category": "construction", "status": "В строеж", "location": "кв. Крайморие (Море)", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-08/kraimorie-north.webp?itok=w6gxoGop", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-kvkraymorie-ullorna-grburgas"}, {"id": "proj-05", "num": "05", "name": "Сграда «ЦАР САМУИЛ 44»", "full_title": "ОБЕКТ В СТРОЕЖ Централна градска част, ул.Цар Самуил 44 с Акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "Център, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2025-01/07.01.25%20-%201.webp?itok=-mreWKlp", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-centralna-gradska-chast-ulcar-samuil-44-s-akt-14"}, {"id": "proj-06", "num": "06", "name": "Резиденция «МАЛИНОВА ДОЛИНА»", "full_title": "Гр.София, ж.к.Малинова Долина, ул.Петър Иванов- Вертер № 3 с Акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "гр. София", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-10/%D0%B2%D0%B8%D0%B7.2.webp?itok=J0esdwOI", "url": "https://tochevbg.com/obekti/grsofiya-zhkmalinova-dolina-ulpetr-ivanov-verter-no-3-s-akt-14"}, {"id": "proj-07", "num": "07", "name": "Вилно селище «ЧЕРНИ ВРЪХ»", "full_title": "Вилно селище, с.Черни връх, обл.Бургас с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "с. Черни Връх, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2026-06/9519519_144371007_big.webp?itok=4gVrbPHu", "url": "https://tochevbg.com/obekti/vilno-selishche-scherni-vrkh-oblburgas-s-akt-16"}, {"id": "proj-08", "num": "08", "name": "Сграда «Г.С. РАКОВСКИ 68»", "full_title": "ОБЕКТ В СТРОЕЖ ж.к.Възраждане,ул.Г.С.Раковски 68 с акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "ж.к. Възраждане, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-11/0-02-05-044a3abb3de8afc2d5ec536de7312e7ae4fbd582a5bb3b68953d06b93a8edb69_d1c5343523e079ad%20%281%29.webp?itok=zzVWxgK3", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-zhkvzrazhdaneulgsrakovski-68-s-akt-14"}, {"id": "proj-09", "num": "09", "name": "Жилищен комплекс «БЛ. 615 - 617»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.615, бл.616 и бл.617 до ресторант АВЕНЮ пред Акт 16", "category": "pre_act16", "status": "Пред Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-06/MR_zV_4.webp?itok=eCY3dW6g", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl615-bl616-i-bl617-do-restorant-avenyu-pred-akt-16"}, {"id": "proj-10", "num": "10", "name": "Сграда «БЛОК 613»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.613- до бл.99,98,95, пред Акт 16", "category": "pre_act16", "status": "Пред Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/bl-99-1.webp?itok=7aQ7ajp8", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl613-do-bl999895-pred-akt-16"}, {"id": "proj-11", "num": "11", "name": "Резиденция «СИМЕОНОВО»", "full_title": "Гр.София, кв.Симеоново, ул.Симеоновска 43, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "гр. София", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2023-01/Image-1%20%284%29.webp?itok=djftIzeR", "url": "https://tochevbg.com/obekti/grsofiya-kvsimeonovo-ulsimeonovska-43-s-akt-16"}, {"id": "proj-12", "num": "12", "name": "Сграда «КЛ. ОХРИДСКИ 67»", "full_title": "Гр.Бургас, ж.к.Възраждане, ул.Кл.Охридски 67 /до пазар ''Краснодар''/, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Възраждане, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-01/ACCamera_1.webp?itok=ffC1Neya", "url": "https://tochevbg.com/obekti/grburgas-zhkvzrazhdane-ulklokhridski-67-do-pazar-krasnodar-s-akt-16"}, {"id": "proj-13", "num": "13", "name": "Сграда «БЛОК 283 (ШЕЛ)»", "full_title": "Гр.Бургас, ж.к. Меден рудник, бл.283, срещу бензиностанция ШЕЛ, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/mdsh-1.webp?itok=cbyD5kvB", "url": "https://tochevbg.com/obekti/grburgas-zhk-meden-rudnik-bl283-sreshchu-benzinostanciya-shel-s-akt-16"}, {"id": "proj-14", "num": "14", "name": "Сграда «БЛОК 501»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.501 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/501-1.webp?itok=g5YB9YbS", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl501-s-akt-16"}, {"id": "proj-15", "num": "15", "name": "Сграда «БЛОК 511»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.511 срещу бл.601, пред Акт 16", "category": "pre_act16", "status": "Пред Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/somd601-1.webp?itok=p3m7q0xP", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl511-sreshchu-bl601-pred-akt-16"}, {"id": "proj-16", "num": "16", "name": "Сграда «ЦАР КАЛОЯН 67»", "full_title": "Гр.Бургас, ж.к.Възраждане, ул.Цар Калоян 67, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Възраждане, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-10/2_0.webp?itok=0Q-zzVMS", "url": "https://tochevbg.com/obekti/grburgas-zhkvzrazhdane-ulcar-kaloyan-67-s-akt-16"}, {"id": "proj-17", "num": "17", "name": "Сгради «БЛОК 273 & 279»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 273 и Блок 279 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/block-279-273-1.webp?itok=08S3Kad5", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-273-i-blok-279-s-akt-16"}, {"id": "proj-18", "num": "18", "name": "Сграда «ЦАР КАЛОЯН 43»", "full_title": "Гр.Бургас, ж.к.Възраждане, ул.Цар Калоян 43 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Възраждане, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/block-43-1.webp?itok=VEZy_D-X", "url": "https://tochevbg.com/obekti/grburgas-zhkvzrazhdane-ulcar-kaloyan-43-s-akt-16"}, {"id": "proj-19", "num": "19", "name": "Сграда «БЛОК 275»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 275 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/block-275-1.webp?itok=gSlOOeat", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-275-s-akt-16"}, {"id": "proj-20", "num": "20", "name": "Сграда «БЛОК 555»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 555 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/block-555-1.webp?itok=ilc9HAsE", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-555-s-akt-16"}, {"id": "proj-21", "num": "21", "name": "Сграда «БЛОК 282»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 282 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/block-282-1.webp?itok=DYlexx8L", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-282-s-akt-16"}, {"id": "proj-22", "num": "22", "name": "Комплекс «БЛ. 137, 138, 139»", "full_title": "Гр.Бургас, ж.к.Меден рудник бл.137,бл.138,бл.139 - с Акт16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/block-137-138-139-1.webp?itok=fdCt4JDr", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl137bl138bl139-s-akt16"}, {"id": "proj-23", "num": "23", "name": "Корпоративен център «Европейска програма»", "full_title": "Адаптирана работна среда Код на процедура - BG05SFPR002-1.004", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2026-02/zx1200y675_4515540.webp?itok=owlaRy_I", "url": "https://tochevbg.com/obekti/adaptirana-rabotna-sreda-kod-na-procedura-bg05sfpr002-1004"}, {"id": "proj-24", "num": "24", "name": "Сграда «СОЛНА 49» (Поморие)", "full_title": "Гр.Поморие, ул. Солна 49 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Поморие", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/pomorie-solna-49-1.webp?itok=CruXh7qF", "url": "https://tochevbg.com/obekti/grpomorie-ul-solna-49-s-akt-16"}, {"id": "proj-25", "num": "25", "name": "Сграда «БЛОК 532»", "full_title": "Блок 532", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/532-1.webp?itok=3sstCAZJ", "url": "https://tochevbg.com/obekti/blok-532"}, {"id": "proj-26", "num": "26", "name": "Сграда «БЛОК 607»", "full_title": "Блок 607", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/607-3.webp?itok=tbOeDfyp", "url": "https://tochevbg.com/obekti/blok-607"}, {"id": "proj-27", "num": "27", "name": "Сграда «БЛОК 606»", "full_title": "Блок 606", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/606-1.webp?itok=lbkoYSm8", "url": "https://tochevbg.com/obekti/blok-606"}, {"id": "proj-28", "num": "28", "name": "Сграда «БЛОК 543»", "full_title": "Блок 543", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/543-2.webp?itok=ioFOMW66", "url": "https://tochevbg.com/obekti/blok-543"}, {"id": "proj-29", "num": "29", "name": "Сграда «БЛОК 531»", "full_title": "Блок 531", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/531-1.webp?itok=9vT5N0td", "url": "https://tochevbg.com/obekti/blok-531"}, {"id": "proj-30", "num": "30", "name": "Сграда «БЛОК 541»", "full_title": "Блок 541", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/541-3.webp?itok=dPV1lTqH", "url": "https://tochevbg.com/obekti/blok-541"}, {"id": "proj-31", "num": "31", "name": "Сграда «БЛОК 544»", "full_title": "Блок 544", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/544-1.webp?itok=QxfEMI_z", "url": "https://tochevbg.com/obekti/blok-544"}, {"id": "proj-32", "num": "32", "name": "Сграда «БЛОК 542»", "full_title": "Блок 542", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/542-2.webp?itok=bxc8c5nr", "url": "https://tochevbg.com/obekti/blok-542"}, {"id": "proj-33", "num": "33", "name": "Сграда «БЛОК 528-529»", "full_title": "Блок 528-529", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/528-529-2.webp?itok=1GnQqiuo", "url": "https://tochevbg.com/obekti/blok-528-529"}, {"id": "proj-34", "num": "34", "name": "Комплекс «VIOLET GARDEN»", "full_title": "Комплекс Violet Garden к.к.Слънчев Бряг", "category": "completed", "status": "Готов с Акт 16", "location": "к.к. Слънчев Бряг", "image": "https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2022-05/violet_garden-1.webp?itok=VXh8DHkt", "url": "https://tochevbg.com/obekti/kompleks-violet-garden-kkslnchev-bryag"}];
 
+    // 2. RENDER PROJECTS INTO CATALOG (3D FUNNEL & FULL GRID)
     let currentCategory = 'all';
     let currentLocation = 'all';
+    let currentViewMode = 'funnel';
+    let autoStreamTimer = null;
 
-    // 2. RENDER PROJECTS INTO CATALOG GRID
     function renderProjects() {
-      const container = document.getElementById('projectsGrid');
+      const funnelTrack = document.getElementById('funnelScrollTrack');
+      const gridContainer = document.getElementById('projectsGrid');
       const searchVal = (document.getElementById('projectSearchInput').value || '').toLowerCase().trim();
 
       const filtered = ALL_PROJECTS.filter(p => {
@@ -1350,28 +1533,92 @@
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = '';
+        if (funnelTrack) funnelTrack.innerHTML = '';
+        if (gridContainer) gridContainer.innerHTML = '';
         document.getElementById('noResultsState').classList.remove('hidden');
         return;
       }
 
       document.getElementById('noResultsState').classList.add('hidden');
 
-      let html = '';
-      filtered.forEach((p) => {
-        // Badge color logic
-        let badgeClass = 'bg-neutral-800 text-white';
-        if (p.category === 'act14') badgeClass = 'bg-[#C5A880] text-black font-extrabold';
-        else if (p.category === 'construction') badgeClass = 'bg-sky-500 text-black font-bold';
-        else if (p.category === 'pre_act16') badgeClass = 'bg-amber-400 text-black font-bold';
-        else if (p.category === 'completed') badgeClass = 'bg-emerald-600/90 text-white font-medium';
+      // 1. Build 3D Funnel Cards (Horizontal Slides)
+      let funnelHtml = '';
+      let gridHtml = '';
 
-        // Check if this is Panorama
+      filtered.forEach((p, idx) => {
+        // Badge color logic
+        let badgeBg = 'bg-black/70 border border-white/20 text-white';
+        if (p.category === 'act14') badgeBg = 'bg-[#C5A880] text-black font-extrabold';
+        else if (p.category === 'construction') badgeBg = 'bg-sky-500 text-black font-bold';
+        else if (p.category === 'pre_act16') badgeBg = 'bg-amber-400 text-black font-bold';
+        else if (p.category === 'completed') badgeBg = 'bg-emerald-600/90 text-white font-medium';
+
         const isPanorama = p.id === 'proj-01';
 
-        html += `
-          <div class="arch-card group rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300">
-            <!-- Image Frame -->
+        // 3D Funnel Stream Card
+        funnelHtml += `
+          <div class="stream-card w-[310px] sm:w-[360px] md:w-[410px] flex-shrink-0 rounded-2xl overflow-hidden arch-card group relative aspect-[10/14] flex flex-col justify-end p-6 select-none cursor-pointer snap-start" onclick="openProjectModal('${p.id}')">
+            <!-- Full Bleed Image with zoom -->
+            <img 
+              src="${p.image}" 
+              alt="${p.name}" 
+              loading="lazy" 
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              onerror="this.src='https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF'"
+            />
+            
+            <!-- Multi-Stop Deep Gradient Scrim for 100% High Contrast Text -->
+            <div class="absolute inset-0 slide-scrim transition-opacity duration-300 group-hover:opacity-90"></div>
+            
+            <!-- Floating Top Badges -->
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
+              <span class="slide-badge px-3 py-1 rounded-full text-[10px] sm:text-[11px] uppercase tracking-wider font-condensed font-bold ${badgeBg}">
+                ${p.status}
+              </span>
+              <span class="slide-badge text-xs font-mono text-white bg-black/60 border border-white/20 px-2.5 py-0.5 rounded-full">
+                ${p.num} / 34
+              </span>
+            </div>
+
+            <!-- Bottom Architectural Content -->
+            <div class="relative z-10 text-white">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C5A880] font-condensed">
+                  ${p.location}
+                </span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-white mb-2 leading-tight slide-title group-hover:text-[#C5A880] transition-colors">
+                ${p.name}
+              </h3>
+
+              <p class="text-xs text-neutral-200 line-clamp-2 leading-relaxed mb-4 font-light">
+                ${p.full_title}
+              </p>
+
+              <div class="pt-3 border-t border-white/15 flex items-center justify-between gap-2" onclick="event.stopPropagation()">
+                ` + (isPanorama ? `
+                  <a href="panorama.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#C5A880] hover:bg-[#B39265] text-neutral-950 font-condensed uppercase tracking-wider text-xs font-bold transition shadow-md">
+                    <span>Пълна презентация →</span>
+                  </a>
+                ` : `
+                  <button onclick="openProjectModal('${p.id}')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/25 font-condensed uppercase tracking-wider text-xs font-semibold transition">
+                    <span>Паспорт на обекта</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                `) + `
+                <button onclick="openProjectModal('${p.id}')" class="text-xs uppercase tracking-wider text-neutral-300 hover:text-white font-mono px-2 py-1">
+                  Инфо
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // 2. Full Grid Card
+        gridHtml += `
+          <div class="arch-card group rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-md">
             <div class="relative w-full aspect-[4/3] bg-neutral-900 overflow-hidden cursor-pointer" onclick="openProjectModal('${p.id}')">
               <img 
                 src="${p.image}" 
@@ -1380,19 +1627,17 @@
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 onerror="this.src='https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF'"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              <div class="absolute inset-0 slide-scrim opacity-80 group-hover:opacity-60 transition-opacity"></div>
               
-              <!-- Floating Top Badges -->
               <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
-                <span class="px-2.5 py-1 rounded text-[10px] uppercase tracking-wider font-condensed ${badgeClass} shadow-md">
+                <span class="slide-badge px-2.5 py-1 rounded text-[10px] uppercase tracking-wider font-condensed ${badgeBg} shadow-md">
                   ${p.status}
                 </span>
-                <span class="text-[11px] font-mono text-white/90 bg-black/50 backdrop-blur-md px-2 py-0.5 rounded">
+                <span class="slide-badge text-[11px] font-mono text-white/90 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded">
                   ${p.num} / 34
                 </span>
               </div>
 
-              <!-- Location Tag inside photo -->
               <div class="absolute bottom-3 left-3.5 right-3.5 text-white">
                 <div class="text-[11px] uppercase tracking-wider text-[#C5A880] font-semibold">
                   ${p.location}
@@ -1400,13 +1645,12 @@
               </div>
             </div>
 
-            <!-- Card Meta & Content -->
             <div class="p-5 flex flex-col justify-between flex-grow">
               <div>
                 <h3 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white leading-tight mb-2 group-hover:text-[#C5A880] transition-colors">
                   ${p.name}
                 </h3>
-                <p class="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2 leading-relaxed">
+                <p class="text-xs text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed">
                   ${p.full_title}
                 </p>
               </div>
@@ -1427,25 +1671,85 @@
                 </button>
               </div>
             </div>
-
           </div>
         `;
       });
 
-      container.innerHTML = html;
+      if (funnelTrack) funnelTrack.innerHTML = funnelHtml;
+      if (gridContainer) gridContainer.innerHTML = gridHtml;
+
+      const counter = document.getElementById('streamCounter');
+      if (counter) counter.innerText = '01 / ' + (filtered.length < 10 ? '0' : '') + filtered.length;
+    }
+
+    // View Mode Switcher
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const funnelWrap = document.getElementById('funnelViewWrapper');
+      const funnelNav = document.getElementById('funnelNavControls');
+      const gridWrap = document.getElementById('projectsGrid');
+      const btnFunnel = document.getElementById('btnViewFunnel');
+      const btnGrid = document.getElementById('btnViewGrid');
+
+      if (mode === 'funnel') {
+        if (funnelWrap) funnelWrap.classList.remove('hidden');
+        if (funnelNav) funnelNav.classList.remove('hidden');
+        if (gridWrap) gridWrap.classList.add('hidden');
+
+        btnFunnel.className = 'px-4 py-1.5 rounded-full text-xs font-condensed uppercase tracking-wider font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition flex items-center gap-1.5 shadow-sm';
+        btnGrid.className = 'px-4 py-1.5 rounded-full text-xs font-condensed uppercase tracking-wider font-bold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition flex items-center gap-1.5';
+      } else {
+        if (funnelWrap) funnelWrap.classList.add('hidden');
+        if (funnelNav) funnelNav.classList.add('hidden');
+        if (gridWrap) gridWrap.classList.remove('hidden');
+
+        btnGrid.className = 'px-4 py-1.5 rounded-full text-xs font-condensed uppercase tracking-wider font-bold bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition flex items-center gap-1.5 shadow-sm';
+        btnFunnel.className = 'px-4 py-1.5 rounded-full text-xs font-condensed uppercase tracking-wider font-bold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition flex items-center gap-1.5';
+      }
+    }
+
+    // Stream Scrolling Controls
+    function scrollFunnel(direction) {
+      const track = document.getElementById('funnelScrollTrack');
+      if (!track) return;
+      const cardWidth = 380;
+      track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
+
+    // Auto-Stream Carousel Toggle
+    function toggleAutoStream() {
+      const track = document.getElementById('funnelScrollTrack');
+      const icon = document.getElementById('autoStreamIcon');
+      const text = document.getElementById('autoStreamText');
+
+      if (autoStreamTimer) {
+        clearInterval(autoStreamTimer);
+        autoStreamTimer = null;
+        if (icon) icon.innerText = '▶';
+        if (text) text.innerText = 'Авто-поток';
+      } else {
+        if (icon) icon.innerText = '⏸';
+        if (text) text.innerText = 'Пауза';
+        autoStreamTimer = setInterval(() => {
+          if (!track) return;
+          if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 5) {
+            track.scrollLeft = 0;
+          } else {
+            track.scrollLeft += 2;
+          }
+        }, 30);
+      }
     }
 
     // Filter controls
     function setCategoryFilter(cat) {
       currentCategory = cat;
       document.querySelectorAll('.cat-filter-btn').forEach(btn => {
-        btn.classList.remove('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-900');
-        btn.classList.add('border', 'border-neutral-300', 'dark:border-white/15', 'text-neutral-700', 'dark:text-neutral-300');
+        btn.className = 'cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition';
       });
       const activeBtn = document.getElementById('btn-cat-' + cat);
       if (activeBtn) {
-        activeBtn.classList.remove('border', 'border-neutral-300', 'dark:border-white/15', 'text-neutral-700', 'dark:text-neutral-300');
-        activeBtn.classList.add('bg-neutral-900', 'text-white', 'dark:bg-white', 'dark:text-neutral-900');
+        activeBtn.className = 'cat-filter-btn px-4 py-2 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition';
       }
       renderProjects();
     }
@@ -1453,7 +1757,7 @@
     function setLocationFilter(loc) {
       currentLocation = loc;
       document.querySelectorAll('.loc-filter-btn').forEach(btn => {
-        btn.classList.remove('bg-neutral-200', 'dark:bg-white/15', 'text-neutral-900', 'dark:text-white', 'font-semibold');
+        btn.className = 'loc-filter-btn px-3 py-1 rounded-md hover:bg-neutral-100 dark:hover:bg-white/5 transition text-neutral-600 dark:text-neutral-400';
       });
       const map = {
         'all': 'btn-loc-all',
@@ -1465,7 +1769,7 @@
       };
       const activeBtn = document.getElementById(map[loc]);
       if (activeBtn) {
-        activeBtn.classList.add('bg-neutral-200', 'dark:bg-white/15', 'text-neutral-900', 'dark:text-white', 'font-semibold');
+        activeBtn.className = 'loc-filter-btn px-3 py-1 rounded-md bg-neutral-200 dark:bg-white/15 text-neutral-900 dark:text-white font-semibold';
       }
       renderProjects();
     }
@@ -1477,9 +1781,48 @@
     function resetFilters() {
       currentCategory = 'all';
       currentLocation = 'all';
-      document.getElementById('projectSearchInput').value = '';
+      const searchInput = document.getElementById('projectSearchInput');
+      if (searchInput) searchInput.value = '';
       setCategoryFilter('all');
       setLocationFilter('all');
+    }
+
+    // Init Funnel Drag & Scroll Listeners
+    function initFunnelListeners() {
+      const track = document.getElementById('funnelScrollTrack');
+      if (!track) return;
+
+      let isDown = false;
+      let startX, scrollLeft;
+
+      track.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - track.offsetLeft;
+        scrollLeft = track.scrollLeft;
+      });
+
+      track.addEventListener('mouseleave', () => { isDown = false; });
+      track.addEventListener('mouseup', () => { isDown = false; });
+
+      track.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        const walk = (x - startX) * 1.6;
+        track.scrollLeft = scrollLeft - walk;
+      });
+
+      track.addEventListener('scroll', () => {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const percent = maxScroll > 0 ? (track.scrollLeft / maxScroll) * 100 : 0;
+        const bar = document.getElementById('funnelProgressBar');
+        if (bar) bar.style.width = Math.max(5, Math.min(100, percent)) + '%';
+
+        const cardWidth = 380;
+        const activeIdx = Math.min(ALL_PROJECTS.length, Math.max(1, Math.round(track.scrollLeft / cardWidth) + 1));
+        const counter = document.getElementById('streamCounter');
+        if (counter) counter.innerText = (activeIdx < 10 ? '0' : '') + activeIdx + ' / ' + ALL_PROJECTS.length;
+      });
     }
 
     // 3. PROJECT PASSPORT MODAL CONTROLS
@@ -1623,6 +1966,7 @@
 
     // INITIALIZATION
     renderProjects();
+    initFunnelListeners();
     recalcMortgage();
   </script>
 </body>

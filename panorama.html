@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Сграда «Панорама» (ж.к. Изгрев) | Tochev &amp; Co. Архитектурен паспорт</title>
   
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind = {
+    tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -15,9 +16,9 @@
               bronze: '#C5A880',
               'bronze-hover': '#B39265',
               dark: '#0A0C10',
-              surface: '#13151D',
+              surface: '#12151E',
               surfaceLight: '#FFFFFF',
-              borderDark: '#1E222D',
+              borderDark: '#232734',
               borderLight: '#E5E5E0',
               chalk: '#F8F8F6'
             }
@@ -26,7 +27,6 @@
       }
     };
   </script>
-  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   
   <script>
     (function() {
@@ -100,6 +100,34 @@
       border-color: #C5A880 !important;
       box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.15);
     }
+  
+    /* Bulletproof Header Styling in Dark & Light Modes */
+    html.dark header {
+      background-color: rgba(10, 12, 16, 0.94) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark header nav a, html.dark header .nav-link {
+      color: #F1F5F9 !important;
+    }
+    html.dark header nav a:hover {
+      color: #C5A880 !important;
+    }
+    html.light header {
+      background-color: rgba(255, 255, 255, 0.94) !important;
+      border-color: #E5E5E0 !important;
+    }
+    html.light header nav a {
+      color: #1E293B !important;
+    }
+    html.dark p, html.dark .text-body {
+      color: #CBD5E1 !important;
+    }
+    html.dark input, html.dark select, html.dark textarea {
+      background-color: #12151E !important;
+      color: #FFFFFF !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    
   </style>
 </head>
 
