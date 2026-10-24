@@ -3,13 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Сграда «Панорама» (ж.к. Изгрев) | Tochev & Co. Детайлен преглед</title>
+  <title>Сграда «Панорама» (ж.к. Изгрев) | Tochev &amp; Co. Архитектурен паспорт</title>
+  
   <script>
     tailwind = {
-      darkMode: 'class'
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            arch: {
+              bronze: '#C5A880',
+              'bronze-hover': '#B39265',
+              dark: '#0A0C10',
+              surface: '#13151D',
+              surfaceLight: '#FFFFFF',
+              borderDark: '#1E222D',
+              borderLight: '#E5E5E0',
+              chalk: '#F8F8F6'
+            }
+          }
+        }
+      }
     };
   </script>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  
   <script>
     (function() {
       const saved = localStorage.getItem('tochev_theme');
@@ -22,491 +40,363 @@
       }
     })();
   </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-
     :root {
-      --font-heading: 'Manrope', sans-serif;
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-display: 'Syne', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
-
+    
     body {
       font-family: var(--font-body);
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-
-    h1, h2, h3, h4, .font-heading {
+    
+    .font-condensed { font-family: var(--font-heading); }
+    .font-display { font-family: var(--font-display); }
+    
+    h1, h2, h3, h4, .font-arch {
       font-family: var(--font-heading);
-    }
-
-    /* DARK PEARLESCENT MESH & HIGH CONTRAST */
-    html.dark, .dark body {
-      background-color: #080C14 !important;
-      color: #F1F5F9 !important;
-      background-image: 
-        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
-        radial-gradient(at 85% 10%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(20, 184, 166, 0.08) 0px, transparent 65%),
-        radial-gradient(at 80% 85%, rgba(14, 165, 233, 0.10) 0px, transparent 50%);
-      background-attachment: fixed;
-    }
-
-    .dark h1, .dark h2, .dark h3, .dark h4, .dark .font-heading {
-      color: #FFFFFF !important;
-    }
-    .dark .text-slate-900, .dark .text-slate-800 {
-      color: #FFFFFF !important;
-    }
-    .dark .text-slate-700 {
-      color: #F1F5F9 !important;
-    }
-    .dark .text-slate-600, .dark .text-slate-500 {
-      color: #CBD5E1 !important;
-    }
-    .dark .text-slate-400 {
-      color: #94A3B8 !important;
-    }
-
-    .dark .bento-card {
-      background: linear-gradient(135deg, rgba(20, 27, 45, 0.82) 0%, rgba(13, 19, 33, 0.94) 100%) !important;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.14) !important;
-      box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15) !important;
-    }
-
-    .dark .glass-nav {
-      background: rgba(8, 12, 20, 0.92) !important;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-    }
-
-    /* Bulletproof Theme Toggle Button */
-    #themeToggleBtn {
-      cursor: pointer;
-    }
-    .dark #themeToggleBtn {
-      background-color: rgba(30, 41, 59, 0.9) !important;
-      border-color: rgba(71, 85, 105, 0.7) !important;
-      color: #FCD34D !important;
-    }
-    .dark #themeToggleBtn:hover {
-      background-color: rgba(51, 65, 85, 0.95) !important;
-      border-color: #38BDF8 !important;
-    }
-    .light #themeToggleBtn {
-      background-color: #F1F5F9 !important;
-      border-color: #CBD5E1 !important;
-      color: #334155 !important;
-    }
-    .light #themeToggleBtn:hover {
-      background-color: #E2E8F0 !important;
-      border-color: #94A3B8 !important;
-    }
-    .dark #sunIcon { display: block !important; }
-    .dark #moonIcon { display: none !important; }
-    .light #sunIcon { display: none !important; }
-    .light #moonIcon { display: block !important; }
-
-    /* LIGHT CERAMIC PEARL */
-    html.light, .light body {
-      background-color: #F8FAFC !important;
-      color: #0F172A !important;
-      background-image: 
-        radial-gradient(at 10% 10%, rgba(224, 242, 254, 0.85) 0px, transparent 50%),
-        radial-gradient(at 90% 15%, rgba(238, 242, 255, 0.75) 0px, transparent 50%),
-        radial-gradient(at 50% 80%, rgba(204, 251, 241, 0.65) 0px, transparent 60%);
-      background-attachment: fixed;
-    }
-
-    .light h1, .light h2, .light h3, .light h4, .light .font-heading {
-      color: #0F172A !important;
-    }
-    .light .text-slate-900 {
-      color: #0F172A !important;
-    }
-    .light .text-slate-600 {
-      color: #334155 !important;
-    }
-    .light .text-slate-500 {
-      color: #475569 !important;
-    }
-
-    .light .bento-card {
-      background: rgba(255, 255, 255, 0.94) !important;
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(226, 232, 240, 0.9) !important;
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05) !important;
-    }
-
-    .light .glass-nav {
-      background: rgba(255, 255, 255, 0.94) !important;
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
-    }
-
-    /* MODERN NAVIGATION LINKS */
-    .nav-link-modern {
-      font-size: 15px;
-      font-weight: 600;
       letter-spacing: -0.01em;
-      padding: 8px 16px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-      text-decoration: none;
     }
-    .light .nav-link-modern {
-      color: #1E293B;
+    
+    html.dark, .dark body {
+      background-color: #0A0C10 !important;
+      color: #E2E8F0 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
     }
-    .light .nav-link-modern:hover {
-      color: #0284C7;
-      background-color: rgba(2, 132, 199, 0.08);
-      transform: translateY(-1px);
+    
+    html.light, .light body {
+      background-color: #F8F8F6 !important;
+      color: #1A1C20 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.06) 0%, transparent 60%);
+      background-attachment: fixed;
     }
-    .light .nav-link-modern.active {
-      color: #0284C7;
-      background: rgba(2, 132, 199, 0.12);
-      border: 1px solid rgba(2, 132, 199, 0.25);
+    
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #FFFFFF !important; }
+    .light h1, .light h2, .light h3, .light h4 { color: #111215 !important; }
+    
+    .dark .arch-card {
+      background: #11141D !important;
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
     }
-    .dark .nav-link-modern {
-      color: #E2E8F0;
+    .dark .arch-card:hover { border-color: rgba(197, 168, 128, 0.5) !important; }
+    
+    .light .arch-card {
+      background: #FFFFFF !important;
+      border: 1px solid #E5E5E0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
     }
-    .dark .nav-link-modern:hover {
-      color: #38BDF8;
-      background-color: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
-    }
-    .dark .nav-link-modern.active {
-      color: #38BDF8;
-      background: rgba(56, 189, 248, 0.16);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
-    }
-
-    /* Status Badges */
-    .badge-act16 {
-      background: rgba(16, 185, 129, 0.18);
-      color: #10B981;
-      border: 1px solid rgba(16, 185, 129, 0.35);
-    }
-    .badge-act14 {
-      background: rgba(245, 158, 11, 0.18);
-      color: #F59E0B;
-      border: 1px solid rgba(245, 158, 11, 0.35);
-    }
-
-    .unit-free {
-      background: rgba(16, 185, 129, 0.18);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #059669;
-    }
-    .dark .unit-free {
-      color: #6EE7B7;
-    }
-    .unit-free:hover {
-      background: #10B981 !important;
-      color: #FFFFFF !important;
-      transform: scale(1.04);
-    }
-    .unit-sold {
-      background: rgba(148, 163, 184, 0.15);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      color: #94A3B8;
-      cursor: not-allowed;
-      text-decoration: line-through;
+    .light .arch-card:hover {
+      border-color: #C5A880 !important;
+      box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.15);
     }
   </style>
 </head>
-<body class="transition-colors duration-300">
 
-  <!-- HEADER -->
-  <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Sub-Bar -->
-      <div class="hidden md:flex justify-between items-center py-2 border-b border-slate-200 dark:border-slate-800/80 text-[13px] text-slate-600 dark:text-slate-300">
-        <div class="flex items-center space-x-6">
-          <span class="flex items-center text-emerald-600 dark:text-emerald-400 font-bold">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
-            Официален инвеститор: Точев &amp; Co. ООД
-          </span>
-          <span class="text-slate-600 dark:text-slate-300">Разрешение за строеж № 142 / 2024</span>
-        </div>
-        <div class="flex items-center space-x-4">
-          <a href="mailto:office@tochevbg.com" class="hover:text-sky-500 transition font-medium">office@tochevbg.com</a>
-          <span class="text-slate-300 dark:text-slate-700">|</span>
-          <div class="flex items-center space-x-2 font-bold text-xs">
-            <span class="text-sky-500">BG</span>
-            <span class="text-slate-400">/</span>
-            <span class="text-slate-500 dark:text-slate-400 hover:text-sky-400 cursor-pointer transition">EN</span>
-          </div>
-        </div>
+<body class="antialiased selection:bg-[#C5A880]/30 selection:text-[#C5A880]">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02] py-2 px-4 sm:px-8 text-[11px] uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-medium text-neutral-900 dark:text-white">Обект в строителство:</span>
+        <span>Сграда «Панорама» Бургас с Акт 14 | 12 свободни апартамента</span>
       </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+359899144080" class="hover:text-neutral-900 dark:hover:text-white transition font-semibold">
+          Тел: +359 899 144 080
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">|</span>
+        <a href="mailto:office@tochevbg.com" class="hover:text-neutral-900 dark:hover:text-white transition">
+          office@tochevbg.com
+        </a>
+      </div>
+    </div>
+  </div>
 
-      <!-- Main Navigation -->
-      <div class="flex justify-between items-center py-3.5">
-        <a href="index.html" class="flex items-center space-x-3.5 group">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 via-teal-400 to-indigo-500 flex items-center justify-center font-extrabold text-white text-2xl shadow-lg shadow-sky-500/25 group-hover:scale-105 transition">
-            T
-          </div>
-          <div>
-            <div class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white leading-tight">
-              TOCHEV <span class="text-sky-500">&amp; CO.</span>
-            </div>
-            <div class="text-[11px] tracking-wider text-slate-500 dark:text-slate-400 uppercase font-semibold">Строителна компания</div>
-          </div>
+  <!-- MAIN HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/85 dark:bg-[#0A0C10]/85 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-sm bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-xl tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-lg md:text-xl tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+            TOCHEV &amp; CO.
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mt-1 font-semibold">
+            Архитектурно строителство · От 1998 г.
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+        <a href="index.html" class="hover:text-[#C5A880] transition-colors">← Начало</a>
+        <a href="index.html#catalog" class="hover:text-[#C5A880] transition-colors flex items-center gap-1.5">
+          <span>Всички обекти</span>
+          <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300 font-mono">34</span>
+        </a>
+        <a href="#object-passport" class="text-[#C5A880] font-bold">★ Паспорт Панорама</a>
+        <a href="#object-chessboard" class="hover:text-[#C5A880] transition-colors">Шахматка</a>
+        <a href="#construction-timeline" class="hover:text-[#C5A880] transition-colors">Хронология</a>
+        <a href="contacts.html" class="hover:text-[#C5A880] transition-colors">Контакти</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3">
+        <a href="tel:+359899144080" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-900 dark:border-white/40 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 text-xs font-bold uppercase tracking-wider transition-all duration-300">
+          <span>Запитване за Панорама</span>
         </a>
 
-        <!-- Desktop Menu -->
-        <nav class="hidden lg:flex items-center space-x-1.5 font-medium">
-          <a href="index.html" class="nav-link-modern">← Начало</a>
-          <a href="index.html#objects" class="nav-link-modern">Всички обекти</a>
-          <a href="#object-passport" class="nav-link-modern active">Паспорт</a>
-          <a href="#object-chessboard" class="nav-link-modern">Шахматка на сградата</a>
-          <a href="#construction-timeline" class="nav-link-modern">Хронология на строежа</a>
-          <a href="contacts.html" class="nav-link-modern">Контакти</a>
-        </nav>
-
-        <!-- Right Controls -->
-        <div class="flex items-center space-x-3">
-          <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition shadow-sm" title="Превключи тема">
-            <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-          </button>
-
-          <a href="tel:+359899144080" class="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-sm font-bold shadow-md shadow-sky-500/25 transition transform hover:-translate-y-0.5">
-            <span>Запитване за Панорама</span>
-          </a>
-        </div>
+        <button onclick="toggleTheme()" aria-label="Превключи светла/тъмна тема" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:text-[#C5A880] dark:hover:text-[#C5A880] transition-colors">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
       </div>
+
     </div>
   </header>
 
-  <!-- BREADCRUMBS -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-2">
-    <a href="index.html" class="hover:text-sky-500">Начало</a>
-    <span>/</span>
-    <a href="index.html#objects" class="hover:text-sky-500">Обекти в Бургас</a>
-    <span>/</span>
-    <span class="text-slate-900 dark:text-white font-semibold">Сграда «Панорама» (ж.к. Изгрев)</span>
+  <!-- BREADCRUMB -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+    <a href="index.html" class="hover:text-[#C5A880]">Начало</a>
+    <span class="mx-2">/</span>
+    <a href="index.html#catalog" class="hover:text-[#C5A880]">Обекти Бургас</a>
+    <span class="mx-2">/</span>
+    <span class="text-neutral-900 dark:text-white">Сграда «Панорама» (ж.к. Изгрев)</span>
   </div>
 
-  <!-- OBJECT HERO & GALLERY -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-      <!-- Left Column: Big Visual Presentation (7 cols) -->
+  <!-- MAIN OBJECT PRESENTATION -->
+  <main id="object-passport" class="max-w-7xl mx-auto px-4 sm:px-8 py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left: Big Gallery & Hero (7 cols) -->
       <div class="lg:col-span-7 space-y-4">
-        <!-- Main Render Photo -->
-        <div class="bento-card overflow-hidden relative group rounded-2xl h-[420px]">
-          <img id="mainGalleryImg" src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.jpg?itok=i2s4rwEO" alt="Сграда Панорама" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
-          
-          <div class="absolute top-4 left-4 flex space-x-2">
-            <span class="px-3 py-1 rounded-xl badge-act14 text-xs font-bold shadow-lg backdrop-blur-md">Акт 14 (Груб строеж готов)</span>
-            <span class="px-3 py-1 rounded-xl bg-slate-900/80 text-white text-xs font-bold border border-slate-700/80 backdrop-blur-md">Срок: Q4 2026</span>
+        <div class="arch-card rounded-2xl overflow-hidden relative group aspect-[16/10] bg-neutral-950">
+          <img id="mainGalleryImg" src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF" alt="Сграда Панорама" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20"></div>
+
+          <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1 rounded-full bg-[#C5A880] text-black text-[11px] font-bold uppercase tracking-wider font-condensed">
+                АКТ 14 ИЗДАДЕН
+              </span>
+              <span class="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-wider font-condensed border border-white/20">
+                СРОК: Q4 2026
+              </span>
+            </div>
+            <span class="text-xs font-mono text-white/80 bg-black/50 px-2.5 py-1 rounded">01 / 34</span>
           </div>
 
-          <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-            <div>
-              <div class="text-xs text-sky-400 font-semibold uppercase tracking-wider">ж.к. Изгрев, бул. Транспортна (до магазин Пежо)</div>
-              <h1 class="text-2xl sm:text-4xl font-extrabold text-white">Сграда «ПАНОРАМА»</h1>
+          <div class="absolute bottom-4 left-6 right-6 text-white">
+            <div class="text-xs uppercase tracking-widest text-[#C5A880] font-semibold mb-1">
+              ж.к. Изгрев, бул. Транспортна (до Peugeot)
             </div>
-            <button class="px-3 py-2 rounded-xl bg-slate-900/90 hover:bg-slate-800 text-white text-xs font-bold border border-slate-700 flex items-center space-x-1.5 backdrop-blur-md transition">
-              <svg class="w-4 h-4 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-              <span>Виртуална галерия</span>
-            </button>
+            <h1 class="text-2xl sm:text-4xl font-bold font-condensed uppercase tracking-tight text-white">
+              СГРАДА «ПАНОРАМА»
+            </h1>
           </div>
         </div>
 
-        <!-- Thumbnail Gallery Strip -->
+        <!-- Thumbnails Strip -->
         <div class="grid grid-cols-4 gap-3">
-          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.jpg?itok=i2s4rwEO')" class="h-20 rounded-xl overflow-hidden cursor-pointer border-2 border-sky-500">
-            <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.jpg?itok=i2s4rwEO" class="w-full h-full object-cover" />
+          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF')" class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer border-2 border-[#C5A880]">
+            <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF" class="w-full h-full object-cover" />
           </div>
-          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.jpg?itok=b0eGl3xO')" class="h-20 rounded-xl overflow-hidden cursor-pointer border border-slate-300 dark:border-slate-800 hover:border-sky-500 transition">
-            <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.jpg?itok=b0eGl3xO" class="w-full h-full object-cover" />
+          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.webp?itok=ESCb0sx4')" class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer border border-neutral-300 dark:border-white/10 hover:border-[#C5A880] transition">
+            <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.webp?itok=ESCb0sx4" class="w-full h-full object-cover" />
           </div>
-          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2026-02/zx1200y675_4515540.jpg?itok=ftXQkIRS')" class="h-20 rounded-xl overflow-hidden cursor-pointer border border-slate-300 dark:border-slate-800 hover:border-sky-500 transition">
-            <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2026-02/zx1200y675_4515540.jpg?itok=ftXQkIRS" class="w-full h-full object-cover" />
+          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2026-02/Image13.webp?itok=3iujD3Q5')" class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer border border-neutral-300 dark:border-white/10 hover:border-[#C5A880] transition">
+            <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2026-02/Image13.webp?itok=3iujD3Q5" class="w-full h-full object-cover" />
           </div>
-          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-08/kraimorie-north.jpg?itok=f0Vw56wc')" class="h-20 rounded-xl overflow-hidden cursor-pointer border border-slate-300 dark:border-slate-800 hover:border-sky-500 transition">
-            <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-08/kraimorie-north.jpg?itok=f0Vw56wc" class="w-full h-full object-cover" />
+          <div onclick="switchPhoto('https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-08/kraimorie-north.webp?itok=w6gxoGop')" class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer border border-neutral-300 dark:border-white/10 hover:border-[#C5A880] transition">
+            <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-08/kraimorie-north.webp?itok=w6gxoGop" class="w-full h-full object-cover" />
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Key Metrics & Quick Purchase Card (5 cols) -->
-      <div class="lg:col-span-5 bento-card p-6 border-sky-500/30">
-        <div class="flex justify-between items-center mb-4">
-          <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Паспорт на обекта</span>
-          <span class="text-xs px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold">12 свободни от 48</span>
+      <!-- Right: Technical Passport & Contact (5 cols) -->
+      <div class="lg:col-span-5 arch-card p-6 sm:p-8 rounded-2xl space-y-6">
+        <div class="flex justify-between items-center pb-4 border-b border-neutral-200 dark:border-white/10">
+          <div>
+            <span class="text-[10px] uppercase tracking-widest text-[#C5A880] font-bold">Официален паспорт</span>
+            <h2 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white mt-0.5">
+              Спецификации &amp; Наличност
+            </h2>
+          </div>
+          <span class="px-3 py-1 rounded text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+            12 свободни
+          </span>
         </div>
 
-        <div class="mb-4">
-          <div class="text-xs text-slate-500 dark:text-slate-400">Цени директно от строител:</div>
-          <div class="text-3xl font-extrabold text-slate-900 dark:text-white">
-            от 1 250 € <span class="text-sm font-normal text-slate-500">/ м²</span>
+        <div>
+          <span class="text-xs text-neutral-500 uppercase tracking-wider block">Директни цени от инвеститор:</span>
+          <div class="text-3xl sm:text-4xl font-black font-condensed text-neutral-900 dark:text-white mt-1">
+            от 1 250 € <span class="text-xs font-normal text-neutral-500 font-sans">/ кв.м.</span>
           </div>
-          <div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-0.5">
-            ✓ 0% такса поддръжка • 0% комисионна
+          <div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
+            ✓ 0 лв. такса поддръжка • 0% брокерска комисиона
           </div>
         </div>
 
-        <!-- Key specs grid -->
-        <div class="grid grid-cols-2 gap-3 mb-6 text-xs">
-          <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-            <span class="text-slate-500 dark:text-slate-400 block mb-0.5">Етажност:</span>
-            <strong class="text-slate-900 dark:text-white text-sm">10 надземни етажа</strong>
+        <!-- 4-grid key specs -->
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Етажност</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold text-sm">10 надземни етажа</strong>
           </div>
-          <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-            <span class="text-slate-500 dark:text-slate-400 block mb-0.5">Паркиране:</span>
-            <strong class="text-slate-900 dark:text-white text-sm">Подземен гараж + места</strong>
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Паркоместа</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold text-sm">Подземен гараж + места</strong>
           </div>
-          <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-            <span class="text-slate-500 dark:text-slate-400 block mb-0.5">Енергиен клас:</span>
-            <strong class="text-emerald-600 dark:text-emerald-400 text-sm">Клас "А" (Baumit 10см)</strong>
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Енергиен клас</span>
+            <strong class="text-emerald-600 dark:text-emerald-400 font-semibold text-sm">Клас "А" (Baumit 10см)</strong>
           </div>
-          <div class="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-            <span class="text-slate-500 dark:text-slate-400 block mb-0.5">Асансьори:</span>
-            <strong class="text-slate-900 dark:text-white text-sm">2 бр. Orona Испания</strong>
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Асансьори</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold text-sm">2 бр. Orona / Schindler</strong>
           </div>
         </div>
 
         <!-- Direct Inquiry Form -->
-        <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Заявете консултация за «Панорама»</h3>
-          <p class="text-[11px] text-slate-500 dark:text-slate-400 mb-3">
-            Получете актуалната ценова листа за всички етажи и запазете час за оглед на място.
+        <div class="p-5 rounded-xl bg-[#C5A880]/10 border border-[#C5A880]/20 space-y-3">
+          <h3 class="text-base font-bold font-condensed uppercase tracking-wider text-neutral-900 dark:text-white">
+            Заяви среща &amp; резервация
+          </h3>
+          <p class="text-xs text-neutral-600 dark:text-neutral-400">
+            Получете пълните архитектурни планове и резервирайте оглед на място с главния инж. на обекта.
           </p>
-          <form onsubmit="alert('Благодарим! Запитването за сграда Панорама е изпратено.'); return false;" class="space-y-2">
-            <input type="text" placeholder="Вашето име" required class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
-            <input type="tel" placeholder="Телефонен номер" required class="w-full bg-white dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
-            <button type="submit" class="w-full py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs shadow-md transition">
-              Изпрати запитване
+          <form onsubmit="alert('Благодарим! Запитването за Сграда Панорама е изпратено.'); return false;" class="space-y-2.5">
+            <input type="text" placeholder="Вашето име" required class="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]" />
+            <input type="tel" placeholder="Телефонен номер" required class="w-full px-3.5 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]" />
+            <button type="submit" class="w-full py-3 rounded-lg bg-neutral-900 hover:bg-[#C5A880] text-white dark:bg-white dark:hover:bg-[#C5A880] dark:text-neutral-950 font-condensed uppercase tracking-wider text-xs font-bold transition">
+              Изпрати запитване за оглед
             </button>
           </form>
-          <div class="flex items-center justify-center space-x-4 mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 text-xs">
-            <a href="https://wa.me/359899144080" class="text-emerald-500 font-bold hover:underline flex items-center">
-              <span>Чат в WhatsApp</span>
-            </a>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
-            <a href="viber://chat?number=%2B359899144080" class="text-purple-400 font-bold hover:underline flex items-center">
-              <span>Чат във Viber</span>
-            </a>
+          <div class="flex items-center justify-center gap-4 pt-2 text-xs">
+            <a href="https://wa.me/359899144080" class="text-emerald-500 font-bold hover:underline">Чат в WhatsApp</a>
+            <span class="text-neutral-400">•</span>
+            <a href="tel:+359899144080" class="text-[#C5A880] font-bold hover:underline">+359 899 144 080</a>
           </div>
         </div>
+
       </div>
 
     </div>
   </main>
 
-  <!-- CHESSBOARD SPECIFIC TO THIS BUILDING -->
-  <section id="object-chessboard" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200 dark:border-slate-800">
-    <div class="mb-6">
-      <div class="text-xs font-bold text-sky-500 uppercase tracking-wider mb-1">Разпределения по етажи</div>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-        Интерактивна шахматка на сграда «Панорама»
+  <!-- CHESSBOARD SECTION FOR PANORAMA -->
+  <section id="object-chessboard" class="max-w-7xl mx-auto px-4 sm:px-8 py-12 border-t border-neutral-200 dark:border-white/[0.08]">
+    <div class="mb-8">
+      <div class="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-bold mb-1">Разпределения по етажи</div>
+      <h2 class="text-3xl sm:text-4xl font-bold uppercase font-condensed tracking-tight text-neutral-900 dark:text-white">
+        НАЛИЧНОСТ В СГРАДА «ПАНОРАМА»
       </h2>
-      <p class="text-xs text-slate-500 dark:text-slate-400">
-        Изберете свободен апартамент, за да видите чистата площ, квадратурата на общите части и схемата на разпределение.
-      </p>
     </div>
 
-    <!-- Chessboard Row Component -->
-    <div class="bento-card p-6">
-      <div class="overflow-x-auto">
-        <div class="min-w-[600px] space-y-2 text-xs">
-          <div class="flex items-center space-x-2">
-            <span class="w-20 font-bold text-slate-400">Етаж 7</span>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center">А-21 (2-стаен • 62.8 м² • 84 834 €)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center">А-22 (2-стаен • 61.0 м² • 82 280 €)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-sold text-center">А-23 (Пентхаус - Продаден)</button>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="w-20 font-bold text-slate-400">Етаж 6</span>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center">А-18 (3-стаен • 89.2 м² • 111 500 €)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-sold text-center">А-19 (Продаден)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center">А-20 (2-стаен • 58.4 м² • 73 000 €)</button>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="w-20 font-bold text-slate-400">Етаж 5</span>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center ring-2 ring-sky-400">А-11 (3-стаен • 86.0 м² • 107 463 €)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold bg-amber-500/20 text-amber-500 text-center">А-12 (Резервиран)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center">А-13 (1-стаен • 45.2 м² • 56 500 €)</button>
-          </div>
-          <div class="flex items-center space-x-2">
-            <span class="w-20 font-bold text-slate-400">Партер</span>
-            <button class="flex-[2] py-2.5 rounded-lg font-bold unit-free text-center">Магазин 01 (112.4 м² • 168 600 €)</button>
-            <button class="flex-1 py-2.5 rounded-lg font-bold unit-free text-center">Паркоместа (5 бр. налични)</button>
-          </div>
+    <div class="arch-card p-6 sm:p-8 rounded-2xl">
+      <div class="space-y-3 text-xs">
+        <div class="flex items-center gap-3">
+          <span class="w-20 font-mono font-bold text-neutral-400">Етаж 7</span>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">А-21 (2-стаен • 62.8 м² • 84 834 €)</button>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">А-22 (2-стаен • 61.0 м² • 82 280 €)</button>
+          <div class="flex-1 py-3 rounded-lg font-mono bg-neutral-200 dark:bg-white/5 text-neutral-400 text-center">А-23 (Пентхаус - Продаден)</div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-20 font-mono font-bold text-neutral-400">Етаж 6</span>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">А-18 (3-стаен • 89.2 м² • 111 500 €)</button>
+          <div class="flex-1 py-3 rounded-lg font-mono bg-neutral-200 dark:bg-white/5 text-neutral-400 text-center">А-19 (Продаден)</div>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">А-20 (2-стаен • 58.4 м² • 73 000 €)</button>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="w-20 font-mono font-bold text-neutral-400">Етаж 5</span>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 ring-2 ring-[#C5A880]">А-11 (3-стаен • 86.0 м² • 107 463 €)</button>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-300">А-12 (Резервиран)</button>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">А-13 (1-стаен • 45.2 м² • 56 500 €)</button>
+        </div>
+        <div class="flex items-center gap-3 pt-2 border-t border-neutral-200 dark:border-white/10">
+          <span class="w-20 font-mono font-bold text-neutral-400">Партер</span>
+          <button class="flex-[2] py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">Магазин 01 (112.4 м² • 168 600 €)</button>
+          <button class="flex-1 py-3 rounded-lg font-mono font-bold border border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">Паркоместа (5 бр. налични)</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CONSTRUCTION PROGRESS TIMELINE -->
-  <section id="construction-timeline" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 border-t border-slate-200 dark:border-slate-800">
-    <div class="mb-6">
-      <div class="text-xs font-bold text-emerald-500 uppercase tracking-wider mb-1">Прозрачност &amp; Качество</div>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
-        Хронология на строителството (Фотодоклад)
+  <section id="construction-timeline" class="max-w-7xl mx-auto px-4 sm:px-8 py-12 border-t border-neutral-200 dark:border-white/[0.08]">
+    <div class="mb-8">
+      <div class="text-xs uppercase tracking-[0.2em] text-[#C5A880] font-bold mb-1">Прозрачност &amp; Качество</div>
+      <h2 class="text-3xl sm:text-4xl font-bold uppercase font-condensed tracking-tight text-neutral-900 dark:text-white">
+        ХРОНОЛОГИЯ НА СТРОЕЖА (ФОТОДОКЛАД)
       </h2>
-      <p class="text-xs text-slate-500 dark:text-slate-400">
-        Публикуваме редовни актуализации с реални снимки от строителната площадка на всеки етап.
-      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-      <!-- Stage 1 -->
-      <div class="bento-card p-5">
-        <span class="px-2.5 py-1 rounded-md bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold mb-3 inline-block">Януари 2026</span>
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Зидарии и дограми на високите етажи</h3>
-        <p class="text-slate-500 dark:text-slate-400 mb-3">
-          Монтаж на 6-камерна PVC дограма Rehau с троен стъклопакет и 4-сезонно стъкло. Зидарии с тухли Wienerberger Porotherm.
+      <div class="arch-card p-5 rounded-xl">
+        <span class="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold mb-3 inline-block">Януари 2026</span>
+        <h3 class="text-base font-bold font-condensed uppercase tracking-wider text-neutral-900 dark:text-white mb-1">Зидарии и дограми на високите етажи</h3>
+        <p class="text-neutral-600 dark:text-neutral-400 mb-3">
+          Монтаж на 7-камерна PVC дограма Rehau с троен стъклопакет. Зидарии с тухли Wienerberger Porotherm.
         </p>
-        <div class="h-36 rounded-lg bg-slate-800 overflow-hidden">
-          <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2026-02/zx1200y675_4515540.jpg?itok=ftXQkIRS" class="w-full h-full object-cover" />
+        <div class="aspect-[16/10] rounded-lg overflow-hidden bg-neutral-900">
+          <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2026-02/Image13.webp?itok=3iujD3Q5" class="w-full h-full object-cover" />
         </div>
       </div>
 
-      <!-- Stage 2 -->
-      <div class="bento-card p-5">
-        <span class="px-2.5 py-1 rounded-md bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold mb-3 inline-block">Септември 2025</span>
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Достигане на кота корниз (Акт 14)</h3>
-        <p class="text-slate-500 dark:text-slate-400 mb-3">
+      <div class="arch-card p-5 rounded-xl">
+        <span class="px-2.5 py-1 rounded bg-[#C5A880]/20 text-[#C5A880] font-bold mb-3 inline-block">Септември 2025</span>
+        <h3 class="text-base font-bold font-condensed uppercase tracking-wider text-neutral-900 dark:text-white mb-1">Достигане на кота корниз (Акт 14)</h3>
+        <p class="text-neutral-600 dark:text-neutral-400 mb-3">
           Успешно завършване на стоманобетонната конструкция на сградата и подписване на протокол Образец Акт 14.
         </p>
-        <div class="h-36 rounded-lg bg-slate-800 overflow-hidden">
-          <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.jpg?itok=b0eGl3xO" class="w-full h-full object-cover" />
+        <div class="aspect-[16/10] rounded-lg overflow-hidden bg-neutral-900">
+          <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2025-08/viber_%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2025-08-21_12-19-11-854.webp?itok=ESCb0sx4" class="w-full h-full object-cover" />
         </div>
       </div>
 
-      <!-- Stage 3 -->
-      <div class="bento-card p-5">
-        <span class="px-2.5 py-1 rounded-md bg-sky-500/15 text-sky-600 dark:text-sky-400 font-bold mb-3 inline-block">Май 2025</span>
-        <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-1">Изкопни работи и фундамент</h3>
-        <p class="text-slate-500 dark:text-slate-400 mb-3">
+      <div class="arch-card p-5 rounded-xl">
+        <span class="px-2.5 py-1 rounded bg-sky-500/15 text-sky-600 dark:text-sky-400 font-bold mb-3 inline-block">Май 2025</span>
+        <h3 class="text-base font-bold font-condensed uppercase tracking-wider text-neutral-900 dark:text-white mb-1">Изкопни работи и фундамент</h3>
+        <p class="text-neutral-600 dark:text-neutral-400 mb-3">
           Изграждане на шлицови стени, хидроизолация и отливане на общата фундаментна плоча за подземния паркинг.
         </p>
-        <div class="h-36 rounded-lg bg-slate-800 overflow-hidden">
-          <img src="https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.jpg?itok=i2s4rwEO" class="w-full h-full object-cover" />
+        <div class="aspect-[16/10] rounded-lg overflow-hidden bg-neutral-900">
+          <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF" class="w-full h-full object-cover" />
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-500 dark:text-slate-400 text-xs py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
+  <footer class="py-12 bg-white dark:bg-[#0A0C10] border-t border-neutral-200 dark:border-white/[0.08] text-xs text-neutral-600 dark:text-neutral-400 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div>© 2026 Tochev &amp; Co. Сграда «Панорама» Бургас. Всички права запазени.</div>
-      <div class="flex space-x-4 mt-3 sm:mt-0">
-        <a href="index.html" class="hover:text-sky-500">Начало</a>
-        <a href="contacts.html" class="hover:text-sky-500">Контакти</a>
-        <a href="tel:+359899144080" class="text-sky-500 font-bold">+359 899 144 080</a>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="hover:text-[#C5A880]">Начало</a>
+        <a href="index.html#catalog" class="hover:text-[#C5A880]">Каталог 34 обекта</a>
+        <a href="contacts.html" class="hover:text-[#C5A880]">Контакти</a>
+        <a href="tel:+359899144080" class="text-[#C5A880] font-mono font-bold">+359 899 144 080</a>
       </div>
     </div>
   </footer>
@@ -514,17 +404,6 @@
   <script>
     function switchPhoto(url) {
       document.getElementById('mainGalleryImg').src = url;
-    }
-
-    function initTheme() {
-      const savedTheme = localStorage.getItem('tochev_theme');
-      if (savedTheme === 'light') {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-      } else {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-      }
     }
 
     function toggleTheme() {
@@ -538,8 +417,6 @@
         localStorage.setItem('tochev_theme', 'dark');
       }
     }
-
-    initTheme();
   </script>
 </body>
 </html>

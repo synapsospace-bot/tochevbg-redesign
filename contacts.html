@@ -3,13 +3,31 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Контакти | Строителна компания Точев & Co. Бургас</title>
+  <title>Контакти &amp; Офис Бургас | Строителна компания Точев &amp; Co.</title>
+  
   <script>
     tailwind = {
-      darkMode: 'class'
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            arch: {
+              bronze: '#C5A880',
+              'bronze-hover': '#B39265',
+              dark: '#0A0C10',
+              surface: '#13151D',
+              surfaceLight: '#FFFFFF',
+              borderDark: '#1E222D',
+              borderLight: '#E5E5E0',
+              chalk: '#F8F8F6'
+            }
+          }
+        }
+      }
     };
   </script>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  
   <script>
     (function() {
       const saved = localStorage.getItem('tochev_theme');
@@ -22,444 +40,346 @@
       }
     })();
   </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
-
     :root {
-      --font-heading: 'Manrope', sans-serif;
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-display: 'Syne', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
-
+    
     body {
       font-family: var(--font-body);
       transition: background-color 0.3s ease, color 0.3s ease;
     }
-
-    h1, h2, h3, h4, .font-heading {
+    
+    .font-condensed { font-family: var(--font-heading); }
+    .font-display { font-family: var(--font-display); }
+    
+    h1, h2, h3, h4, .font-arch {
       font-family: var(--font-heading);
-    }
-
-    /* DARK PEARLESCENT MESH & HIGH CONTRAST */
-    html.dark, .dark body {
-      background-color: #080C14 !important;
-      color: #F1F5F9 !important;
-      background-image: 
-        radial-gradient(at 15% 15%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
-        radial-gradient(at 85% 10%, rgba(99, 102, 241, 0.10) 0px, transparent 50%),
-        radial-gradient(at 50% 50%, rgba(20, 184, 166, 0.08) 0px, transparent 65%),
-        radial-gradient(at 80% 85%, rgba(14, 165, 233, 0.10) 0px, transparent 50%);
-      background-attachment: fixed;
-    }
-
-    .dark h1, .dark h2, .dark h3, .dark h4, .dark .font-heading {
-      color: #FFFFFF !important;
-    }
-    .dark .text-slate-900, .dark .text-slate-800 {
-      color: #FFFFFF !important;
-    }
-    .dark .text-slate-700 {
-      color: #F1F5F9 !important;
-    }
-    .dark .text-slate-600, .dark .text-slate-500 {
-      color: #CBD5E1 !important;
-    }
-    .dark .text-slate-400 {
-      color: #94A3B8 !important;
-    }
-
-    .dark .bento-card {
-      background: linear-gradient(135deg, rgba(20, 27, 45, 0.82) 0%, rgba(13, 19, 33, 0.94) 100%) !important;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.14) !important;
-      box-shadow: 0 12px 36px -10px rgba(0, 0, 0, 0.7), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15) !important;
-    }
-
-    .dark .glass-nav {
-      background: rgba(8, 12, 20, 0.92) !important;
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-    }
-
-    /* Bulletproof Theme Toggle Button */
-    #themeToggleBtn {
-      cursor: pointer;
-    }
-    .dark #themeToggleBtn {
-      background-color: rgba(30, 41, 59, 0.9) !important;
-      border-color: rgba(71, 85, 105, 0.7) !important;
-      color: #FCD34D !important;
-    }
-    .dark #themeToggleBtn:hover {
-      background-color: rgba(51, 65, 85, 0.95) !important;
-      border-color: #38BDF8 !important;
-    }
-    .light #themeToggleBtn {
-      background-color: #F1F5F9 !important;
-      border-color: #CBD5E1 !important;
-      color: #334155 !important;
-    }
-    .light #themeToggleBtn:hover {
-      background-color: #E2E8F0 !important;
-      border-color: #94A3B8 !important;
-    }
-    .dark #sunIcon { display: block !important; }
-    .dark #moonIcon { display: none !important; }
-    .light #sunIcon { display: none !important; }
-    .light #moonIcon { display: block !important; }
-
-    /* LIGHT CERAMIC PEARL */
-    html.light, .light body {
-      background-color: #F8FAFC !important;
-      color: #0F172A !important;
-      background-image: 
-        radial-gradient(at 10% 10%, rgba(224, 242, 254, 0.85) 0px, transparent 50%),
-        radial-gradient(at 90% 15%, rgba(238, 242, 255, 0.75) 0px, transparent 50%),
-        radial-gradient(at 50% 80%, rgba(204, 251, 241, 0.65) 0px, transparent 60%);
-      background-attachment: fixed;
-    }
-
-    .light h1, .light h2, .light h3, .light h4, .light .font-heading {
-      color: #0F172A !important;
-    }
-    .light .text-slate-900 {
-      color: #0F172A !important;
-    }
-    .light .text-slate-600 {
-      color: #334155 !important;
-    }
-    .light .text-slate-500 {
-      color: #475569 !important;
-    }
-
-    .light .bento-card {
-      background: rgba(255, 255, 255, 0.94) !important;
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(226, 232, 240, 0.9) !important;
-      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05) !important;
-    }
-
-    .light .glass-nav {
-      background: rgba(255, 255, 255, 0.94) !important;
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
-    }
-
-    /* MODERN NAVIGATION LINKS */
-    .nav-link-modern {
-      font-size: 15px;
-      font-weight: 600;
       letter-spacing: -0.01em;
-      padding: 8px 16px;
-      border-radius: 12px;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
-      text-decoration: none;
     }
-    .light .nav-link-modern {
-      color: #1E293B;
+    
+    html.dark, .dark body {
+      background-color: #0A0C10 !important;
+      color: #E2E8F0 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
     }
-    .light .nav-link-modern:hover {
-      color: #0284C7;
-      background-color: rgba(2, 132, 199, 0.08);
-      transform: translateY(-1px);
+    
+    html.light, .light body {
+      background-color: #F8F8F6 !important;
+      color: #1A1C20 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.06) 0%, transparent 60%);
+      background-attachment: fixed;
     }
-    .light .nav-link-modern.active {
-      color: #0284C7;
-      background: rgba(2, 132, 199, 0.12);
-      border: 1px solid rgba(2, 132, 199, 0.25);
+    
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #FFFFFF !important; }
+    .light h1, .light h2, .light h3, .light h4 { color: #111215 !important; }
+    
+    .dark .arch-card {
+      background: #11141D !important;
+      border: 1px solid rgba(255, 255, 255, 0.09) !important;
     }
-    .dark .nav-link-modern {
-      color: #E2E8F0;
+    .dark .arch-card:hover { border-color: rgba(197, 168, 128, 0.5) !important; }
+    
+    .light .arch-card {
+      background: #FFFFFF !important;
+      border: 1px solid #E5E5E0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
     }
-    .dark .nav-link-modern:hover {
-      color: #38BDF8;
-      background-color: rgba(255, 255, 255, 0.08);
-      transform: translateY(-1px);
-    }
-    .dark .nav-link-modern.active {
-      color: #38BDF8;
-      background: rgba(56, 189, 248, 0.16);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
+    .light .arch-card:hover {
+      border-color: #C5A880 !important;
+      box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.15);
     }
   </style>
 </head>
-<body class="transition-colors duration-300">
 
-  <!-- HEADER -->
-  <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Sub-Bar -->
-      <div class="hidden md:flex justify-between items-center py-2 border-b border-slate-200 dark:border-slate-800/80 text-[13px] text-slate-600 dark:text-slate-300">
-        <div class="flex items-center space-x-6">
-          <span class="flex items-center text-emerald-600 dark:text-emerald-400 font-bold">
-            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse mr-2"></span>
-            Централен офис продажби: гр. Бургас, ул. Хаджи Димитър 8
-          </span>
-          <span class="text-slate-600 dark:text-slate-300">Пон - Пет: 09:00 - 18:00</span>
-        </div>
-        <div class="flex items-center space-x-4">
-          <a href="mailto:office@tochevbg.com" class="hover:text-sky-500 transition font-medium">office@tochevbg.com</a>
-          <span class="text-slate-300 dark:text-slate-700">|</span>
-          <div class="flex items-center space-x-2 font-bold text-xs">
-            <span class="text-sky-500">BG</span>
-            <span class="text-slate-400">/</span>
-            <span class="text-slate-500 dark:text-slate-400 hover:text-sky-400 cursor-pointer transition">EN</span>
-          </div>
-        </div>
+<body class="antialiased selection:bg-[#C5A880]/30 selection:text-[#C5A880]">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="border-b border-black/[0.06] dark:border-white/[0.08] bg-black/[0.02] dark:bg-white/[0.02] py-2 px-4 sm:px-8 text-[11px] uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-medium text-neutral-900 dark:text-white">Централен офис продажби:</span>
+        <span>гр. Бургас, ул. «Хаджи Димитър» № 8 | Пон - Пет: 09:00 - 18:00</span>
       </div>
+      <div class="flex items-center gap-4">
+        <a href="tel:+359899144080" class="hover:text-neutral-900 dark:hover:text-white transition font-semibold">
+          Тел: +359 899 144 080
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">|</span>
+        <a href="mailto:office@tochevbg.com" class="hover:text-neutral-900 dark:hover:text-white transition">
+          office@tochevbg.com
+        </a>
+      </div>
+    </div>
+  </div>
 
-      <!-- Main Navigation -->
-      <div class="flex justify-between items-center py-3.5">
-        <a href="index.html" class="flex items-center space-x-3.5 group">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-sky-500 via-teal-400 to-indigo-500 flex items-center justify-center font-extrabold text-white text-2xl shadow-lg shadow-sky-500/25 group-hover:scale-105 transition">
-            T
-          </div>
-          <div>
-            <div class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-slate-900 dark:text-white leading-tight">
-              TOCHEV <span class="text-sky-500">&amp; CO.</span>
-            </div>
-            <div class="text-[11px] tracking-wider text-slate-500 dark:text-slate-400 uppercase font-semibold">Строителна компания</div>
-          </div>
+  <!-- MAIN HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/85 dark:bg-[#0A0C10]/85 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-sm bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-xl tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-extrabold text-lg md:text-xl tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+            TOCHEV &amp; CO.
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mt-1 font-semibold">
+            Архитектурно строителство · От 1998 г.
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+        <a href="index.html" class="hover:text-[#C5A880] transition-colors">← Начало</a>
+        <a href="index.html#catalog" class="hover:text-[#C5A880] transition-colors flex items-center gap-1.5">
+          <span>Всички обекти</span>
+          <span class="px-1.5 py-0.5 rounded-full text-[10px] bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300 font-mono">34</span>
+        </a>
+        <a href="panorama.html" class="text-[#C5A880] hover:text-[#B39265] transition-colors font-bold">★ Сграда «Панорама»</a>
+        <a href="index.html#chessboard" class="hover:text-[#C5A880] transition-colors">Шахматка</a>
+        <a href="index.html#calculator" class="hover:text-[#C5A880] transition-colors">Калкулатор</a>
+        <a href="contacts.html" class="text-[#C5A880] font-bold">Контакти</a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3">
+        <a href="tel:+359899144080" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-900 dark:border-white/40 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-white dark:hover:text-neutral-900 text-xs font-bold uppercase tracking-wider transition-all duration-300">
+          <span>Обади се веднага</span>
         </a>
 
-        <!-- Desktop Menu -->
-        <nav class="hidden lg:flex items-center space-x-1.5 font-medium">
-          <a href="index.html" class="nav-link-modern">← Начало</a>
-          <a href="index.html#objects" class="nav-link-modern">Обекти</a>
-          <a href="panorama.html" class="nav-link-modern">Сграда «Панорама»</a>
-          <a href="index.html#chessboard" class="nav-link-modern">Шахматка</a>
-          <a href="index.html#calculator" class="nav-link-modern">Калкулатор</a>
-          <a href="contacts.html" class="nav-link-modern active">Контакти</a>
-        </nav>
-
-        <!-- Right Controls -->
-        <div class="flex items-center space-x-3">
-          <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-amber-300 hover:scale-105 transition shadow-sm" title="Превключи тема">
-            <svg id="sunIcon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            <svg id="moonIcon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-          </button>
-
-          <a href="tel:+359899144080" class="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white text-sm font-bold shadow-md shadow-sky-500/25 transition transform hover:-translate-y-0.5">
-            <span>Свържи се веднага</span>
-          </a>
-        </div>
+        <button onclick="toggleTheme()" aria-label="Превключи светла/тъмна тема" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:text-[#C5A880] dark:hover:text-[#C5A880] transition-colors">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
       </div>
+
     </div>
   </header>
 
-  <!-- BREADCRUMBS -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-2 text-xs text-slate-500 dark:text-slate-400 flex items-center space-x-2">
-    <a href="index.html" class="hover:text-sky-500">Начало</a>
-    <span>/</span>
-    <span class="text-slate-900 dark:text-white font-semibold">Контакти &amp; Офис продажби</span>
+  <!-- BREADCRUMB -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+    <a href="index.html" class="hover:text-[#C5A880]">Начало</a>
+    <span class="mx-2">/</span>
+    <span class="text-neutral-900 dark:text-white">Контакти &amp; Офис</span>
   </div>
 
-  <!-- MAIN CONTACTS SECTION -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-    <div class="mb-8">
-      <div class="inline-flex items-center space-x-2 text-xs font-bold text-sky-500 uppercase tracking-wider mb-2">
-        <span>Отдел Продажби и Обслужване</span>
-        <span>•</span>
+  <!-- MAIN CONTACTS CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-8 py-6">
+    <div class="mb-10">
+      <div class="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-[#C5A880] font-bold mb-2">
+        <span>Отдел Продажби &amp; Инженеринг</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
         <span>Бургас</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 dark:text-white">
-        Свържете се с Точев &amp; Co.
+      <h1 class="text-4xl sm:text-6xl font-bold uppercase font-condensed tracking-tight text-neutral-900 dark:text-white">
+        СВЪРЖЕТЕ СЕ С ТОЧЕВ &amp; CO.
       </h1>
-      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-2xl">
-        Заповядайте в нашия централен офис за лична консултация, разглеждане на архитектурни проекти и организиране на оглед на строителните обекти.
+      <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 mt-2 max-w-2xl">
+        Заповядайте в нашия централен офис за лична среща, запознаване с пълния набор от строителни книжа и избор на апартамент директно от инвеститора.
       </p>
     </div>
 
-    <!-- BENTO CONTACT MATRIX -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-      <!-- Left Column: Department Phones & Location Card (7 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Column: Department Directory & Map (7 cols) -->
       <div class="lg:col-span-7 space-y-6">
-        <!-- Bento Card: Main Office & Direct Phone Departments -->
-        <div class="bento-card p-6">
-          <div class="flex items-center space-x-3 mb-6">
-            <div class="w-12 h-12 rounded-xl bg-sky-500/15 text-sky-500 flex items-center justify-center">
+        
+        <!-- Main Office Box -->
+        <div class="arch-card p-6 sm:p-8 rounded-2xl">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 text-[#C5A880] flex items-center justify-center font-bold text-lg">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
             </div>
             <div>
-              <h2 class="text-lg font-bold text-slate-900 dark:text-white">Централен офис на строителната компания</h2>
-              <p class="text-xs text-slate-500 dark:text-slate-400">гр. Бургас 8000, ул. «Хаджи Димитър» № 8 - партер</p>
+              <h2 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+                Централен офис на компанията
+              </h2>
+              <p class="text-xs text-neutral-500">гр. Бургас 8000, ул. «Хаджи Димитър» № 8 - партер</p>
             </div>
           </div>
 
-          <!-- Department list -->
+          <!-- 3 Departments Grid -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-            <!-- Dept 1: Sales -->
-            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-              <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400 block mb-1">Продажби и Огледи</span>
-              <a href="tel:+359899144080" class="text-sm font-extrabold text-slate-900 dark:text-white hover:text-sky-500 transition block mb-1">
+            <div class="p-4 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+              <span class="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400 block mb-1">Продажби &amp; Огледи</span>
+              <a href="tel:+359899144080" class="text-sm font-mono font-bold text-neutral-900 dark:text-white hover:text-[#C5A880] transition block mb-1">
                 +359 899 144 080
               </a>
-              <span class="text-[11px] text-slate-500 dark:text-slate-400">Дежурен консултант</span>
+              <span class="text-[11px] text-neutral-500">Дежурен консултант</span>
             </div>
 
-            <!-- Dept 2: Accounting -->
-            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-              <span class="text-[10px] uppercase font-bold tracking-wider text-sky-600 dark:text-sky-400 block mb-1">Счетоводство</span>
-              <a href="tel:+359897807388" class="text-sm font-extrabold text-slate-900 dark:text-white hover:text-sky-500 transition block mb-1">
+            <div class="p-4 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+              <span class="text-[10px] uppercase font-bold tracking-wider text-[#C5A880] block mb-1">Счетоводство</span>
+              <a href="tel:+359897807388" class="text-sm font-mono font-bold text-neutral-900 dark:text-white hover:text-[#C5A880] transition block mb-1">
                 +359 897 807 388
               </a>
-              <span class="text-[11px] text-slate-500 dark:text-slate-400">Договори и плащания</span>
+              <span class="text-[11px] text-neutral-500">Договори &amp; плащания</span>
             </div>
 
-            <!-- Dept 3: Technical -->
-            <div class="p-3.5 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800">
-              <span class="text-[10px] uppercase font-bold tracking-wider text-amber-600 dark:text-amber-400 block mb-1">Технически отдел</span>
-              <a href="tel:+359899144089" class="text-sm font-extrabold text-slate-900 dark:text-white hover:text-sky-500 transition block mb-1">
+            <div class="p-4 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+              <span class="text-[10px] uppercase font-bold tracking-wider text-sky-500 block mb-1">Инженерен отдел</span>
+              <a href="tel:+359899144089" class="text-sm font-mono font-bold text-neutral-900 dark:text-white hover:text-[#C5A880] transition block mb-1">
                 +359 899 144 089
               </a>
-              <span class="text-[11px] text-slate-500 dark:text-slate-400">Инженер и строител</span>
+              <span class="text-[11px] text-neutral-500">Главен строител</span>
             </div>
           </div>
 
-          <!-- Working hours -->
-          <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-900 border border-sky-100 dark:border-slate-800 flex justify-between items-center text-xs">
+          <!-- Office Working Hours -->
+          <div class="p-4 rounded-xl bg-[#C5A880]/10 border border-[#C5A880]/20 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
             <div>
-              <strong class="text-slate-900 dark:text-white block">Работно време на офиса:</strong>
-              <span class="text-slate-600 dark:text-slate-400">Понеделник – Петък: 09:00 – 18:00 ч. | Събота: Огледи с предварителна заявка</span>
+              <strong class="text-neutral-900 dark:text-white block font-condensed uppercase tracking-wider">Работно време на офиса:</strong>
+              <span class="text-neutral-600 dark:text-neutral-400">Понеделник – Петък: 09:00 – 18:00 ч. | Събота: с предварителна уговорка</span>
             </div>
             <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-bold text-[11px]">Отворен</span>
           </div>
         </div>
 
-        <!-- Bento Card: Interactive Map Placeholder & Transport Guide -->
-        <div class="bento-card p-6">
+        <!-- Location Map / Street View Visual -->
+        <div class="arch-card p-6 sm:p-8 rounded-2xl">
           <div class="flex justify-between items-center mb-3">
-            <h3 class="text-base font-bold text-slate-900 dark:text-white">Локация на офиса в Бургас</h3>
-            <a href="https://maps.google.com/?q=42.499546,27.473973" target="_blank" class="text-xs text-sky-500 font-bold hover:underline flex items-center">
-              <span>Отвори в Google Maps</span>
-              <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            <h3 class="text-lg font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+              Локация в Бургас (ул. Хаджи Димитър 8)
+            </h3>
+            <a href="https://maps.google.com/?q=42.499546,27.473973" target="_blank" class="text-xs text-[#C5A880] font-bold hover:underline flex items-center gap-1 font-condensed uppercase tracking-wider">
+              <span>Google Maps →</span>
             </a>
           </div>
 
-          <!-- Map Visual Frame -->
-          <div class="w-full h-64 rounded-xl bg-slate-900 relative overflow-hidden border border-slate-200 dark:border-slate-800 flex items-center justify-center group">
-            <div class="absolute inset-0 bg-cover bg-center opacity-80 group-hover:scale-105 transition duration-700"
-                 style="background-image: url('https://tochevbg.com/sites/default/files/styles/slide_mobile/public/photo-object/2026-02/zx1200y675_4515540.jpg?itok=ftXQkIRS'); filter: grayscale(40%) contrast(110%);">
-            </div>
-            <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px]"></div>
+          <div class="w-full h-64 rounded-xl bg-neutral-900 relative overflow-hidden flex items-center justify-center group">
+            <img src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF" class="absolute inset-0 w-full h-full object-cover opacity-60 filter grayscale group-hover:scale-105 transition-transform duration-700" />
+            <div class="absolute inset-0 bg-black/60"></div>
 
-            <div class="relative z-10 p-4 rounded-xl bg-slate-900/95 border border-sky-500/50 shadow-2xl text-center max-w-xs">
-              <div class="w-8 h-8 rounded-full bg-sky-500 text-white flex items-center justify-center mx-auto mb-2 shadow-lg shadow-sky-500/40">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+            <div class="relative z-10 p-5 rounded-xl bg-neutral-950/90 border border-white/20 text-center max-w-xs text-white">
+              <div class="w-9 h-9 rounded-full bg-[#C5A880] text-black flex items-center justify-center mx-auto mb-2 font-black">
+                T
               </div>
-              <strong class="text-white text-xs block">Офис Точев &amp; Co.</strong>
-              <span class="text-[11px] text-slate-300 block mb-2">ул. Хаджи Димитър 8, партер</span>
-              <span class="inline-block px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">Удобни паркоместа за клиенти</span>
+              <strong class="text-sm font-condensed uppercase tracking-wider block">Офис Точев &amp; Co.</strong>
+              <span class="text-xs text-neutral-300 block mb-2">гр. Бургас, ул. Хаджи Димитър 8, партер</span>
+              <span class="inline-block px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">
+                Паркоместа за клиенти пред офиса
+              </span>
             </div>
           </div>
         </div>
+
       </div>
 
-      <!-- Right Column: Interactive Contact Webform & Messengers (5 cols) -->
+      <!-- Right Column: Interactive Contact Webform (5 cols) -->
       <div class="lg:col-span-5 space-y-6">
-        <!-- Webform Card -->
-        <div class="bento-card p-6 border-sky-500/30">
-          <div class="mb-4">
-            <span class="text-[10px] uppercase font-bold tracking-wider text-sky-500 block mb-1">Директна връзка с отдел Продажби</span>
-            <h2 class="text-xl font-extrabold text-slate-900 dark:text-white">
+        <div class="arch-card p-6 sm:p-8 rounded-2xl">
+          <div class="mb-6">
+            <span class="text-[10px] uppercase font-bold tracking-widest text-[#C5A880] block mb-1">Директна връзка</span>
+            <h2 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
               Заявете оглед или оферта
             </h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-              Попълнете формата и наш експерт ще се свърже с Вас в рамките на 15 минути.
+            <p class="text-xs text-neutral-500 mt-1">
+              Попълнете формата и наш архитект/мениджър продажби ще се свърже с вас.
             </p>
           </div>
 
-          <form onsubmit="handleContactSubmit(event)" class="space-y-3 text-xs">
+          <form onsubmit="handleContactSubmit(event)" class="space-y-3.5 text-xs">
             <div>
-              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Име и Фамилия</label>
-              <input type="text" placeholder="Иван Иванов" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
+              <label class="block font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Име и Фамилия</label>
+              <input type="text" placeholder="Иван Иванов" required class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]" />
             </div>
 
             <div>
-              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Телефонен номер</label>
-              <input type="tel" placeholder="+359 899 123 456" required class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
+              <label class="block font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Телефонен номер</label>
+              <input type="tel" placeholder="+359 899 123 456" required class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]" />
             </div>
 
             <div>
-              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Имейл адрес (по желание)</label>
-              <input type="email" placeholder="ivan@example.com" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500" />
+              <label class="block font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Email адрес</label>
+              <input type="email" placeholder="ivan@domain.com" class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]" />
             </div>
 
             <div>
-              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Обект, от който се интересувате</label>
-              <select class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500">
+              <label class="block font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Обект на интерес</label>
+              <select class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white focus:outline-none focus:border-[#C5A880]">
                 <option value="panorama">Сграда «Панорама» (ж.к. Изгрев) - Акт 14</option>
                 <option value="trapezica">Сграда «Трапезица» (до Елкабел) - Строеж</option>
-                <option value="kraimorie">Резиденция «Крайморие» (ул. Лорна) - Морски</option>
-                <option value="meden">ж.к. Меден Рудник (Битака)</option>
+                <option value="kraimorie">Морска Резиденция «Крайморие»</option>
+                <option value="bitaka">Комплекс «Битака» (Меден Рудник)</option>
                 <option value="sofia">Обекти в София (Малинова Долина / Симеоново)</option>
                 <option value="general">Обща консултация за покупка / Инвестиция</option>
               </select>
             </div>
 
             <div>
-              <label class="block font-semibold text-slate-700 dark:text-slate-300 mb-1">Съобщение или въпрос</label>
-              <textarea rows="3" placeholder="Интересувам се от 2-стаен апартамент на среден етаж..." class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-3 py-2.5 text-slate-900 dark:text-white focus:outline-none focus:border-sky-500"></textarea>
+              <label class="block font-semibold text-neutral-700 dark:text-neutral-300 mb-1">Съобщение или въпрос</label>
+              <textarea rows="3" placeholder="Интересувам се от 2-стаен или 3-стаен апартамент..." class="w-full px-4 py-2.5 rounded-lg border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#0A0C10] text-xs text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-[#C5A880]"></textarea>
             </div>
 
-            <div class="flex items-start space-x-2 pt-1">
-              <input type="checkbox" id="gdprCheck" required class="mt-1 rounded accent-sky-500" />
-              <label for="gdprCheck" class="text-[11px] text-slate-500 dark:text-slate-400">
-                Съгласен съм с обработката на личните ми данни съгласно регламента GDPR за целите на обработка на запитването.
+            <div class="flex items-center gap-2 pt-1">
+              <input type="checkbox" id="gdprCheck" required class="rounded accent-[#C5A880]" />
+              <label for="gdprCheck" class="text-[11px] text-neutral-500">
+                Съгласен съм с обработката на личните ми данни по GDPR.
               </label>
             </div>
 
-            <button type="submit" class="w-full py-3 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 hover:from-sky-400 hover:to-blue-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-sky-500/25 transition">
-              Изпрати запитването
+            <button type="submit" class="w-full py-3.5 rounded-lg bg-neutral-900 hover:bg-[#C5A880] text-white dark:bg-white dark:hover:bg-[#C5A880] dark:text-neutral-950 font-condensed uppercase tracking-wider text-xs font-bold transition">
+              Изпрати съобщението
             </button>
           </form>
 
-          <div id="contactSuccess" class="hidden mt-3 p-3 rounded-xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 text-xs text-center border border-emerald-500/40">
-            ✓ Благодарим! Вашето запитване е получено. Консултант от Точев &amp; Co. ще се свърже с Вас в най-кратък срок.
+          <div id="contactSuccess" class="hidden mt-3 p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs text-center font-medium">
+            ✓ Благодарим! Вашето запитване е получено. Ще се свържем с вас в най-кратък срок.
           </div>
         </div>
 
-        <!-- Instant Messenger Block -->
-        <div class="bento-card p-6">
-          <h3 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Бърз чат в месинджър</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400 mb-4">
-            Ако предпочитате незабавна кореспонденция без телефонни обаждания:
+        <!-- Direct Messenger Quick Chat -->
+        <div class="arch-card p-6 rounded-2xl">
+          <h3 class="text-sm font-bold font-condensed uppercase tracking-wider text-neutral-900 dark:text-white mb-2">
+            Бърз чат в месинджър
+          </h3>
+          <p class="text-xs text-neutral-500 mb-4">
+            Ако предпочитате незабавна връзка през вашия мобилен телефон:
           </p>
           <div class="grid grid-cols-2 gap-3">
-            <a href="https://wa.me/359899144080" target="_blank" class="py-2.5 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center space-x-2 transition shadow-md shadow-emerald-900/20">
+            <a href="https://wa.me/359899144080" target="_blank" class="py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-condensed uppercase tracking-wider text-xs font-bold flex items-center justify-center transition">
               <span>WhatsApp Чат</span>
             </a>
-            <a href="viber://chat?number=%2B359899144080" class="py-2.5 px-3 rounded-xl bg-purple-700 hover:purple-600 text-white font-bold text-xs flex items-center justify-center space-x-2 transition">
-              <span>Viber Чат</span>
+            <a href="tel:+359899144080" class="py-2.5 px-3 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 font-condensed uppercase tracking-wider text-xs font-bold flex items-center justify-center transition">
+              <span>Обаждане</span>
             </a>
           </div>
         </div>
 
-        <!-- Legal details card -->
-        <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400 space-y-1">
-          <div class="font-bold text-slate-700 dark:text-slate-300">Правна информация за договори:</div>
-          <div>Дружество: «Точев &amp; Co.» ООД</div>
-          <div>ЕИК / БУЛСТАТ: 102148721</div>
-          <div>ДДС №: BG102148721</div>
-          <div>Седалище и адрес на управление: гр. Бургас, ул. Хаджи Димитър 8</div>
-        </div>
       </div>
+
     </div>
   </main>
 
   <!-- FOOTER -->
-  <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-500 dark:text-slate-400 text-xs py-8 mt-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
-      <div>© 2026 Tochev &amp; Co. Всички права запазени.</div>
-      <div class="flex space-x-4 mt-3 sm:mt-0">
-        <a href="index.html" class="hover:text-sky-500">Начало</a>
-        <a href="panorama.html" class="hover:text-sky-500">Сграда «Панорама»</a>
-        <a href="tel:+359899144080" class="text-sky-500 font-bold">+359 899 144 080</a>
+  <footer class="py-12 bg-white dark:bg-[#0A0C10] border-t border-neutral-200 dark:border-white/[0.08] text-xs text-neutral-600 dark:text-neutral-400 mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>© 2026 Tochev &amp; Co. Всички права запазени. ЕИК: 102213797.</div>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="hover:text-[#C5A880]">Начало</a>
+        <a href="index.html#catalog" class="hover:text-[#C5A880]">Каталог 34 обекта</a>
+        <a href="panorama.html" class="hover:text-[#C5A880]">Сграда «Панорама»</a>
+        <a href="tel:+359899144080" class="text-[#C5A880] font-mono font-bold">+359 899 144 080</a>
       </div>
     </div>
   </footer>
@@ -467,21 +387,10 @@
   <script>
     function handleContactSubmit(e) {
       e.preventDefault();
-      document.getElementById('contactSuccess').classList.remove('hidden');
-      setTimeout(() => {
-        document.getElementById('contactSuccess').classList.add('hidden');
-      }, 6000);
-    }
-
-    function initTheme() {
-      const savedTheme = localStorage.getItem('tochev_theme');
-      if (savedTheme === 'light') {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.classList.add('light');
-      } else {
-        document.documentElement.classList.add('dark');
-        document.documentElement.classList.remove('light');
-      }
+      const msg = document.getElementById('contactSuccess');
+      msg.classList.remove('hidden');
+      setTimeout(() => msg.classList.add('hidden'), 5000);
+      e.target.reset();
     }
 
     function toggleTheme() {
@@ -495,8 +404,6 @@
         localStorage.setItem('tochev_theme', 'dark');
       }
     }
-
-    initTheme();
   </script>
 </body>
 </html>
