@@ -256,26 +256,26 @@
 
   <!-- MAIN HEADER (Unified Luxury Navigation - High-Legibility Typography) -->
   <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-[#0A0C10]/90 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo -->
-      <a href="index.html" class="flex items-center gap-3.5 group">
-        <div class="w-11 h-11 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-2xl tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
+      <!-- Brand Logo (Compact & Refined) -->
+      <a href="index.html" class="flex items-center gap-2.5 group flex-shrink-0">
+        <div class="w-8 h-8 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-base tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
           T
         </div>
         <div class="flex flex-col">
-          <span class="font-display font-black text-xl md:text-2xl tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+          <span class="font-display font-black text-base sm:text-lg tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
             TOCHEV &amp; CO.
           </span>
-          <span class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mt-1 font-semibold">
-            Архитектурно строителство · От 1998 г.
+          <span class="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium mt-0.5">
+            Строителство · От 1998 г.
           </span>
         </div>
       </a>
 
-      <!-- Desktop Nav (Enlarged 15px Font, Harmonious Spacing & Active States) -->
-      <nav class="hidden lg:flex items-center gap-7 text-[15px] font-semibold text-neutral-700 dark:text-neutral-200">
-        <a href="index.html" class="text-[#C5A880] font-bold border-b-2 border-[#C5A880] pb-1">
+      <!-- Desktop Nav (Harmonious Spacing & Breathing Room) -->
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-8 text-[13px] xl:text-[14px] font-semibold text-neutral-700 dark:text-neutral-200 whitespace-nowrap">
+        <a href="index.html" class="text-[#C5A880] font-bold border-b-2 border-[#C5A880] pb-0.5">
           Начало
         </a>
         <a href="projects.html" class="hover:text-[#C5A880] transition-colors flex items-center gap-1.5">
@@ -299,16 +299,16 @@
         </a>
       </nav>
 
-      <!-- Right Action Controls -->
-      <div class="flex items-center gap-3">
+      <!-- Right Action Controls (Compact Button with Extra Gap) -->
+      <div class="flex items-center gap-3 flex-shrink-0">
         <!-- Direct Consult CTA Button -->
-        <a href="contacts.html#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-900 dark:border-[#C5A880]/60 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-[#C5A880] dark:hover:text-black text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-sm whitespace-nowrap">
+        <a href="contacts.html#booking" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-neutral-900/60 dark:border-[#C5A880]/50 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-[#C5A880] dark:hover:text-black text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm whitespace-nowrap">
           <span>Запиши среща</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </a>
 
         <!-- Theme Toggle Button -->
-        <button onclick="toggleTheme()" aria-label="Превключи светла/тъмна тема" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition-colors">
+        <button onclick="toggleTheme()" aria-label="Превключи светла/тъмна тема" class="w-9 h-9 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition-colors">
           <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
           </svg>
@@ -318,8 +318,8 @@
         </button>
 
         <!-- Mobile Menu Trigger -->
-        <button onclick="toggleMobileNav()" class="lg:hidden w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        <button onclick="toggleMobileNav()" class="lg:hidden w-9 h-9 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
         </button>
       </div>
 
