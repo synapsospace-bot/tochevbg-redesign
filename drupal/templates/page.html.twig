@@ -29,19 +29,10 @@
   <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-[#0A0C10]/90 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
       
-      <!-- Brand Logo (Compact & Refined) -->
-      <a href="{{ front_page }}" class="flex items-center gap-2.5 group flex-shrink-0">
-        <div class="w-8 h-8 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-base tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
-          T
-        </div>
-        <div class="flex flex-col">
-          <span class="font-display font-black text-base sm:text-lg tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
-            {{ site_name|default('TOCHEV & CO.') }}
-          </span>
-          <span class="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium mt-0.5">
-            {{ site_slogan|default('Строителство · От 1998 г.') }}
-          </span>
-        </div>
+      <!-- Official Brand Logo (Original Vector) -->
+      <a href="{{ front_page }}" class="flex items-center group flex-shrink-0" title="{{ site_name|default('Точев &amp; Co.') }}">
+        <img src="{{ base_path ~ directory }}/images/logo-original.svg" alt="{{ site_name|default('Точев &amp; Co.') }}" class="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 dark:hidden" />
+        <img src="{{ base_path ~ directory }}/images/logo-original-dark.svg" alt="{{ site_name|default('Точев &amp; Co.') }}" class="h-8 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105 hidden dark:block" />
       </a>
 
       <!-- Desktop Nav -->
@@ -100,14 +91,10 @@
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
         
         <div class="md:col-span-5 space-y-4">
-          <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-base">
-              T
-            </div>
-            <span class="font-display font-black text-lg tracking-tight uppercase text-neutral-900 dark:text-white">
-              {{ site_name|default('TOCHEV & CO.') }}
-            </span>
-          </div>
+          <a href="{{ front_page }}" class="inline-flex items-center group" title="{{ site_name|default('Точев &amp; Co.') }}">
+            <img src="{{ base_path ~ directory }}/images/logo-original.svg" alt="{{ site_name|default('Точев &amp; Co.') }}" class="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 dark:hidden" />
+            <img src="{{ base_path ~ directory }}/images/logo-original-dark.svg" alt="{{ site_name|default('Точев &amp; Co.') }}" class="h-8 sm:h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105 hidden dark:block" />
+          </a>
           <p class="text-sm text-neutral-500 max-w-sm leading-relaxed">
             27 години строително съвършенство и безкомпромисно качество на територията на гр. Бургас и българското Черноморие.
           </p>
