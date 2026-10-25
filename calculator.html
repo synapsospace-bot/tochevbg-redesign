@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ипотечен калкулатор &amp; Схеми на плащане | Tochev &amp; Co. Строителна компания Бургас</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            arch: {
+              bronze: '#C5A880',
+              'bronze-hover': '#B39265',
+              dark: '#0A0C10',
+              surface: '#12151E',
+              surfaceLight: '#FFFFFF',
+              borderDark: '#232734',
+              borderLight: '#E5E5E0',
+              chalk: '#F8F8F6'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  
+  <script>
+    (function() {
+      const saved = localStorage.getItem('tochev_theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    })();
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .font-condensed { font-family: var(--font-heading); }
+    .font-display { font-family: var(--font-display); }
+    
+    h1, h2, h3, h4, .font-arch {
+      font-family: var(--font-heading);
+      letter-spacing: -0.01em;
+    }
+    
+    html.dark, .dark body {
+      background-color: #0A0C10 !important;
+      color: #E2E8F0 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+    
+    html.light, .light body {
+      background-color: #F8F8F6 !important;
+      color: #1A1C20 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.06) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    html.light .hero-headline-gradient {
+      background: linear-gradient(135deg, #0F172A 0%, #334155 45%, #9A7B4F 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html.dark .hero-headline-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #C5A880 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    html.dark header {
+      background-color: rgba(10, 12, 16, 0.94) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark header nav a, html.dark header .nav-link { color: #F1F5F9 !important; }
+    html.dark header nav a:hover { color: #C5A880 !important; }
+    
+    html.light header {
+      background-color: rgba(255, 255, 255, 0.94) !important;
+      border-color: #E5E5E0 !important;
+    }
+    html.light header nav a { color: #1E293B !important; }
+    html.light header nav a:hover { color: #9A7B4F !important; }
+
+    html.dark .top-announcement-bar {
+      background-color: rgba(255, 255, 255, 0.03) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      color: #CBD5E1 !important;
+    }
+    html.dark .top-announcement-bar a { color: #FFFFFF !important; }
+    html.dark .top-announcement-bar a:hover { color: #C5A880 !important; }
+    
+    html.light .top-announcement-bar {
+      background-color: #F1F1ED !important;
+      border-color: #E5E5E0 !important;
+      color: #475569 !important;
+    }
+    html.light .top-announcement-bar a { color: #0F172A !important; }
+
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #FFFFFF; }
+    .dark p, .dark .text-body { color: #CBD5E1; }
+    .dark .arch-card {
+      background: #11141D;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .light h1, .light h2, .light h3, .light h4 { color: #0F172A; }
+    .light p, .light .text-body { color: #334155; }
+    .light .arch-card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E0;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Range Sliders with Beautiful Handles */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 9px;
+      border-radius: 5px;
+      outline: none;
+      transition: background 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #C5A880;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.2s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+      background: #B39265;
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-[#C5A880]/30 selection:text-[#C5A880]">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b border-black/[0.06] dark:border-white/[0.08] py-2.5 px-4 sm:px-8 text-xs uppercase tracking-wider">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-bold text-neutral-900 dark:text-white">Гъвкаво финансиране:</span>
+        <span class="font-medium">Безлихвени разсрочени схеми директно от строителя | 0% комисиона</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="tel:+359899144080" class="hover:text-[#C5A880] transition flex items-center gap-1.5 font-bold">
+          <span>Тел:</span> +359 899 144 080
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">|</span>
+        <a href="mailto:office@tochevbg.com" class="hover:text-[#C5A880] transition">
+          office@tochevbg.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-[#0A0C10]/90 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-2xl tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-black text-xl md:text-2xl tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+            TOCHEV &amp; CO.
+          </span>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mt-1 font-semibold">
+            Архитектурно строителство · От 1998 г.
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-[15px] font-semibold text-neutral-700 dark:text-neutral-200">
+        <a href="index.html" class="hover:text-[#C5A880] transition-colors">
+          Начало
+        </a>
+        <a href="projects.html" class="hover:text-[#C5A880] transition-colors flex items-center gap-1.5">
+          <span>Обекти</span>
+          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#C5A880]/15 text-[#C5A880]">34</span>
+        </a>
+        <a href="panorama.html" class="hover:text-[#C5A880] transition-colors font-bold text-amber-500 dark:text-[#C5A880]">
+          ★ Сграда «Панорама»
+        </a>
+        <a href="chessboard.html" class="hover:text-[#C5A880] transition-colors">
+          Шахматка
+        </a>
+        <a href="calculator.html" class="text-[#C5A880] font-bold border-b-2 border-[#C5A880] pb-1">
+          Калкулатор
+        </a>
+        <a href="standards.html" class="hover:text-[#C5A880] transition-colors">
+          Стандарти
+        </a>
+        <a href="contacts.html" class="hover:text-[#C5A880] transition-colors">
+          Контакти
+        </a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3">
+        <a href="contacts.html#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-900 dark:border-[#C5A880]/60 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-[#C5A880] dark:hover:text-black text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-sm">
+          <span>Запиши среща</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+
+        <button onclick="toggleTheme()" aria-label="Превключи тема" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition-colors">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <button onclick="toggleMobileNav()" class="lg:hidden w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#0A0C10] px-6 py-6 space-y-4">
+      <div class="flex flex-col space-y-3 text-base font-bold uppercase tracking-wider">
+        <a href="index.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Начало</a>
+        <a href="projects.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Всички обекти (34)</a>
+        <a href="panorama.html" class="text-amber-500">★ Сграда «Панорама» (Акт 14)</a>
+        <a href="chessboard.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Интерактивна шахматка</a>
+        <a href="calculator.html" class="text-[#C5A880]">Ипотечен калкулатор</a>
+        <a href="standards.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Технически стандарти</a>
+        <a href="contacts.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Контакти &amp; Офис</a>
+      </div>
+      <div class="pt-4 border-t border-neutral-200 dark:border-white/10">
+        <a href="tel:+359899144080" class="w-full text-center py-3 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-bold uppercase tracking-wider block">
+          Обади се: +359 899 144 080
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="pt-14 pb-12 border-b border-neutral-200 dark:border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-8 bg-[#C5A880]"></span>
+        <span class="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#C5A880] font-bold">
+          Финансов център · Директно от строителя
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div class="lg:col-span-8">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-tight text-neutral-900 dark:text-white font-condensed leading-[0.95]">
+            ИПОТЕЧЕН КАЛКУЛАТОР &amp;<br/>
+            <span class="text-transparent bg-clip-text hero-headline-gradient font-black">
+              ГЪВКАВИ СХЕМИ НА ПЛАЩАНЕ
+            </span>
+          </h1>
+        </div>
+        <div class="lg:col-span-4">
+          <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal">
+            Изчислете точната месечна вноска за покупка на жилище в гр. Бургас с преференциални условия от водещи банки партньори или изберете безлихвено разсрочено плащане по етапи на строителство.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN CALCULATOR SECTION -->
+  <main class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+      
+      <!-- Calculator Grid: Controls (Left) + Result Card (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls Column (7 Cols) -->
+        <div class="lg:col-span-7 arch-card rounded-2xl p-6 sm:p-8 space-y-8 shadow-lg">
+          
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white mb-1">
+              Параметри на финансирането
+            </h2>
+            <p class="text-xs sm:text-sm text-neutral-500">Регулирайте плъзгачите за автоматично преизчисляване</p>
+          </div>
+
+          <!-- Slider 1: Property Value -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center text-sm font-bold">
+              <span class="text-neutral-800 dark:text-neutral-200 uppercase tracking-wider text-xs">
+                Стойност на имота (€)
+              </span>
+              <span id="calcPriceDisplay" class="text-xl sm:text-2xl font-black font-condensed text-[#C5A880]">
+                80 000 €
+              </span>
+            </div>
+            <input 
+              type="range" 
+              id="calcPriceRange" 
+              min="40000" 
+              max="250000" 
+              step="2500" 
+              value="80000" 
+              oninput="recalcMortgage()" 
+              class="w-full"
+            />
+            <div class="flex justify-between text-[11px] font-mono text-neutral-400">
+              <span>40 000 €</span>
+              <span>140 000 €</span>
+              <span>250 000 €</span>
+            </div>
+          </div>
+
+          <!-- Slider 2: Down Payment -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center text-sm font-bold">
+              <span class="text-neutral-800 dark:text-neutral-200 uppercase tracking-wider text-xs">
+                Първоначална вноска (%)
+              </span>
+              <span id="calcDownpayDisplay" class="text-xl sm:text-2xl font-black font-condensed text-emerald-500">
+                20% (16 000 €)
+              </span>
+            </div>
+            <input 
+              type="range" 
+              id="calcDownpayRange" 
+              min="10" 
+              max="60" 
+              step="5" 
+              value="20" 
+              oninput="recalcMortgage()" 
+              class="w-full"
+            />
+            <div class="flex justify-between text-[11px] font-mono text-neutral-400">
+              <span>10% (Минимална)</span>
+              <span>30%</span>
+              <span>60%</span>
+            </div>
+          </div>
+
+          <!-- Slider 3: Period in Months -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center text-sm font-bold">
+              <span class="text-neutral-800 dark:text-neutral-200 uppercase tracking-wider text-xs">
+                Срок на кредита
+              </span>
+              <span id="calcMonthsDisplay" class="text-xl sm:text-2xl font-black font-condensed text-neutral-900 dark:text-white">
+                240 месеца (20 год.)
+              </span>
+            </div>
+            <input 
+              type="range" 
+              id="calcMonthsRange" 
+              min="60" 
+              max="360" 
+              step="12" 
+              value="240" 
+              oninput="recalcMortgage()" 
+              class="w-full"
+            />
+            <div class="flex justify-between text-[11px] font-mono text-neutral-400">
+              <span>5 години</span>
+              <span>20 години</span>
+              <span>30 години</span>
+            </div>
+          </div>
+
+          <!-- Bank Interest Rate Info -->
+          <div class="pt-4 border-t border-neutral-200 dark:border-white/10 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span class="text-neutral-600 dark:text-neutral-300 font-medium">Фиксиран лихвен процент:</span>
+              <strong class="text-neutral-900 dark:text-white font-bold">2.85% годишно</strong>
+            </div>
+            <span class="text-neutral-400">Преференциални банкови условия</span>
+          </div>
+
+        </div>
+
+        <!-- Result Column (5 Cols) -->
+        <div class="lg:col-span-5 arch-card rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl border border-neutral-200 dark:border-white/10">
+          
+          <div class="pb-4 border-b border-neutral-200 dark:border-white/10">
+            <span class="text-xs font-bold uppercase tracking-widest text-[#C5A880]">
+              Ориентировъчен резултат
+            </span>
+            <div class="text-xs text-neutral-500 mt-0.5">Вноска изчислена с фиксирана лихва 2.85%</div>
+          </div>
+
+          <!-- Monthly Result Big Card -->
+          <div class="p-6 rounded-xl bg-gradient-to-br from-neutral-900 to-neutral-950 text-white border border-[#C5A880]/30 shadow-lg">
+            <div class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-1">
+              Месечна вноска
+            </div>
+            <div id="monthlyResultEur" class="text-4xl sm:text-5xl font-black font-condensed text-[#C5A880]">
+              352 €
+            </div>
+            <div id="monthlyResultBgn" class="text-xs sm:text-sm text-neutral-300 font-medium mt-1">
+              ≈ 688 лв. на месец
+            </div>
+          </div>
+
+          <!-- 3-Stage Stage Payments Breakdown (Restored Colorful Step Cards) -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+              Схема за разсрочено плащане към строителя:
+            </h4>
+
+            <div class="p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 flex justify-between items-center">
+              <div>
+                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 block">1. Предварителен договор (20%)</span>
+                <span class="text-[11px] text-neutral-500 dark:text-neutral-400">При стартиране на покупката</span>
+              </div>
+              <span id="breakdownStep1" class="text-base font-bold font-condensed text-emerald-600 dark:text-emerald-400">
+                16 000 €
+              </span>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-amber-500/30 bg-amber-500/10 flex justify-between items-center">
+              <div>
+                <span class="text-xs font-bold text-amber-600 dark:text-amber-400 block">2. Груб строеж / Акт 14 (30%)</span>
+                <span class="text-[11px] text-neutral-500 dark:text-neutral-400">При завършване на конструкцията</span>
+              </div>
+              <span id="breakdownStep2" class="text-base font-bold font-condensed text-amber-600 dark:text-amber-400">
+                24 000 €
+              </span>
+            </div>
+
+            <div class="p-3.5 rounded-xl border border-sky-500/30 bg-sky-500/10 flex justify-between items-center">
+              <div>
+                <span class="text-xs font-bold text-sky-600 dark:text-sky-400 block">3. Въвеждане в експлоатация / Акт 16 (50%)</span>
+                <span class="text-[11px] text-neutral-500 dark:text-neutral-400">При нотариално прехвърляне</span>
+              </div>
+              <span id="breakdownStep3" class="text-base font-bold font-condensed text-sky-600 dark:text-sky-400">
+                40 000 €
+              </span>
+            </div>
+          </div>
+
+          <div class="pt-4 border-t border-neutral-200 dark:border-white/10 space-y-3">
+            <a href="contacts.html#booking" class="w-full py-3.5 rounded-full bg-[#C5A880] text-black font-condensed font-bold uppercase tracking-wider text-sm hover:bg-[#B39265] transition shadow-md flex items-center justify-center gap-2">
+              <span>Заяви безплатна консултация за кредит</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <p class="text-[11px] text-neutral-500 text-center">
+              Съдействие за 100% одобрение при покупка без комисиона към брокери.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 3 Distinct Developer Payment Schemes -->
+      <div class="pt-8 space-y-6">
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Индивидуални инвестиционни планове
+          </h3>
+          <p class="text-sm text-neutral-500">
+            «Точев &amp; Co.» предлага три гъвкави модела за покупка на имот, съобразени с вашите спестявания и финансови цели
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <div class="p-6 rounded-2xl arch-card space-y-4">
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-500">
+              Схема «Класическа»
+            </span>
+            <h4 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+              20% / 80% при Акт 16
+            </h4>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              Плащате само 20% при сключване на предварителния договор. Останалите 80% се заплащат след окончателно завършване на сградата и издаване на Акт 16 (с банков кредит или лични средства).
+            </p>
+            <ul class="text-xs space-y-2 text-neutral-500 pt-2 border-t border-neutral-100 dark:border-white/10">
+              <li>✓ Минимален първоначален ангажимент</li>
+              <li>✓ Финансиране от банка едва на Акт 16</li>
+              <li>✓ Гарантирана фиксирана крайна цена</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl arch-card space-y-4 border-2 border-[#C5A880]/40">
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#C5A880] text-black">
+              ★ Най-популярна
+            </span>
+            <h4 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+              10% / 40% / 40% / 10%
+            </h4>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              Балансирано поетапно финансиране според реалния напредък на строежа: 10% предварителен договор, 40% груб строеж (Акт 14), 40% дограма и фасада (Акт 15), 10% въвеждане в експлоатация (Акт 16).
+            </p>
+            <ul class="text-xs space-y-2 text-neutral-500 pt-2 border-t border-neutral-100 dark:border-white/10">
+              <li>✓ Пълна прозрачност по етапи</li>
+              <li>✓ Отстъпка до 3% от общата стойност</li>
+              <li>✓ Без скрити такси за индексация</li>
+            </ul>
+          </div>
+
+          <div class="p-6 rounded-2xl arch-card space-y-4">
+            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-sky-500/20 text-sky-500">
+              Схема «Индивидуална»
+            </span>
+            <h4 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+              Безлихвено разсрочване
+            </h4>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+              Директна договорка с инвеститора без участие на банкови институции. Месечни или тримесечни индивидуални вноски по време на целия строителен цикъл без лихва и оскъпяване.
+            </p>
+            <ul class="text-xs space-y-2 text-neutral-500 pt-2 border-t border-neutral-100 dark:border-white/10">
+              <li>✓ 0% оскъпяване и без лихви</li>
+              <li>✓ Персонален погасителен план</li>
+              <li>✓ Възможност за замяна на стар имот</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Bank Partners Strip -->
+      <div class="p-8 rounded-2xl border border-neutral-200 dark:border-white/10 bg-neutral-100 dark:bg-white/5 space-y-4">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] text-center">
+          Официално банково партньорство и ускорено кредитиране
+        </h4>
+        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-sm font-bold uppercase tracking-wider text-neutral-600 dark:text-neutral-300 font-condensed">
+          <span class="hover:text-[#C5A880] transition">УниКредит Булбанк</span>
+          <span class="text-neutral-300 dark:text-neutral-700">•</span>
+          <span class="hover:text-[#C5A880] transition">Банка ДСК</span>
+          <span class="text-neutral-300 dark:text-neutral-700">•</span>
+          <span class="hover:text-[#C5A880] transition">Обединена Българска Банка (ОББ)</span>
+          <span class="text-neutral-300 dark:text-neutral-700">•</span>
+          <span class="hover:text-[#C5A880] transition">Пощенска Банка (Eurobank)</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LUXURY ARCHITECTURAL FOOTER -->
+  <footer class="border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#07090D] pt-16 pb-12 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3.5 mb-4 group">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-xl tracking-tighter shadow-sm">
+              T
+            </div>
+            <span class="font-display font-black text-xl tracking-tight uppercase text-neutral-900 dark:text-white">
+              TOCHEV &amp; CO.
+            </span>
+          </a>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 max-w-sm mb-6 leading-relaxed">
+            Архитектурно проектиране, високо строителство и инвестиции в първокласни жилищни имоти в гр. Бургас, София и Черноморието от 1998 г.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Навигация</h4>
+          <ul class="space-y-2.5 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <li><a href="index.html" class="hover:text-[#C5A880] transition">Начало</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Обекти (34 проекта)</a></li>
+            <li><a href="panorama.html" class="hover:text-[#C5A880] transition">Сграда «Панорама»</a></li>
+            <li><a href="chessboard.html" class="hover:text-[#C5A880] transition">Интерактивна шахматка</a></li>
+            <li><a href="calculator.html" class="text-[#C5A880] font-bold">Ипотечен калкулатор</a></li>
+            <li><a href="standards.html" class="hover:text-[#C5A880] transition">Стандарти &amp; Материали</a></li>
+            <li><a href="contacts.html" class="hover:text-[#C5A880] transition">Контакти &amp; Офис</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Топ Обекти</h4>
+          <ul class="space-y-2.5 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <li><a href="panorama.html" class="hover:text-[#C5A880] transition">Сграда Панорама (Изгрев)</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Сграда Трапезица</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Морска Резиденция Крайморие</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Комплекс Битака</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Директни Продажби</h4>
+          <div class="space-y-3 text-sm text-neutral-600 dark:text-neutral-300">
+            <p class="font-medium text-neutral-900 dark:text-white">гр. Бургас, ул. «Сливница» №47</p>
+            <p><a href="tel:+359899144080" class="hover:text-[#C5A880] transition font-bold text-neutral-900 dark:text-white">+359 899 144 080</a></p>
+            <p><a href="mailto:office@tochevbg.com" class="hover:text-[#C5A880] transition">office@tochevbg.com</a></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-neutral-200 dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+        <p>© 1998–2026 «Точев &amp; Co.» ООД. Всички права запазени.</p>
+        <div class="flex items-center gap-4">
+          <span>Директни цени от инвеститора</span>
+          <span>•</span>
+          <span>0% комисиона</span>
+          <span>•</span>
+          <span>Акт 14 / Акт 16</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function updateRangeTrack(elem, min, max, val) {
+      if (!elem) return;
+      const pct = ((val - min) / (max - min)) * 100;
+      const isDark = document.documentElement.classList.contains('dark');
+      const emptyColor = isDark ? 'rgba(255, 255, 255, 0.12)' : '#E2E8F0';
+      elem.style.background = `linear-gradient(to right, #C5A880 0%, #C5A880 ${pct}%, ${emptyColor} ${pct}%, ${emptyColor} 100%)`;
+    }
+
+    function recalcMortgage() {
+      const priceRange = document.getElementById('calcPriceRange');
+      const downRange = document.getElementById('calcDownpayRange');
+      const monthsRange = document.getElementById('calcMonthsRange');
+
+      const price = parseInt(priceRange.value);
+      const downPercent = parseInt(downRange.value);
+      const months = parseInt(monthsRange.value);
+
+      updateRangeTrack(priceRange, 40000, 250000, price);
+      updateRangeTrack(downRange, 10, 60, downPercent);
+      updateRangeTrack(monthsRange, 60, 360, months);
+
+      document.getElementById('calcPriceDisplay').innerText = price.toLocaleString('de-DE') + ' €';
+      const downpayEur = Math.round(price * (downPercent / 100));
+      document.getElementById('calcDownpayDisplay').innerText = downPercent + '% (' + downpayEur.toLocaleString('de-DE') + ' €)';
+      
+      const years = Math.round(months / 12);
+      document.getElementById('calcMonthsDisplay').innerText = months + ' месеца (' + years + ' год.)';
+
+      const loanPrincipal = price - downpayEur;
+      const monthlyRate = 0.0285 / 12;
+      const monthlyPayment = Math.round(loanPrincipal * (monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1));
+
+      document.getElementById('monthlyResultEur').innerText = monthlyPayment.toLocaleString('de-DE') + ' €';
+      document.getElementById('monthlyResultBgn').innerText = '≈ ' + Math.round(monthlyPayment * 1.95583).toLocaleString('de-DE') + ' лв. на месец';
+
+      const step1 = Math.round(price * 0.20);
+      const step2 = Math.round(price * 0.30);
+      const step3 = price - step1 - step2;
+
+      document.getElementById('breakdownStep1').innerText = step1.toLocaleString('de-DE') + ' €';
+      document.getElementById('breakdownStep2').innerText = step2.toLocaleString('de-DE') + ' €';
+      document.getElementById('breakdownStep3').innerText = step3.toLocaleString('de-DE') + ' €';
+    }
+
+    // Check URL params for preset price
+    const urlParams = new URLSearchParams(window.location.search);
+    const presetPrice = urlParams.get('price');
+    if (presetPrice && !isNaN(presetPrice)) {
+      const p = Math.max(40000, Math.min(250000, parseInt(presetPrice)));
+      document.getElementById('calcPriceRange').value = p;
+    }
+
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        localStorage.setItem('tochev_theme', 'light');
+        recalcMortgage();
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        localStorage.setItem('tochev_theme', 'dark');
+        recalcMortgage();
+      }
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
+    }
+
+    recalcMortgage();
+  </script>
+</body>
+</html>

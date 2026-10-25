@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Архитектурно портфолио (34 обекта) | Tochev &amp; Co. Строителна компания Бургас</title>
+  
+  <!-- Tailwind CSS Official CDN & Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            arch: {
+              bronze: '#C5A880',
+              'bronze-hover': '#B39265',
+              dark: '#0A0C10',
+              surface: '#12151E',
+              surfaceLight: '#FFFFFF',
+              borderDark: '#232734',
+              borderLight: '#E5E5E0',
+              chalk: '#F8F8F6'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  
+  <!-- Immediate Theme Initialization -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('tochev_theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    })();
+  </script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .font-condensed { font-family: var(--font-heading); }
+    .font-display { font-family: var(--font-display); }
+    
+    h1, h2, h3, h4, .font-arch {
+      font-family: var(--font-heading);
+      letter-spacing: -0.01em;
+    }
+    
+    /* Theme: DARK MODE (Belgian Architectural Noir) */
+    html.dark, .dark body {
+      background-color: #0A0C10 !important;
+      color: #E2E8F0 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(197, 168, 128, 0.05) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+    
+    /* Theme: LIGHT MODE (Belgian Natural Chalk & Stone) */
+    html.light, .light body {
+      background-color: #F8F8F6 !important;
+      color: #1A1C20 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.06) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    /* Hero Headline Gradient */
+    html.light .hero-headline-gradient {
+      background: linear-gradient(135deg, #0F172A 0%, #334155 45%, #9A7B4F 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html.dark .hero-headline-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #C5A880 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    /* Bulletproof Header Styling */
+    html.dark header {
+      background-color: rgba(10, 12, 16, 0.94) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark header nav a, html.dark header .nav-link {
+      color: #F1F5F9 !important;
+    }
+    html.dark header nav a:hover {
+      color: #C5A880 !important;
+    }
+    html.light header {
+      background-color: rgba(255, 255, 255, 0.94) !important;
+      border-color: #E5E5E0 !important;
+    }
+    html.light header nav a {
+      color: #1E293B !important;
+    }
+    html.light header nav a:hover {
+      color: #9A7B4F !important;
+    }
+
+    /* Top Announcement Bar */
+    html.dark .top-announcement-bar {
+      background-color: rgba(255, 255, 255, 0.03) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      color: #CBD5E1 !important;
+    }
+    html.dark .top-announcement-bar a {
+      color: #FFFFFF !important;
+    }
+    html.dark .top-announcement-bar a:hover {
+      color: #C5A880 !important;
+    }
+    html.light .top-announcement-bar {
+      background-color: #F1F1ED !important;
+      border-color: #E5E5E0 !important;
+      color: #475569 !important;
+    }
+    html.light .top-announcement-bar a {
+      color: #0F172A !important;
+    }
+    
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #FFFFFF; }
+    .dark p, .dark .text-body { color: #CBD5E1; }
+    .dark .arch-card {
+      background: #11141D;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .dark .arch-card:hover {
+      border-color: rgba(197, 168, 128, 0.5);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(197, 168, 128, 0.15);
+    }
+    
+    .light h1, .light h2, .light h3, .light h4 { color: #0F172A; }
+    .light p, .light .text-body { color: #334155; }
+    .light .arch-card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E0;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    }
+    .light .arch-card:hover {
+      border-color: #C5A880;
+      box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.18);
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
+    .stream-card {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    }
+    .stream-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+    .dark ::-webkit-scrollbar-track { background: #0A0C10; }
+    ::-webkit-scrollbar-thumb { background: #C5A880; border-radius: 4px; }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-[#C5A880]/30 selection:text-[#C5A880]">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b border-black/[0.06] dark:border-white/[0.08] py-2.5 px-4 sm:px-8 text-xs uppercase tracking-wider">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-bold text-neutral-900 dark:text-white">Директни продажби от строителя:</span>
+        <span class="font-medium">Сграда «Панорама» (ж.к. Изгрев) с Акт 14 | 0% комисиона</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="tel:+359899144080" class="hover:text-[#C5A880] transition flex items-center gap-1.5 font-bold">
+          <span>Тел:</span> +359 899 144 080
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">|</span>
+        <a href="mailto:office@tochevbg.com" class="hover:text-[#C5A880] transition">
+          office@tochevbg.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-[#0A0C10]/90 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-2xl tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-black text-xl md:text-2xl tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+            TOCHEV &amp; CO.
+          </span>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mt-1 font-semibold">
+            Архитектурно строителство · От 1998 г.
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-[15px] font-semibold text-neutral-700 dark:text-neutral-200">
+        <a href="index.html" class="hover:text-[#C5A880] transition-colors">
+          Начало
+        </a>
+        <a href="projects.html" class="text-[#C5A880] font-bold border-b-2 border-[#C5A880] pb-1 flex items-center gap-1.5">
+          <span>Обекти</span>
+          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#C5A880]/20 text-[#C5A880]">34</span>
+        </a>
+        <a href="panorama.html" class="hover:text-[#C5A880] transition-colors font-bold text-amber-500 dark:text-[#C5A880]">
+          ★ Сграда «Панорама»
+        </a>
+        <a href="chessboard.html" class="hover:text-[#C5A880] transition-colors">
+          Шахматка
+        </a>
+        <a href="calculator.html" class="hover:text-[#C5A880] transition-colors">
+          Калкулатор
+        </a>
+        <a href="standards.html" class="hover:text-[#C5A880] transition-colors">
+          Стандарти
+        </a>
+        <a href="contacts.html" class="hover:text-[#C5A880] transition-colors">
+          Контакти
+        </a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3">
+        <a href="contacts.html#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-900 dark:border-[#C5A880]/60 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-[#C5A880] dark:hover:text-black text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-sm">
+          <span>Запиши среща</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+
+        <button onclick="toggleTheme()" aria-label="Превключи тема" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition-colors">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <button onclick="toggleMobileNav()" class="lg:hidden w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#0A0C10] px-6 py-6 space-y-4">
+      <div class="flex flex-col space-y-3 text-base font-bold uppercase tracking-wider">
+        <a href="index.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Начало</a>
+        <a href="projects.html" class="text-[#C5A880]">Всички обекти (34)</a>
+        <a href="panorama.html" class="text-amber-500">★ Сграда «Панорама» (Акт 14)</a>
+        <a href="chessboard.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Интерактивна шахматка</a>
+        <a href="calculator.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Ипотечен калкулатор</a>
+        <a href="standards.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Технически стандарти</a>
+        <a href="contacts.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Контакти &amp; Офис</a>
+      </div>
+      <div class="pt-4 border-t border-neutral-200 dark:border-white/10 flex flex-col gap-2">
+        <a href="tel:+359899144080" class="w-full text-center py-3 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-bold uppercase tracking-wider">
+          Обади се: +359 899 144 080
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="pt-14 pb-12 border-b border-neutral-200 dark:border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-8 bg-[#C5A880]"></span>
+        <span class="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#C5A880] font-bold">
+          Архитектурно портфолио &amp; Инвестиции · 1998 - 2026
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
+        <div class="lg:col-span-8">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-tight text-neutral-900 dark:text-white font-condensed leading-[0.95]">
+            ВСИЧКИ 34 АРХИТЕКТУРНИ<br/>
+            <span class="text-transparent bg-clip-text hero-headline-gradient font-black">
+              ПРОЕКТА НА ТОЧЕВ &amp; CO.
+            </span>
+          </h1>
+        </div>
+        <div class="lg:col-span-4">
+          <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal">
+            Пълен официален регистър на реализираните и строящи се жилищни сгради и бутикови комплекси в Бургас, София, Крайморие и Поморие. Всички обекти разполагат с автентични строителни паспорти и директни инвестиционни цени.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-neutral-200 dark:border-white/10">
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#12151E]">
+          <div class="text-3xl sm:text-4xl font-black font-condensed text-neutral-900 dark:text-white">34</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-1">Обекта в портфолиото</div>
+        </div>
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#12151E]">
+          <div class="text-3xl sm:text-4xl font-black font-condensed text-[#C5A880]">6</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-1">В активен строеж / Акт 14</div>
+        </div>
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#12151E]">
+          <div class="text-3xl sm:text-4xl font-black font-condensed text-emerald-500">28</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-1">Завършени с Акт 16</div>
+        </div>
+        <div class="p-4 rounded-xl border border-neutral-200 dark:border-white/10 bg-white dark:bg-[#12151E]">
+          <div class="text-3xl sm:text-4xl font-black font-condensed text-neutral-900 dark:text-white">120K+</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mt-1">кв.м изградена РЗП</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTROLS & FILTER BAR -->
+  <section class="py-8 bg-neutral-100/70 dark:bg-black/30 border-b border-neutral-200 dark:border-white/[0.08] sticky top-20 z-30 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="flex flex-col md:flex-row justify-between items-stretch md:items-center gap-4">
+        
+        <!-- Live Search -->
+        <div class="relative flex-grow max-w-md">
+          <input 
+            type="text" 
+            id="projectSearchInput" 
+            placeholder="Търси по име на сграда, квартал или град..." 
+            oninput="applyFilters()"
+            class="w-full pl-11 pr-4 py-3 rounded-full border border-neutral-300 dark:border-white/15 bg-white dark:bg-[#12151E] text-sm font-medium focus:outline-none focus:border-[#C5A880]"
+          />
+          <svg class="w-5 h-5 absolute left-4 top-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+
+        <!-- Mode Switcher: Funnel vs Grid -->
+        <div class="flex items-center gap-2 bg-neutral-200/80 dark:bg-white/10 p-1.5 rounded-full self-start md:self-auto">
+          <button id="btnViewFunnel" onclick="setViewMode('funnel')" class="px-5 py-2 rounded-full text-xs font-bold font-condensed uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition flex items-center gap-1.5 shadow-sm">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path></svg>
+            <span>Архитектурна Воронка</span>
+          </button>
+          <button id="btnViewGrid" onclick="setViewMode('grid')" class="px-5 py-2 rounded-full text-xs font-bold font-condensed uppercase tracking-wider text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition flex items-center gap-1.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+            <span>Пълна Мрежа (Grid)</span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="mt-4 flex flex-wrap items-center gap-2 text-xs font-bold font-condensed uppercase tracking-wider">
+        <button id="btn-cat-all" onclick="setCategoryFilter('all')" class="cat-filter-btn px-4 py-2 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition">
+          Всички проекти (34)
+        </button>
+        <button id="btn-cat-active" onclick="setCategoryFilter('active')" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+          В строеж / Акт 14 (6)
+        </button>
+        <button id="btn-cat-pre_act16" onclick="setCategoryFilter('pre_act16')" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+          Пред Акт 16 (4)
+        </button>
+        <button id="btn-cat-completed" onclick="setCategoryFilter('completed')" class="cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+          Завършени с Акт 16 (28)
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATALOG CONTENT CONTAINER -->
+  <main class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <!-- 1. STREAM / FUNNEL VIEW -->
+      <div id="funnelViewWrapper" class="space-y-6">
+        
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+              Интерактивна воронка на обектите
+            </h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">
+              Плъзнете хоризонтално или използвайте бутоните за навигация по сградите
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="toggleAutoStream()" class="px-3 py-1.5 rounded-full border border-neutral-300 dark:border-white/15 text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition flex items-center gap-1.5">
+              <span id="autoStreamIcon">▶</span>
+              <span id="autoStreamText">Авто-поток</span>
+            </button>
+            <button onclick="scrollFunnel(-1)" aria-label="Назад" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <button onclick="scrollFunnel(1)" aria-label="Напред" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Funnel Track -->
+        <div id="funnelScrollTrack" class="flex items-stretch gap-6 overflow-x-auto no-scrollbar scroll-smooth py-4 cursor-grab active:cursor-grabbing snap-x">
+          <!-- Cards dynamically injected via JS -->
+        </div>
+
+        <!-- Progress bar and counter -->
+        <div class="flex items-center justify-between gap-4 pt-2">
+          <div class="flex-grow h-1 bg-neutral-200 dark:bg-white/10 rounded-full overflow-hidden">
+            <div id="funnelProgressBar" class="h-full bg-[#C5A880] transition-all duration-300" style="width: 15%;"></div>
+          </div>
+          <span id="streamCounter" class="text-xs font-mono font-bold text-neutral-500 dark:text-neutral-400">01 / 34</span>
+        </div>
+
+      </div>
+
+      <!-- 2. FULL GRID VIEW -->
+      <div id="projectsGrid" class="hidden grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-4">
+        <!-- Cards dynamically injected via JS -->
+      </div>
+
+      <!-- Zero Results State -->
+      <div id="noResultsState" class="hidden py-20 text-center">
+        <div class="w-16 h-16 rounded-full bg-neutral-200 dark:bg-white/10 mx-auto flex items-center justify-center text-neutral-400 mb-4">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white mb-2">
+          Няма намерени обекти
+        </h3>
+        <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-4">
+          Опитайте да промените критериите за търсене или филтрите.
+        </p>
+        <button onclick="resetFilters()" class="px-5 py-2.5 rounded-full bg-[#C5A880] text-black text-xs font-bold uppercase tracking-wider font-condensed">
+          Изчисти филтрите
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PROJECT PASSPORT MODAL -->
+  <div id="projectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="relative w-full max-w-3xl rounded-2xl bg-white dark:bg-[#12151E] border border-neutral-200 dark:border-white/10 overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+      
+      <!-- Close button -->
+      <button onclick="closeProjectModal()" class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/60 text-white hover:bg-black/90 flex items-center justify-center transition">
+        ✕
+      </button>
+
+      <div class="relative w-full h-[280px] sm:h-[340px] bg-neutral-900">
+        <img id="modalImg" src="" alt="Обект" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
+        <div class="absolute bottom-4 left-6 right-6 text-white">
+          <div class="flex items-center gap-2 mb-2">
+            <span id="modalBadge" class="px-3 py-0.5 rounded-full text-xs font-bold font-condensed uppercase tracking-wider bg-[#C5A880] text-black">
+              В строеж
+            </span>
+            <span id="modalNum" class="text-xs font-mono bg-black/60 px-2 py-0.5 rounded-full text-white/90">
+              01 / 34
+            </span>
+          </div>
+          <h2 id="modalTitle" class="text-3xl sm:text-4xl font-bold font-condensed uppercase tracking-tight text-white">
+            Име на обекта
+          </h2>
+          <p id="modalLoc" class="text-xs sm:text-sm text-[#F3D5A5] font-semibold">
+            гр. Бургас
+          </p>
+        </div>
+      </div>
+
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6">
+        <div>
+          <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-1">
+            Пълно наименование на обекта
+          </h3>
+          <p id="modalFullTitle" class="text-base text-neutral-800 dark:text-neutral-200 font-medium">
+            Описание
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-neutral-100 dark:border-white/10 text-xs">
+          <div>
+            <span class="text-neutral-400 block mb-0.5">Инвеститор &amp; Строител:</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold">«Точев &amp; Co.» ООД</strong>
+          </div>
+          <div>
+            <span class="text-neutral-400 block mb-0.5">Гаранция за качество:</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold">10 години по ЗУТ</strong>
+          </div>
+          <div>
+            <span class="text-neutral-400 block mb-0.5">Комисиона купувач:</span>
+            <strong class="text-emerald-500 font-bold">0% (Директно)</strong>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-neutral-100 dark:border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <div id="modalCustomLinkContainer" class="hidden">
+            <a href="panorama.html" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#C5A880] text-black text-xs font-bold uppercase tracking-wider font-condensed hover:bg-[#B39265] transition">
+              <span>Пълна презентация на Сграда «Панорама» →</span>
+            </a>
+          </div>
+          <a id="modalWaBtn" href="#" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider font-condensed hover:bg-emerald-700 transition">
+            <span>Запитване в WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- LUXURY ARCHITECTURAL FOOTER -->
+  <footer class="border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#07090D] pt-16 pb-12 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3.5 mb-4 group">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-xl tracking-tighter shadow-sm">
+              T
+            </div>
+            <span class="font-display font-black text-xl tracking-tight uppercase text-neutral-900 dark:text-white">
+              TOCHEV &amp; CO.
+            </span>
+          </a>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 max-w-sm mb-6 leading-relaxed">
+            Архитектурно проектиране, високо строителство и инвестиции в първокласни жилищни имоти в гр. Бургас, София и Черноморието от 1998 г.
+          </p>
+          <div class="text-xs text-neutral-500 space-y-1">
+            <p>ЕИК: 102283838 | Камара на строителите в България (КСБ)</p>
+            <p>ISO 9001:2015 Сертифицирана система за управление на качеството</p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Навигация</h4>
+          <ul class="space-y-2.5 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <li><a href="index.html" class="hover:text-[#C5A880] transition">Начало</a></li>
+            <li><a href="projects.html" class="text-[#C5A880] font-bold">Обекти (34 проекта)</a></li>
+            <li><a href="panorama.html" class="hover:text-[#C5A880] transition">Сграда «Панорама»</a></li>
+            <li><a href="chessboard.html" class="hover:text-[#C5A880] transition">Интерактивна шахматка</a></li>
+            <li><a href="calculator.html" class="hover:text-[#C5A880] transition">Ипотечен калкулатор</a></li>
+            <li><a href="standards.html" class="hover:text-[#C5A880] transition">Стандарти &amp; Материали</a></li>
+            <li><a href="contacts.html" class="hover:text-[#C5A880] transition">Контакти &amp; Офис</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Топ Обекти</h4>
+          <ul class="space-y-2.5 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <li><a href="panorama.html" class="hover:text-[#C5A880] transition">Сграда Панорама (Изгрев)</a></li>
+            <li><button onclick="openProjectModal('proj-02')" class="hover:text-[#C5A880] transition text-left">Сграда Трапезица</button></li>
+            <li><button onclick="openProjectModal('proj-04')" class="hover:text-[#C5A880] transition text-left">Морска Резиденция Крайморие</button></li>
+            <li><button onclick="openProjectModal('proj-03')" class="hover:text-[#C5A880] transition text-left">Комплекс Битака</button></li>
+            <li><button onclick="openProjectModal('proj-06')" class="hover:text-[#C5A880] transition text-left">Резиденция Малинова Долина</button></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Директни Продажби</h4>
+          <div class="space-y-3 text-sm text-neutral-600 dark:text-neutral-300">
+            <p class="font-medium text-neutral-900 dark:text-white">гр. Бургас, ул. «Сливница» №47</p>
+            <p><a href="tel:+359899144080" class="hover:text-[#C5A880] transition font-bold text-neutral-900 dark:text-white">+359 899 144 080</a></p>
+            <p><a href="mailto:office@tochevbg.com" class="hover:text-[#C5A880] transition">office@tochevbg.com</a></p>
+            <p class="text-xs text-neutral-500">Пн - Пт: 08:30 - 18:00 ч.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-neutral-200 dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+        <p>© 1998–2026 «Точев &amp; Co.» ООД. Всички права запазени.</p>
+        <div class="flex items-center gap-4">
+          <span>Директни цени от инвеститора</span>
+          <span>•</span>
+          <span>0% комисиона</span>
+          <span>•</span>
+          <span>Акт 14 / Акт 16</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const ALL_PROJECTS = [{"id": "proj-01", "num": "01", "name": "Сграда «ПАНОРАМА»", "full_title": "ОБЕКТ В СТРОЕЖ ж.к.Изгрев, сграда ПАНОРАМА, до магазин Пежо с Акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "ж.к. Изгрев, Бургас", "image": "images/projects/proj-01.jpg", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-zhkizgrev-sgrada-panorama-do-magazin-pezho-s-akt-14"}, {"id": "proj-02", "num": "02", "name": "Сграда «ТРАПЕЗИЦА»", "full_title": "ОБЕКТ В СТРОЕЖ Трапезица до Елkабел", "category": "construction", "status": "В строеж", "location": "кв. Трапезица, Бургас", "image": "images/projects/proj-02.jpg", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-trapezica-do-elkabel"}, {"id": "proj-03", "num": "03", "name": "Комплекс «БИТАКА»", "full_title": "ОБЕКТ В СТРОЕЖ ж.к.Меден Рудник - Битака", "category": "construction", "status": "В строеж", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-03.jpg", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-zhkmeden-rudnik-bitaka"}, {"id": "proj-04", "num": "04", "name": "Морска Резиденция «КРАЙМОРИЕ»", "full_title": "ОБЕКТ В СТРОЕЖ кв.Крайморие, ул.Лорна, гр.Бургас", "category": "construction", "status": "В строеж", "location": "кв. Крайморие (Море)", "image": "images/projects/proj-04.jpg", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-kvkraymorie-ullorna-grburgas"}, {"id": "proj-05", "num": "05", "name": "Сграда «ЦАР САМУИЛ 44»", "full_title": "ОБЕКТ В СТРОЕЖ Централна градска част, ул.Цар Самуил 44 с Акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "Център, Бургас", "image": "images/projects/proj-05.jpg", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-centralna-gradska-chast-ulcar-samuil-44-s-akt-14"}, {"id": "proj-06", "num": "06", "name": "Резиденция «МАЛИНОВА ДОЛИНА»", "full_title": "Гр.София, ж.к.Малинова Долина, ул.Петър Иванов- Вертер № 3 с Акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "гр. София", "image": "images/projects/proj-06.jpg", "url": "https://tochevbg.com/obekti/grsofiya-zhkmalinova-dolina-ulpetr-ivanov-verter-no-3-s-akt-14"}, {"id": "proj-07", "num": "07", "name": "Вилно селище «ЧЕРНИ ВРЪХ»", "full_title": "Вилно селище, с.Черни връх, обл.Бургас с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "с. Черни Връх, Бургас", "image": "images/projects/proj-07.jpg", "url": "https://tochevbg.com/obekti/vilno-selishche-scherni-vrkh-oblburgas-s-akt-16"}, {"id": "proj-08", "num": "08", "name": "Сграда «Г.С. РАКОВСКИ 68»", "full_title": "ОБЕКТ В СТРОЕЖ ж.к.Възраждане,ул.Г.С.Раковски 68 с акт 14", "category": "act14", "status": "Строеж (Акт 14)", "location": "ж.к. Възраждане, Бургас", "image": "images/projects/proj-08.jpg", "url": "https://tochevbg.com/obekti/obekt-v-stroezh-zhkvzrazhdaneulgsrakovski-68-s-akt-14"}, {"id": "proj-09", "num": "09", "name": "Жилищен комплекс «БЛ. 615 - 617»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.615, бл.616 и бл.617 до ресторант АВЕНЮ пред Акт 16", "category": "pre_act16", "status": "Пред Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-09.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl615-bl616-i-bl617-do-restorant-avenyu-pred-akt-16"}, {"id": "proj-10", "num": "10", "name": "Сграда «БЛОК 613»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.613- до бл.99,98,95, пред Акт 16", "category": "pre_act16", "status": "Пред Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-10.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl613-do-bl999895-pred-akt-16"}, {"id": "proj-11", "num": "11", "name": "Резиденция «СИМЕОНОВО»", "full_title": "Гр.София, кв.Симеоново, ул.Симеоновска 43, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "гр. София", "image": "images/projects/proj-11.jpg", "url": "https://tochevbg.com/obekti/grsofiya-kvsimeonovo-ulsimeonovska-43-s-akt-16"}, {"id": "proj-12", "num": "12", "name": "Сграда «КЛ. ОХРИДСКИ 67»", "full_title": "Гр.Бургас, ж.к.Възраждане, ул.Кл.Охридски 67 /до пазар ''Краснодар''/, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Възраждане, Бургас", "image": "images/projects/proj-12.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkvzrazhdane-ulklokhridski-67-do-pazar-krasnodar-s-akt-16"}, {"id": "proj-13", "num": "13", "name": "Сграда «БЛОК 283 (ШЕЛ)»", "full_title": "Гр.Бургас, ж.к. Меден рудник, бл.283, срещу бензиностанция ШЕЛ, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-13.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhk-meden-rudnik-bl283-sreshchu-benzinostanciya-shel-s-akt-16"}, {"id": "proj-14", "num": "14", "name": "Сграда «БЛОК 501»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.501 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-14.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl501-s-akt-16"}, {"id": "proj-15", "num": "15", "name": "Сграда «БЛОК 511»", "full_title": "Гр.Бургас, ж.к.Меден рудник, бл.511 срещу бл.601, пред Акт 16", "category": "pre_act16", "status": "Пред Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-15.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl511-sreshchu-bl601-pred-akt-16"}, {"id": "proj-16", "num": "16", "name": "Сграда «ЦАР КАЛОЯН 67»", "full_title": "Гр.Бургас, ж.к.Възраждане, ул.Цар Калоян 67, с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Възраждане, Бургас", "image": "images/projects/proj-16.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkvzrazhdane-ulcar-kaloyan-67-s-akt-16"}, {"id": "proj-17", "num": "17", "name": "Сгради «БЛОК 273 & 279»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 273 и Блок 279 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-17.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-273-i-blok-279-s-akt-16"}, {"id": "proj-18", "num": "18", "name": "Сграда «ЦАР КАЛОЯН 43»", "full_title": "Гр.Бургас, ж.к.Възраждане, ул.Цар Калоян 43 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Възраждане, Бургас", "image": "images/projects/proj-18.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkvzrazhdane-ulcar-kaloyan-43-s-akt-16"}, {"id": "proj-19", "num": "19", "name": "Сграда «БЛОК 275»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 275 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-19.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-275-s-akt-16"}, {"id": "proj-20", "num": "20", "name": "Сграда «БЛОК 555»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 555 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-20.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-555-s-akt-16"}, {"id": "proj-21", "num": "21", "name": "Сграда «БЛОК 282»", "full_title": "Гр.Бургас, ж.к.Меден рудник, Блок 282 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-21.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-blok-282-s-akt-16"}, {"id": "proj-22", "num": "22", "name": "Комплекс «БЛ. 137, 138, 139»", "full_title": "Гр.Бургас, ж.к.Меден рудник бл.137,бл.138,бл.139 - с Акт16", "category": "completed", "status": "Готов с Акт 16", "location": "ж.к. Меден Рудник, Бургас", "image": "images/projects/proj-22.jpg", "url": "https://tochevbg.com/obekti/grburgas-zhkmeden-rudnik-bl137bl138bl139-s-akt16"}, {"id": "proj-23", "num": "23", "name": "Корпоративен център «Европейска програма»", "full_title": "Адаптирана работна среда Код на процедура - BG05SFPR002-1.004", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-23.jpg", "url": "https://tochevbg.com/obekti/adaptirana-rabotna-sreda-kod-na-procedura-bg05sfpr002-1004"}, {"id": "proj-24", "num": "24", "name": "Сграда «СОЛНА 49» (Поморие)", "full_title": "Гр.Поморие, ул. Солна 49 с Акт 16", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Поморие", "image": "images/projects/proj-24.jpg", "url": "https://tochevbg.com/obekti/grpomorie-ul-solna-49-s-akt-16"}, {"id": "proj-25", "num": "25", "name": "Сграда «БЛОК 532»", "full_title": "Блок 532", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-25.jpg", "url": "https://tochevbg.com/obekti/blok-532"}, {"id": "proj-26", "num": "26", "name": "Сграда «БЛОК 607»", "full_title": "Блок 607", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-26.jpg", "url": "https://tochevbg.com/obekti/blok-607"}, {"id": "proj-27", "num": "27", "name": "Сграда «БЛОК 606»", "full_title": "Блок 606", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-27.jpg", "url": "https://tochevbg.com/obekti/blok-606"}, {"id": "proj-28", "num": "28", "name": "Сграда «БЛОК 543»", "full_title": "Блок 543", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-28.jpg", "url": "https://tochevbg.com/obekti/blok-543"}, {"id": "proj-29", "num": "29", "name": "Сграда «БЛОК 531»", "full_title": "Блок 531", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-29.jpg", "url": "https://tochevbg.com/obekti/blok-531"}, {"id": "proj-30", "num": "30", "name": "Сграда «БЛОК 541»", "full_title": "Блок 541", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-30.jpg", "url": "https://tochevbg.com/obekti/blok-541"}, {"id": "proj-31", "num": "31", "name": "Сграда «БЛОК 544»", "full_title": "Блок 544", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-31.jpg", "url": "https://tochevbg.com/obekti/blok-544"}, {"id": "proj-32", "num": "32", "name": "Сграда «БЛОК 542»", "full_title": "Блок 542", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-32.jpg", "url": "https://tochevbg.com/obekti/blok-542"}, {"id": "proj-33", "num": "33", "name": "Сграда «БЛОК 528-529»", "full_title": "Блок 528-529", "category": "completed", "status": "Готов с Акт 16", "location": "гр. Бургас", "image": "images/projects/proj-33.jpg", "url": "https://tochevbg.com/obekti/blok-528-529"}, {"id": "proj-34", "num": "34", "name": "Комплекс «VIOLET GARDEN»", "full_title": "Комплекс Violet Garden к.к.Слънчев Бряг", "category": "completed", "status": "Готов с Акт 16", "location": "к.к. Слънчев Бряг", "image": "images/projects/proj-34.jpg", "url": "https://tochevbg.com/obekti/kompleks-violet-garden-kkslnchev-bryag"}];
+
+    let currentCategory = 'all';
+    let currentViewMode = 'funnel';
+    let autoStreamTimer = null;
+
+    function renderProjects() {
+      const funnelTrack = document.getElementById('funnelScrollTrack');
+      const gridContainer = document.getElementById('projectsGrid');
+      const searchVal = (document.getElementById('projectSearchInput').value || '').toLowerCase().trim();
+
+      const filtered = ALL_PROJECTS.filter(p => {
+        if (currentCategory === 'active') {
+          if (p.category !== 'act14' && p.category !== 'construction') return false;
+        } else if (currentCategory === 'pre_act16') {
+          if (p.category !== 'pre_act16') return false;
+        } else if (currentCategory === 'completed') {
+          if (p.category !== 'completed') return false;
+        }
+
+        if (searchVal) {
+          const haystack = (p.name + ' ' + p.location + ' ' + p.full_title + ' ' + p.status).toLowerCase();
+          if (!haystack.includes(searchVal)) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        if (funnelTrack) funnelTrack.innerHTML = '';
+        if (gridContainer) gridContainer.innerHTML = '';
+        document.getElementById('noResultsState').classList.remove('hidden');
+        return;
+      }
+
+      document.getElementById('noResultsState').classList.add('hidden');
+
+      let funnelHtml = '';
+      let gridHtml = '';
+
+      filtered.forEach((p) => {
+        let badgeBg = 'bg-black/75 border border-white/20 text-white';
+        if (p.category === 'act14') badgeBg = 'bg-[#C5A880] text-black font-extrabold';
+        else if (p.category === 'construction') badgeBg = 'bg-sky-500 text-black font-bold';
+        else if (p.category === 'pre_act16') badgeBg = 'bg-amber-400 text-black font-bold';
+        else if (p.category === 'completed') badgeBg = 'bg-emerald-600 text-white font-medium';
+
+        const isPanorama = p.id === 'proj-01';
+
+        // 1. Funnel Card
+        funnelHtml += `
+          <div class="stream-card w-[290px] sm:w-[330px] md:w-[350px] flex-shrink-0 rounded-2xl overflow-hidden arch-card group flex flex-col justify-between shadow-md select-none cursor-pointer snap-start transition-all" onclick="openProjectModal('${p.id}')">
+            <div class="relative w-full h-[220px] bg-neutral-900 overflow-hidden">
+              <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+              
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-condensed font-bold ${badgeBg}">
+                  ${p.status}
+                </span>
+                <span class="text-[11px] font-mono text-white bg-black/60 border border-white/20 px-2 py-0.5 rounded-full">
+                  ${p.num} / 34
+                </span>
+              </div>
+
+              <div class="absolute bottom-2.5 left-3 right-3 flex items-center gap-1.5 text-white">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                <span class="text-[11px] uppercase tracking-wider text-[#F3D5A5] font-bold font-condensed drop-shadow">
+                  ${p.location}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5 flex flex-col justify-between flex-grow bg-white dark:bg-[#12151E] border-t border-neutral-100 dark:border-white/10">
+              <div>
+                <h3 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white leading-tight mb-2 group-hover:text-[#C5A880] transition-colors">
+                  ${p.name}
+                </h3>
+                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed">
+                  ${p.full_title}
+                </p>
+              </div>
+
+              <div class="pt-4 mt-4 border-t border-neutral-100 dark:border-white/10 flex items-center justify-between" onclick="event.stopPropagation()">
+                ${isPanorama ? `
+                  <a href="panorama.html" class="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-[#C5A880] hover:text-[#B39265] uppercase tracking-wider font-condensed">
+                    <span>Пълна презентация →</span>
+                  </a>
+                ` : `
+                  <button onclick="openProjectModal('${p.id}')" class="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880] uppercase tracking-wider font-condensed transition">
+                    <span>Паспорт на обекта</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                `}
+                <span class="text-xs uppercase tracking-wider text-neutral-400 font-mono">
+                  № ${p.num}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        // 2. Grid Card
+        gridHtml += `
+          <div class="arch-card group rounded-2xl overflow-hidden flex flex-col justify-between shadow-md select-none">
+            <div class="relative w-full aspect-[16/10] bg-neutral-900 overflow-hidden cursor-pointer" onclick="openProjectModal('${p.id}')">
+              <img src="${p.image}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+              
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-condensed font-bold ${badgeBg}">
+                  ${p.status}
+                </span>
+                <span class="text-[11px] font-mono text-white bg-black/60 border border-white/20 px-2 py-0.5 rounded-full">
+                  ${p.num} / 34
+                </span>
+              </div>
+
+              <div class="absolute bottom-2.5 left-3 right-3 flex items-center gap-1.5 text-white">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                <span class="text-[11px] uppercase tracking-wider text-[#F3D5A5] font-bold font-condensed drop-shadow">
+                  ${p.location}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5 flex flex-col justify-between flex-grow bg-white dark:bg-[#12151E] border-t border-neutral-100 dark:border-white/10">
+              <div>
+                <h3 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white leading-tight mb-2 group-hover:text-[#C5A880] transition-colors">
+                  ${p.name}
+                </h3>
+                <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed">
+                  ${p.full_title}
+                </p>
+              </div>
+
+              <div class="pt-4 mt-4 border-t border-neutral-100 dark:border-white/10 flex items-center justify-between">
+                ${isPanorama ? `
+                  <a href="panorama.html" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-[#C5A880] hover:text-[#B39265] uppercase tracking-wider font-condensed">
+                    <span>Пълна презентация →</span>
+                  </a>
+                ` : `
+                  <button onclick="openProjectModal('${p.id}')" class="inline-flex items-center gap-1 text-xs sm:text-sm font-bold text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880] uppercase tracking-wider font-condensed transition">
+                    <span>Паспорт на обекта</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                `}
+                <span class="text-xs uppercase tracking-wider text-neutral-400 font-mono">
+                  № ${p.num}
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      if (funnelTrack) funnelTrack.innerHTML = funnelHtml;
+      if (gridContainer) gridContainer.innerHTML = gridHtml;
+
+      const counter = document.getElementById('streamCounter');
+      if (counter) counter.innerText = '01 / ' + (filtered.length < 10 ? '0' : '') + filtered.length;
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const funnelWrap = document.getElementById('funnelViewWrapper');
+      const gridWrap = document.getElementById('projectsGrid');
+      const btnFunnel = document.getElementById('btnViewFunnel');
+      const btnGrid = document.getElementById('btnViewGrid');
+
+      if (mode === 'funnel') {
+        funnelWrap.classList.remove('hidden');
+        gridWrap.classList.add('hidden');
+        btnFunnel.className = 'px-5 py-2 rounded-full text-xs font-bold font-condensed uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition flex items-center gap-1.5 shadow-sm';
+        btnGrid.className = 'px-5 py-2 rounded-full text-xs font-bold font-condensed uppercase tracking-wider text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition flex items-center gap-1.5';
+      } else {
+        funnelWrap.classList.add('hidden');
+        gridWrap.classList.remove('hidden');
+        btnGrid.className = 'px-5 py-2 rounded-full text-xs font-bold font-condensed uppercase tracking-wider bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 transition flex items-center gap-1.5 shadow-sm';
+        btnFunnel.className = 'px-5 py-2 rounded-full text-xs font-bold font-condensed uppercase tracking-wider text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition flex items-center gap-1.5';
+      }
+    }
+
+    function scrollFunnel(direction) {
+      const track = document.getElementById('funnelScrollTrack');
+      if (!track) return;
+      const cardWidth = 360;
+      track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
+
+    function toggleAutoStream() {
+      const track = document.getElementById('funnelScrollTrack');
+      const icon = document.getElementById('autoStreamIcon');
+      const text = document.getElementById('autoStreamText');
+
+      if (autoStreamTimer) {
+        clearInterval(autoStreamTimer);
+        autoStreamTimer = null;
+        if (icon) icon.innerText = '▶';
+        if (text) text.innerText = 'Авто-поток';
+      } else {
+        if (icon) icon.innerText = '⏸';
+        if (text) text.innerText = 'Пауза';
+        autoStreamTimer = setInterval(() => {
+          if (!track) return;
+          if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 5) {
+            track.scrollLeft = 0;
+          } else {
+            track.scrollLeft += 2;
+          }
+        }, 30);
+      }
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        btn.className = 'cat-filter-btn px-4 py-2 rounded-full border border-neutral-300 dark:border-white/15 text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition';
+      });
+      const activeBtn = document.getElementById('btn-cat-' + cat);
+      if (activeBtn) {
+        activeBtn.className = 'cat-filter-btn px-4 py-2 rounded-full bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 transition';
+      }
+      renderProjects();
+    }
+
+    function applyFilters() {
+      renderProjects();
+    }
+
+    function resetFilters() {
+      currentCategory = 'all';
+      const searchInput = document.getElementById('projectSearchInput');
+      if (searchInput) searchInput.value = '';
+      setCategoryFilter('all');
+    }
+
+    function openProjectModal(id) {
+      const p = ALL_PROJECTS.find(x => x.id === id);
+      if (!p) return;
+
+      document.getElementById('modalImg').src = p.image;
+      document.getElementById('modalNum').innerText = p.num + ' / 34';
+      document.getElementById('modalBadge').innerText = p.status;
+      document.getElementById('modalTitle').innerText = p.name;
+      document.getElementById('modalLoc').innerText = p.location;
+      document.getElementById('modalFullTitle').innerText = p.full_title;
+      document.getElementById('modalWaBtn').href = `https://wa.me/359899144080?text=${encodeURIComponent('Здравейте, интересувам се от обект: ' + p.name + ' (' + p.location + ')')}`;
+
+      const linkContainer = document.getElementById('modalCustomLinkContainer');
+      if (p.id === 'proj-01') {
+        linkContainer.classList.remove('hidden');
+      } else {
+        linkContainer.classList.add('hidden');
+      }
+
+      document.getElementById('projectModal').classList.remove('hidden');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.add('hidden');
+    }
+
+    document.getElementById('projectModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeProjectModal();
+      }
+    });
+
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        localStorage.setItem('tochev_theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        localStorage.setItem('tochev_theme', 'dark');
+      }
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
+    }
+
+    // Init Funnel Progress Tracker
+    const track = document.getElementById('funnelScrollTrack');
+    if (track) {
+      track.addEventListener('scroll', () => {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const percent = maxScroll > 0 ? (track.scrollLeft / maxScroll) * 100 : 0;
+        const bar = document.getElementById('funnelProgressBar');
+        if (bar) bar.style.width = Math.max(5, Math.min(100, percent)) + '%';
+
+        const cardWidth = 360;
+        const activeIdx = Math.min(ALL_PROJECTS.length, Math.max(1, Math.round(track.scrollLeft / cardWidth) + 1));
+        const counter = document.getElementById('streamCounter');
+        if (counter) counter.innerText = (activeIdx < 10 ? '0' : '') + activeIdx + ' / ' + ALL_PROJECTS.length;
+      });
+    }
+
+    renderProjects();
+  </script>
+</body>
+</html>

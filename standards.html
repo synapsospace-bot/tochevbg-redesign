@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="bg" class="scroll-smooth dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Технически стандарти &amp; Премиум материали | Tochev &amp; Co. Строителна компания Бургас</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            arch: {
+              bronze: '#C5A880',
+              'bronze-hover': '#B39265',
+              dark: '#0A0C10',
+              surface: '#12151E',
+              surfaceLight: '#FFFFFF',
+              borderDark: '#232734',
+              borderLight: '#E5E5E0',
+              chalk: '#F8F8F6'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  
+  <script>
+    (function() {
+      const saved = localStorage.getItem('tochev_theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    })();
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    .font-condensed { font-family: var(--font-heading); }
+    .font-display { font-family: var(--font-display); }
+    
+    h1, h2, h3, h4, .font-arch {
+      font-family: var(--font-heading);
+      letter-spacing: -0.01em;
+    }
+    
+    html.dark, .dark body {
+      background-color: #0A0C10 !important;
+      color: #E2E8F0 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 10% 40%, rgba(56, 189, 248, 0.04) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+    
+    html.light, .light body {
+      background-color: #F8F8F6 !important;
+      color: #1A1C20 !important;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(197, 168, 128, 0.06) 0%, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    html.light .hero-headline-gradient {
+      background: linear-gradient(135deg, #0F172A 0%, #334155 45%, #9A7B4F 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html.dark .hero-headline-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #C5A880 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
+    html.dark header {
+      background-color: rgba(10, 12, 16, 0.94) !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    html.dark header nav a, html.dark header .nav-link { color: #F1F5F9 !important; }
+    html.dark header nav a:hover { color: #C5A880 !important; }
+    
+    html.light header {
+      background-color: rgba(255, 255, 255, 0.94) !important;
+      border-color: #E5E5E0 !important;
+    }
+    html.light header nav a { color: #1E293B !important; }
+    html.light header nav a:hover { color: #9A7B4F !important; }
+
+    html.dark .top-announcement-bar {
+      background-color: rgba(255, 255, 255, 0.03) !important;
+      border-color: rgba(255, 255, 255, 0.08) !important;
+      color: #CBD5E1 !important;
+    }
+    html.dark .top-announcement-bar a { color: #FFFFFF !important; }
+    html.dark .top-announcement-bar a:hover { color: #C5A880 !important; }
+    
+    html.light .top-announcement-bar {
+      background-color: #F1F1ED !important;
+      border-color: #E5E5E0 !important;
+      color: #475569 !important;
+    }
+    html.light .top-announcement-bar a { color: #0F172A !important; }
+
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #FFFFFF; }
+    .dark p, .dark .text-body { color: #CBD5E1; }
+    .dark .arch-card {
+      background: #11141D;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .light h1, .light h2, .light h3, .light h4 { color: #0F172A; }
+    .light p, .light .text-body { color: #334155; }
+    .light .arch-card {
+      background: #FFFFFF;
+      border: 1px solid #E5E5E0;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
+    }
+  </style>
+</head>
+
+<body class="antialiased selection:bg-[#C5A880]/30 selection:text-[#C5A880]">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b border-black/[0.06] dark:border-white/[0.08] py-2.5 px-4 sm:px-8 text-xs uppercase tracking-wider">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-bold text-neutral-900 dark:text-white">Белгийски &amp; Немски стандарти:</span>
+        <span class="font-medium">Wienerberger, Rehau Geneo, Baumit, Schindler | 100% контрол на качеството</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="tel:+359899144080" class="hover:text-[#C5A880] transition flex items-center gap-1.5 font-bold">
+          <span>Тел:</span> +359 899 144 080
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">|</span>
+        <a href="mailto:office@tochevbg.com" class="hover:text-[#C5A880] transition">
+          office@tochevbg.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-[#0A0C10]/90 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-2xl tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-black text-xl md:text-2xl tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+            TOCHEV &amp; CO.
+          </span>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-neutral-500 dark:text-neutral-400 mt-1 font-semibold">
+            Архитектурно строителство · От 1998 г.
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-[15px] font-semibold text-neutral-700 dark:text-neutral-200">
+        <a href="index.html" class="hover:text-[#C5A880] transition-colors">
+          Начало
+        </a>
+        <a href="projects.html" class="hover:text-[#C5A880] transition-colors flex items-center gap-1.5">
+          <span>Обекти</span>
+          <span class="px-2 py-0.5 rounded-full text-xs font-mono font-bold bg-[#C5A880]/15 text-[#C5A880]">34</span>
+        </a>
+        <a href="panorama.html" class="hover:text-[#C5A880] transition-colors font-bold text-amber-500 dark:text-[#C5A880]">
+          ★ Сграда «Панорама»
+        </a>
+        <a href="chessboard.html" class="hover:text-[#C5A880] transition-colors">
+          Шахматка
+        </a>
+        <a href="calculator.html" class="hover:text-[#C5A880] transition-colors">
+          Калкулатор
+        </a>
+        <a href="standards.html" class="text-[#C5A880] font-bold border-b-2 border-[#C5A880] pb-1">
+          Стандарти
+        </a>
+        <a href="contacts.html" class="hover:text-[#C5A880] transition-colors">
+          Контакти
+        </a>
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3">
+        <a href="contacts.html#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-900 dark:border-[#C5A880]/60 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-[#C5A880] dark:hover:text-black text-xs md:text-sm font-bold uppercase tracking-wider transition-all duration-300 shadow-sm">
+          <span>Запиши среща</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+
+        <button onclick="toggleTheme()" aria-label="Превключи тема" class="w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition-colors">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <button onclick="toggleMobileNav()" class="lg:hidden w-10 h-10 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#0A0C10] px-6 py-6 space-y-4">
+      <div class="flex flex-col space-y-3 text-base font-bold uppercase tracking-wider">
+        <a href="index.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Начало</a>
+        <a href="projects.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Всички обекти (34)</a>
+        <a href="panorama.html" class="text-amber-500">★ Сграда «Панорама» (Акт 14)</a>
+        <a href="chessboard.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Интерактивна шахматка</a>
+        <a href="calculator.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Ипотечен калкулатор</a>
+        <a href="standards.html" class="text-[#C5A880]">Технически стандарти</a>
+        <a href="contacts.html" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Контакти &amp; Офис</a>
+      </div>
+      <div class="pt-4 border-t border-neutral-200 dark:border-white/10">
+        <a href="tel:+359899144080" class="w-full text-center py-3 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-sm font-bold uppercase tracking-wider block">
+          Обади се: +359 899 144 080
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section class="pt-14 pb-12 border-b border-neutral-200 dark:border-white/[0.08]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="flex items-center gap-3 mb-4">
+        <span class="h-px w-8 bg-[#C5A880]"></span>
+        <span class="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#C5A880] font-bold">
+          Инженерно съвършенство &amp; Безкомпромисно качество
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+        <div class="lg:col-span-8">
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-tight text-neutral-900 dark:text-white font-condensed leading-[0.95]">
+            ЕВРОПЕЙСКИ МАТЕРИАЛИ &amp;<br/>
+            <span class="text-transparent bg-clip-text hero-headline-gradient font-black">
+              СТРОИТЕЛНИ ТЕХНОЛОГИИ
+            </span>
+          </h1>
+        </div>
+        <div class="lg:col-span-4">
+          <p class="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed font-normal">
+            За разлика от масовото строителство, «Точев &amp; Co.» залага на австрийска керамика, немски дограми с троен стъклопакет и швейцарски асансьори. Всеки сантиметър е проектиран за десетилетия напред.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MAIN STANDARDS DOSSIER -->
+  <main class="py-12 md:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
+      
+      <!-- 6 Key Pillars Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- 1. Wienerberger -->
+        <div class="arch-card rounded-2xl p-7 space-y-4 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 flex items-center justify-center text-[#C5A880] font-black font-condensed text-xl">
+            01
+          </div>
+          <h3 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Австрийска керамика Wienerberger
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Използваме само оригинални блокове <strong>Porotherm 25 N+F Light</strong> за външните зидове и Porotherm 12 за вътрешните преградни стени. Естествена глина, която диша, с отлична акустична изолация и термична маса.
+          </p>
+          <ul class="text-xs space-y-1.5 text-neutral-500 pt-3 border-t border-neutral-100 dark:border-white/10">
+            <li>• Звукоизолация: Rw = 49 dB</li>
+            <li>• 100% екологичен натурален продукт</li>
+          </ul>
+        </div>
+
+        <!-- 2. Rehau Windows -->
+        <div class="arch-card rounded-2xl p-7 space-y-4 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 flex items-center justify-center text-[#C5A880] font-black font-condensed text-xl">
+            02
+          </div>
+          <h3 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Немска дограма Rehau Geneo 86mm
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            6-камерна премиум система с високотехнологичен материал RAU-FIPRO. Троен нискоемисиен стъклопакет 44mm с газ аргон и 4-сезонно мултифункционално стъкло за перфектна тишина и нулев конденз.
+          </p>
+          <ul class="text-xs space-y-1.5 text-neutral-500 pt-3 border-t border-neutral-100 dark:border-white/10">
+            <li>• Коефициент на топлопреминаване: Uw = 0.77 W/m²K</li>
+            <li>• Немски обков Roto NT с противовзломна защита</li>
+          </ul>
+        </div>
+
+        <!-- 3. Baumit StarTherm -->
+        <div class="arch-card rounded-2xl p-7 space-y-4 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 flex items-center justify-center text-[#C5A880] font-black font-condensed text-xl">
+            03
+          </div>
+          <h3 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Фасадна система Baumit StarTherm 100mm
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Австрийска цялостна топлоизолация с дебелина 10 см и финишна силиконова мазилка <strong>Baumit SilikonTop</strong> със самопочистващ се ефект (нано-частици, които отблъскват прах и морска влага).
+          </p>
+          <ul class="text-xs space-y-1.5 text-neutral-500 pt-3 border-t border-neutral-100 dark:border-white/10">
+            <li>• Енергиен клас на сградата: Клас А</li>
+            <li>• 15 години фабрична системна гаранция</li>
+          </ul>
+        </div>
+
+        <!-- 4. Schindler Elevators -->
+        <div class="arch-card rounded-2xl p-7 space-y-4 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 flex items-center justify-center text-[#C5A880] font-black font-condensed text-xl">
+            04
+          </div>
+          <h3 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Швейцарски асансьори Schindler 3300
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Безредукторни електрически асансьори без машинно отделение. Скорост 1.0 - 1.6 m/s, изключително плавно и безшумно движение, автоматични врати от полиран инокс и луксозен интериор с огледало.
+          </p>
+          <ul class="text-xs space-y-1.5 text-neutral-500 pt-3 border-t border-neutral-100 dark:border-white/10">
+            <li>• Автоматична евакуация при спиране на тока</li>
+            <li>• Достъп до подземните нива на паркинга</li>
+          </ul>
+        </div>
+
+        <!-- 5. Soundproofing -->
+        <div class="arch-card rounded-2xl p-7 space-y-4 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 flex items-center justify-center text-[#C5A880] font-black font-condensed text-xl">
+            05
+          </div>
+          <h3 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Шумоизолация Texsa Fonas
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Полагане на специализирана звукоизолационна мембрана под подовата замазка на всеки етаж. Спира разпространението на ударен шум от стъпки и мебели към долните апартаменти с до 22 dB.
+          </p>
+          <ul class="text-xs space-y-1.5 text-neutral-500 pt-3 border-t border-neutral-100 dark:border-white/10">
+            <li>• Акустичен комфорт от най-висок клас</li>
+            <li>• Изолация на вертикалните ВиК щрангове</li>
+          </ul>
+        </div>
+
+        <!-- 6. Green Energy -->
+        <div class="arch-card rounded-2xl p-7 space-y-4 shadow-md">
+          <div class="w-12 h-12 rounded-xl bg-[#C5A880]/15 flex items-center justify-center text-[#C5A880] font-black font-condensed text-xl">
+            06
+          </div>
+          <h3 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Фотоволтаици &amp; EV Станции
+          </h3>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Покривна соларна инсталация за независимо захранване на асансьорите, стълбищното LED осветление и охранителните системи. Паркоместа с предварително окабеляване за зарядни станции за електромобили.
+          </p>
+          <ul class="text-xs space-y-1.5 text-neutral-500 pt-3 border-t border-neutral-100 dark:border-white/10">
+            <li>• До 60% по-ниски такси за поддръжка</li>
+            <li>• Подготовка за Smart Home автоматизация</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Comparison Table -->
+      <div class="arch-card rounded-2xl p-6 sm:p-10 shadow-lg space-y-6">
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            Сравнителен анализ на стандартите
+          </h3>
+          <p class="text-sm text-neutral-500">
+            Защо инвестицията в сграда на «Точев &amp; Co.» запазва и увеличава стойността си във времето
+          </p>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead class="border-b border-neutral-200 dark:border-white/10 text-xs uppercase tracking-wider font-condensed font-bold text-neutral-400">
+              <tr>
+                <th class="py-3 px-4">Строителен компонент</th>
+                <th class="py-3 px-4 text-[#C5A880]">Стандарт «Точев &amp; Co.»</th>
+                <th class="py-3 px-4 text-neutral-500">Масово пазарно строителство</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-neutral-200 dark:divide-white/10 font-medium">
+              <tr>
+                <td class="py-4 px-4 font-bold text-neutral-900 dark:text-white">Зидарии &amp; Преградни стени</td>
+                <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">Wienerberger Porotherm 25 N+F Light</td>
+                <td class="py-4 px-4 text-neutral-500">Обикновени кухи керамични блокчета или газобетон</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-neutral-900 dark:text-white">Дограма &amp; Стъклопакет</td>
+                <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">Rehau Geneo 86mm, троен 44mm, аргон</td>
+                <td class="py-4 px-4 text-neutral-500">5-камерна 60-70mm двоен стъклопакет 24mm</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-neutral-900 dark:text-white">Топлоизолация на фасада</td>
+                <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">Baumit StarTherm 100mm силиконова мазилка</td>
+                <td class="py-4 px-4 text-neutral-500">EPS 50-80mm минерална варо-циментова мазилка</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-neutral-900 dark:text-white">Шумоизолация под замазка</td>
+                <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">Texsa Fonas мембрана (22 dB намаление)</td>
+                <td class="py-4 px-4 text-neutral-500">Липсва (замазка директно върху бетона)</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-neutral-900 dark:text-white">Асансьорна уредба</td>
+                <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">Schindler 3300 безшумен високоскоростен</td>
+                <td class="py-4 px-4 text-neutral-500">Бюджетен хидравличен с шум при спиране</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 font-bold text-neutral-900 dark:text-white">Общи части &amp; Стълбища</td>
+                <td class="py-4 px-4 text-emerald-600 dark:text-emerald-400 font-semibold">Полиран естествен гранит, скрито LED</td>
+                <td class="py-4 px-4 text-neutral-500">Гранитогрес с метални лайсни</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Statutory Warranty Box -->
+      <div class="p-8 sm:p-10 rounded-2xl bg-[#C5A880]/10 border border-[#C5A880]/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2">
+          <h4 class="text-2xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white">
+            10 Години Пълна Законова Гаранция по ЗУТ
+          </h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 max-w-2xl">
+            Всички сгради на строителна компания «Точев &amp; Co.» се издават с пълна техническа документация, енергиен паспорт и гаранционно обслужване на конструкцията, хидроизолацията и инсталациите.
+          </p>
+        </div>
+        <a href="contacts.html" class="px-6 py-3.5 rounded-full bg-[#C5A880] text-black font-condensed font-bold uppercase tracking-wider text-sm hover:bg-[#B39265] transition shadow-md whitespace-nowrap">
+          Запиши среща с главния инженер
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- LUXURY ARCHITECTURAL FOOTER -->
+  <footer class="border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#07090D] pt-16 pb-12 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3.5 mb-4 group">
+            <div class="w-10 h-10 rounded-lg bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-xl tracking-tighter shadow-sm">
+              T
+            </div>
+            <span class="font-display font-black text-xl tracking-tight uppercase text-neutral-900 dark:text-white">
+              TOCHEV &amp; CO.
+            </span>
+          </a>
+          <p class="text-sm text-neutral-600 dark:text-neutral-400 max-w-sm mb-6 leading-relaxed">
+            Архитектурно проектиране, високо строителство и инвестиции в първокласни жилищни имоти в гр. Бургас, София и Черноморието от 1998 г.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Навигация</h4>
+          <ul class="space-y-2.5 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <li><a href="index.html" class="hover:text-[#C5A880] transition">Начало</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Обекти (34 проекта)</a></li>
+            <li><a href="panorama.html" class="hover:text-[#C5A880] transition">Сграда «Панорама»</a></li>
+            <li><a href="chessboard.html" class="hover:text-[#C5A880] transition">Интерактивна шахматка</a></li>
+            <li><a href="calculator.html" class="hover:text-[#C5A880] transition">Ипотечен калкулатор</a></li>
+            <li><a href="standards.html" class="text-[#C5A880] font-bold">Стандарти &amp; Материали</a></li>
+            <li><a href="contacts.html" class="hover:text-[#C5A880] transition">Контакти &amp; Офис</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Топ Обекти</h4>
+          <ul class="space-y-2.5 text-sm font-medium text-neutral-600 dark:text-neutral-300">
+            <li><a href="panorama.html" class="hover:text-[#C5A880] transition">Сграда Панорама (Изгрев)</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Сграда Трапезица</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Морска Резиденция Крайморие</a></li>
+            <li><a href="projects.html" class="hover:text-[#C5A880] transition">Комплекс Битака</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-widest text-[#C5A880] mb-4">Директни Продажби</h4>
+          <div class="space-y-3 text-sm text-neutral-600 dark:text-neutral-300">
+            <p class="font-medium text-neutral-900 dark:text-white">гр. Бургас, ул. «Сливница» №47</p>
+            <p><a href="tel:+359899144080" class="hover:text-[#C5A880] transition font-bold text-neutral-900 dark:text-white">+359 899 144 080</a></p>
+            <p><a href="mailto:office@tochevbg.com" class="hover:text-[#C5A880] transition">office@tochevbg.com</a></p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-neutral-200 dark:border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500">
+        <p>© 1998–2026 «Точев &amp; Co.» ООД. Всички права запазени.</p>
+        <div class="flex items-center gap-4">
+          <span>Директни цени от инвеститора</span>
+          <span>•</span>
+          <span>0% комисиона</span>
+          <span>•</span>
+          <span>Акт 14 / Акт 16</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+        localStorage.setItem('tochev_theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+        localStorage.setItem('tochev_theme', 'dark');
+      }
+    }
+
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobileNav');
+      nav.classList.toggle('hidden');
+    }
+  </script>
+</body>
+</html>
