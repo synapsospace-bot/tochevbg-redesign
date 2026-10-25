@@ -154,8 +154,12 @@
       box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(197, 168, 128, 0.15);
     }
     
-    .light h1, .light h2, .light h3, .light h4 { color: #0F172A; }
-    .light p, .light .text-body { color: #334155; }
+    .light h1:not(.on-image *):not(.on-image), 
+    .light h2:not(.on-image *):not(.on-image), 
+    .light h3:not(.on-image *):not(.on-image), 
+    .light h4:not(.on-image *):not(.on-image) { color: #0F172A; }
+    .light p:not(.on-image *):not(.on-image), 
+    .light .text-body:not(.on-image *):not(.on-image) { color: #334155; }
     .light .arch-card {
       background: #FFFFFF;
       border: 1px solid #E5E5E0;
@@ -164,6 +168,22 @@
     .light .arch-card:hover {
       border-color: #C5A880;
       box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.18);
+    }
+
+    /* Guaranteed High-Contrast Overlays on Photos (Light & Dark Themes) */
+    .on-image, 
+    .on-image h1, .on-image h2, .on-image h3, .on-image h4, 
+    .on-image p, .on-image span, .on-image div {
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.9) !important;
+    }
+    .on-image .accent-gold {
+      color: #F3D5A5 !important;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95) !important;
+    }
+    .on-image .text-sub {
+      color: #F1F5F9 !important;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85) !important;
     }
 
     .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -477,21 +497,23 @@
       <div class="relative w-full h-[280px] sm:h-[340px] bg-neutral-900">
         <img id="modalImg" src="" alt="Обект" class="w-full h-full object-cover" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30"></div>
-        <div class="absolute bottom-4 left-6 right-6 text-white">
-          <div class="flex items-center gap-2 mb-2">
-            <span id="modalBadge" class="px-3 py-0.5 rounded-full text-xs font-bold font-condensed uppercase tracking-wider bg-[#C5A880] text-black">
-              В строеж
-            </span>
-            <span id="modalNum" class="text-xs font-mono bg-black/60 px-2 py-0.5 rounded-full text-white/90">
-              01 / 34
-            </span>
+        <div class="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-6 on-image z-10">
+          <div class="p-3.5 sm:p-4 rounded-xl bg-black/70 backdrop-blur-md border border-white/20 shadow-xl">
+            <div class="flex items-center gap-2 mb-1.5">
+              <span id="modalBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold font-condensed uppercase tracking-wider bg-[#C5A880] text-black">
+                В строеж
+              </span>
+              <span id="modalNum" class="text-xs font-mono bg-black/60 px-2 py-0.5 rounded text-white/90">
+                01 / 34
+              </span>
+            </div>
+            <h2 id="modalTitle" class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-white !text-white leading-tight">
+              Име на обекта
+            </h2>
+            <p id="modalLoc" class="text-xs sm:text-sm accent-gold font-semibold mt-1">
+              гр. Бургас
+            </p>
           </div>
-          <h2 id="modalTitle" class="text-3xl sm:text-4xl font-bold font-condensed uppercase tracking-tight text-white">
-            Име на обекта
-          </h2>
-          <p id="modalLoc" class="text-xs sm:text-sm text-[#F3D5A5] font-semibold">
-            гр. Бургас
-          </p>
         </div>
       </div>
 
