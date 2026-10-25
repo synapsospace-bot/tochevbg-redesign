@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Theme override for Building Object node in Teaser view mode.
+ * Used in Drupal Views for 3D Funnel Stream & Project Catalog Grid.
+ */
+#}
+<div class="stream-card w-[290px] sm:w-[330px] md:w-[350px] flex-shrink-0 rounded-2xl overflow-hidden arch-card group flex flex-col justify-between shadow-md select-none cursor-pointer snap-start transition-all" onclick="window.location.href='{{ url }}'">
+  
+  <div class="relative w-full h-[220px] bg-neutral-900 overflow-hidden">
+    {% if node.field_main_image.entity %}
+      <img src="{{ file_url(node.field_main_image.entity.fileuri) }}" alt="{{ node.label }}" loading="lazy" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+    {% else %}
+      {{ content.field_main_image }}
+    {% endif %}
+    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+    
+    <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+      <span class="px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-condensed font-bold bg-[#C5A880] text-black">
+        {{ node.field_status.value|default('В строеж') }}
+      </span>
+      {% if node.field_project_number.value %}
+        <span class="text-[11px] font-mono text-white/90 bg-black/50 px-2 py-0.5 rounded">
+          {{ node.field_project_number.value }}
+        </span>
+      {% endif %}
+    </div>
+
+    <div class="absolute bottom-2.5 left-3 right-3 on-image z-10">
+      <span class="text-[10px] uppercase tracking-wider font-semibold block accent-gold">
+        {{ node.field_city.entity.label|default('Бургас') }}
+      </span>
+      <h4 class="text-base font-bold font-condensed uppercase tracking-tight !text-white leading-tight">
+        {{ node.label }}
+      </h4>
+    </div>
+  </div>
+
+  <div class="p-4 space-y-2 flex-1 flex flex-col justify-between">
+    <p class="text-xs text-neutral-600 dark:text-neutral-300 line-clamp-2">
+      {{ node.field_short_description.value|default(content.body|striptags|slice(0, 100) ~ '...') }}
+    </p>
+
+    <div class="pt-2 border-t border-neutral-100 dark:border-white/10 flex items-center justify-between">
+      <div>
+        <span class="text-[10px] text-neutral-400 block uppercase">Цена от:</span>
+        <strong class="text-sm font-bold text-neutral-900 dark:text-white">
+          {{ node.field_price_from.value ? node.field_price_from.value ~ ' €/м²' : 'По запитване' }}
+        </strong>
+      </div>
+      <a href="{{ url }}" class="text-xs font-bold text-[#C5A880] hover:underline flex items-center gap-1">
+        <span>Детайли</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+
+</div>

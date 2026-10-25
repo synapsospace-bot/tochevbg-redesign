@@ -1,0 +1,144 @@
+{#
+/**
+ * @file
+ * Theme override for Building Object node in Full view mode.
+ * Corresponds to Drupal node--building-object--full.html.twig
+ */
+#}
+<article{{ attributes.addClass('building-object-full') }}>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+    <a href="{{ front_page }}" class="hover:text-[#C5A880]">Начало</a>
+    <span class="mx-2">/</span>
+    <a href="/projects" class="hover:text-[#C5A880]">Обекти Бургас</a>
+    <span class="mx-2">/</span>
+    <span class="text-neutral-900 dark:text-white">{{ node.label }}</span>
+  </div>
+
+  <!-- MAIN OBJECT PRESENTATION -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left: Big Gallery & Hero (7 cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        <div class="arch-card rounded-2xl overflow-hidden relative group aspect-[16/10] bg-neutral-950 shadow-xl">
+          {% if node.field_main_image.entity %}
+            <img id="mainGalleryImg" src="{{ file_url(node.field_main_image.entity.fileuri) }}" alt="{{ node.label }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          {% else %}
+            {{ content.field_main_image }}
+          {% endif %}
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/20"></div>
+
+          <!-- Top Status Tags -->
+          <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
+            <div class="flex items-center gap-2">
+              <span class="px-3.5 py-1.5 rounded-full bg-[#C5A880] text-black text-xs font-bold uppercase tracking-wider font-condensed">
+                {{ node.field_status.value|default('АКТ 14 ИЗДАДЕН') }}
+              </span>
+              {% if node.field_deadline.value %}
+                <span class="px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-bold uppercase tracking-wider font-condensed border border-white/20">
+                  СРОК: {{ node.field_deadline.value }}
+                </span>
+              {% endif %}
+            </div>
+          </div>
+
+          <!-- Caption Plate (Compact Corner Badge - Maximum Building Visibility) -->
+          <div class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-md on-image z-10">
+            <div class="p-3.5 sm:p-4 rounded-xl bg-black/75 backdrop-blur-md border border-white/20 shadow-xl space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880] inline-block shadow-sm"></span>
+                <span class="text-[10px] sm:text-[11px] uppercase tracking-wider font-bold accent-gold">
+                  {{ node.field_location_text.value|default('гр. Бургас, ж.к. Изгрев') }}
+                </span>
+              </div>
+              <h1 class="text-xl sm:text-2xl font-black font-condensed uppercase tracking-tight !text-white leading-tight">
+                {{ node.label }}
+              </h1>
+              {% if node.field_short_description.value %}
+                <p class="text-xs text-sub line-clamp-1 font-normal">
+                  {{ node.field_short_description.value }}
+                </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        <!-- Thumbnails Gallery -->
+        {% if node.field_gallery %}
+          <div class="grid grid-cols-4 gap-3">
+            {{ content.field_gallery }}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Right: Technical Passport & CTAs (5 cols) -->
+      <div class="lg:col-span-5 arch-card p-6 sm:p-8 rounded-2xl space-y-6 shadow-xl border border-neutral-200 dark:border-white/10">
+        <div class="flex justify-between items-center pb-4 border-b border-neutral-200 dark:border-white/10">
+          <div>
+            <span class="text-xs uppercase tracking-widest text-[#C5A880] font-bold">Официален паспорт</span>
+            <h2 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white mt-0.5">
+              Спецификации &amp; Наличност
+            </h2>
+          </div>
+          {% if node.field_units_available.value %}
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+              {{ node.field_units_available.value }} свободни
+            </span>
+          {% endif %}
+        </div>
+
+        <div>
+          <span class="text-xs text-neutral-500 uppercase tracking-wider block">Директни цени от инвеститор:</span>
+          <div class="text-3xl sm:text-4xl font-black font-condensed text-neutral-900 dark:text-white mt-1">
+            от {{ price_formatted|default('1 250') }} € <span class="text-xs font-normal text-neutral-500 font-sans">/ кв.м</span>
+          </div>
+          <div class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold mt-1">
+            ✓ 0 лв. такса поддръжка • 0% брокерска комисиона
+          </div>
+        </div>
+
+        <!-- Key specs 4-grid -->
+        <div class="grid grid-cols-2 gap-3 text-xs">
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Етажност</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold text-sm">{{ node.field_floors.value|default('10 надземни етажа') }}</strong>
+          </div>
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Паркоместа</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold text-sm">{{ node.field_parking.value|default('Подземен гараж с EV') }}</strong>
+          </div>
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Енергиен клас</span>
+            <strong class="text-emerald-600 dark:text-emerald-400 font-semibold text-sm">{{ node.field_energy_class.value|default('Клас А (Baumit 10см)') }}</strong>
+          </div>
+          <div class="p-3.5 rounded-xl bg-black/[0.02] dark:bg-white/[0.03] border border-neutral-200 dark:border-white/5">
+            <span class="text-neutral-500 text-[10px] uppercase block">Асансьори</span>
+            <strong class="text-neutral-900 dark:text-white font-semibold text-sm">{{ node.field_elevator.value|default('2x Schindler 3300') }}</strong>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="pt-2 space-y-3">
+          <a href="/chessboard?project={{ node.id }}" class="w-full py-4 rounded-xl bg-[#C5A880] text-black font-condensed font-bold uppercase tracking-wider text-sm hover:bg-[#B39265] transition shadow-lg flex items-center justify-center gap-2">
+            <span>Избери жилище в шахматка</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
+          <a href="/calculator?price={{ node.field_price_from.value }}" class="w-full py-3.5 rounded-xl border border-neutral-300 dark:border-white/15 text-neutral-900 dark:text-white font-condensed font-bold uppercase tracking-wider text-xs hover:border-[#C5A880] transition flex items-center justify-center gap-2">
+            <span>Калкулирай вноска за този обект</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Full Body Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-8 py-8">
+    <div class="prose dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300">
+      {{ content.body }}
+    </div>
+  </div>
+
+</article>

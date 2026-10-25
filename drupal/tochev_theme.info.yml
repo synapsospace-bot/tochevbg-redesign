@@ -1,0 +1,22 @@
+name: 'Tochev & Co. Architectural Theme'
+type: theme
+description: 'Custom high-end architectural theme for Bulgarian developer Tochev & Co., inspired by Belgian studio Rietveld Projects.'
+core_version_requirement: ^10 || ^11
+base theme: false
+
+libraries:
+  - tochev_theme/global-styling
+  - tochev_theme/global-scripts
+
+regions:
+  top_announcement: 'Top Announcement Bar'
+  header: 'Header Navigation'
+  highlighted: 'Highlighted / Hero'
+  content: 'Main Content'
+  sidebar: 'Sidebar'
+  footer: 'Footer'
+
+# Default Theme Settings
+settings:
+  show_theme_toggle: true
+  default_theme_mode: 'light'

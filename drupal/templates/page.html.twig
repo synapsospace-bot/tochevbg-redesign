@@ -1,0 +1,144 @@
+{#
+/**
+ * @file
+ * Theme override to display a single Drupal page.
+ */
+#}
+<div class="min-h-screen flex flex-col justify-between transition-colors duration-300">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="top-announcement-bar border-b border-black/[0.06] dark:border-white/[0.08] py-2 px-4 sm:px-8 text-xs uppercase tracking-wider">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span class="font-medium">Директни продажби от строител «Точев &amp; Co.» · Без комисиона от купувача</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-semibold">
+        <a href="tel:{{ contact_phone|default('+359899144080') }}" class="hover:text-[#C5A880] transition flex items-center gap-1.5 font-bold">
+          <span>Тел:</span> {{ contact_phone|default('+359 899 144 080') }}
+        </a>
+        <span class="text-neutral-300 dark:text-neutral-700">|</span>
+        <a href="mailto:{{ contact_email|default('office@tochevbg.com') }}" class="hover:text-[#C5A880] transition">
+          {{ contact_email|default('office@tochevbg.com') }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER (Unified Luxury Navigation - High-Legibility Typography) -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-white/90 dark:bg-[#0A0C10]/90 border-b border-neutral-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo (Compact & Refined) -->
+      <a href="{{ front_page }}" class="flex items-center gap-2.5 group flex-shrink-0">
+        <div class="w-8 h-8 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-base tracking-tighter transition-transform duration-300 group-hover:scale-105 shadow-sm border border-neutral-700 dark:border-neutral-300">
+          T
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-black text-base sm:text-lg tracking-tight uppercase text-neutral-900 dark:text-white leading-none">
+            {{ site_name|default('TOCHEV & CO.') }}
+          </span>
+          <span class="text-[9px] uppercase tracking-wider text-neutral-500 dark:text-neutral-400 font-medium mt-0.5">
+            {{ site_slogan|default('Строителство · От 1998 г.') }}
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-5 xl:gap-8 text-[13px] xl:text-[14px] font-semibold text-neutral-700 dark:text-neutral-200 whitespace-nowrap">
+        {{ page.header }}
+      </nav>
+
+      <!-- Right Action Controls -->
+      <div class="flex items-center gap-3 flex-shrink-0">
+        <a href="/contacts#booking" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-neutral-900/60 dark:border-[#C5A880]/50 text-neutral-900 dark:text-white hover:bg-neutral-900 hover:text-white dark:hover:bg-[#C5A880] dark:hover:text-black text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm whitespace-nowrap">
+          <span>Запиши среща</span>
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+
+        <!-- Theme Toggle Button -->
+        <button onclick="toggleTheme()" aria-label="Превключи светла/тъмна тема" class="w-9 h-9 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-700 dark:text-neutral-300 hover:border-[#C5A880] transition-colors">
+          <svg class="w-4 h-4 hidden dark:block text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <svg class="w-4 h-4 block dark:hidden text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+        </button>
+
+        <!-- Mobile Menu Trigger -->
+        <button onclick="toggleMobileNav()" class="lg:hidden w-9 h-9 rounded-full border border-neutral-300 dark:border-white/15 flex items-center justify-center text-neutral-800 dark:text-white">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobileNav" class="hidden lg:hidden border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-[#0A0C10] px-6 py-6 space-y-4">
+      <div class="flex flex-col space-y-3 text-base font-bold uppercase tracking-wider">
+        <a href="{{ front_page }}" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Начало</a>
+        <a href="/projects" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Всички обекти (34)</a>
+        <a href="/node/1" class="text-[#C5A880]">★ Сграда «Панорама»</a>
+        <a href="/chessboard" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Шахматка</a>
+        <a href="/calculator" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Калкулатор</a>
+        <a href="/standards" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Стандарти</a>
+        <a href="/contacts" class="text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880]">Контакти</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN REGION -->
+  <main id="main-content" class="flex-1">
+    {{ page.highlighted }}
+    {{ page.content }}
+  </main>
+
+  <!-- LUXURY FOOTER -->
+  <footer class="border-t border-neutral-200 dark:border-white/[0.08] bg-white dark:bg-[#07090D] pt-14 pb-8 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 space-y-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+        
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 flex items-center justify-center font-display font-black text-base">
+              T
+            </div>
+            <span class="font-display font-black text-lg tracking-tight uppercase text-neutral-900 dark:text-white">
+              {{ site_name|default('TOCHEV & CO.') }}
+            </span>
+          </div>
+          <p class="text-sm text-neutral-500 max-w-sm leading-relaxed">
+            27 години строително съвършенство и безкомпромисно качество на територията на гр. Бургас и българското Черноморие.
+          </p>
+        </div>
+
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#C5A880]">Централен офис</h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            гр. Бургас, ул. «Сливница» №47<br/>
+            Понеделник – Петък: 08:30 – 18:00
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-3">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#C5A880]">Директни контакти</h4>
+          <p class="text-sm text-neutral-600 dark:text-neutral-300 leading-relaxed">
+            Телефон: <strong>{{ contact_phone|default('+359 899 144 080') }}</strong><br/>
+            Имейл: {{ contact_email|default('office@tochevbg.com') }}
+          </p>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-neutral-100 dark:border-white/5 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-500 gap-4">
+        <div>© {{ "now"|date("Y") }} «Точев &amp; Co.» ООД. Всички права запазени.</div>
+        <div class="flex items-center gap-6">
+          <a href="/privacy" class="hover:text-[#C5A880]">Политика за поверителност</a>
+          <a href="/terms" class="hover:text-[#C5A880]">Общи условия</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>

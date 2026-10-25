@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override for 6-Pillar Building Standards Block.
+ */
+#}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {% for pillar in content.field_standards_items %}
+    {{ pillar }}
+  {% else %}
+    <!-- Fallback hardcoded pillars if static rendering is preferred -->
+    {{ content }}
+  {% endfor %}
+</div>

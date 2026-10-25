@@ -1,0 +1,14 @@
+global-styling:
+  version: 2.1.0
+  css:
+    theme:
+      https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap: { type: external, minified: true }
+      css/theme.css: {}
+
+global-scripts:
+  version: 2.1.0
+  js:
+    https://cdn.tailwindcss.com: { type: external, minified: true }
+    js/theme-toggle.js: {}
+  dependencies:
+    - core/drupal

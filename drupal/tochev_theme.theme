@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Functions to support theming in the Tochev & Co. theme.
+ */
+
+use Drupal\Core\Template\Attribute;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function tochev_theme_preprocess_html(&$variables) {
+  // Add dark/light default mode classes based on user cookie or settings
+  $variables['attributes']['class'][] = 'antialiased';
+  $variables['attributes']['class'][] = 'selection:bg-[#C5A880]/30';
+  $variables['attributes']['class'][] = 'selection:text-[#C5A880]';
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function tochev_theme_preprocess_page(&$variables) {
+  // Pass active route or section for luxury header navigation indicators
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $variables['current_route'] = $route_name;
+  $variables['site_name'] = 'TOCHEV & CO.';
+  $variables['site_slogan'] = 'Строителство · От 1998 г.';
+  $variables['contact_phone'] = '+359 899 144 080';
+  $variables['contact_email'] = 'office@tochevbg.com';
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function tochev_theme_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->bundle() === 'building_object') {
+    // Flagship building styling & passport attributes
+    $variables['is_flagship'] = $node->hasField('field_is_flagship') && $node->get('field_is_flagship')->value;
+    if ($node->hasField('field_status')) {
+      $variables['project_status'] = $node->get('field_status')->value;
+    }
+    if ($node->hasField('field_price_from')) {
+      $variables['price_formatted'] = number_format($node->get('field_price_from')->value, 0, '.', ' ');
+    }
+  }
+}
