@@ -88,6 +88,18 @@
       background-attachment: fixed;
     }
 
+    /* Hero Headline Gradient - 100% Contrast in BOTH Modes */
+    html.light .hero-headline-gradient {
+      background: linear-gradient(135deg, #0F172A 0%, #334155 45%, #9A7B4F 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html.dark .hero-headline-gradient {
+      background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #C5A880 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+
     /* Bulletproof Header Styling in Dark & Light Modes */
     html.dark header {
       background-color: rgba(10, 12, 16, 0.94) !important;
@@ -107,7 +119,7 @@
       color: #1E293B !important;
     }
     html.light header nav a:hover {
-      color: #B39265 !important;
+      color: #9A7B4F !important;
     }
 
     /* Top Announcement Bar */
@@ -131,43 +143,37 @@
       color: #0F172A !important;
     }
     
-    /* Dark mode text contrast enforcement */
-    .dark h1, .dark h2, .dark h3, .dark h4 {
-      color: #FFFFFF !important;
-    }
-    .dark .arch-title {
-      color: #FFFFFF !important;
-    }
-    .dark p, .dark .text-body {
-      color: #CBD5E1 !important;
-    }
+    /* General text contrast enforcement */
+    .dark h1, .dark h2, .dark h3, .dark h4 { color: #FFFFFF; }
+    .dark p, .dark .text-body { color: #CBD5E1; }
     .dark .arch-card {
-      background: #11141D !important;
-      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      background: #11141D;
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .dark .arch-card:hover {
-      border-color: rgba(197, 168, 128, 0.5) !important;
-      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(197, 168, 128, 0.15) !important;
+      border-color: rgba(197, 168, 128, 0.5);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7), 0 0 20px 0 rgba(197, 168, 128, 0.15);
     }
     
-    /* Light mode text & card enforcement */
-    .light h1, .light h2, .light h3, .light h4 {
-      color: #111215 !important;
-    }
-    .light .arch-title {
-      color: #111215 !important;
-    }
-    .light p, .light .text-body {
-      color: #334155 !important;
-    }
+    .light h1, .light h2, .light h3, .light h4 { color: #0F172A; }
+    .light p, .light .text-body { color: #334155; }
     .light .arch-card {
-      background: #FFFFFF !important;
-      border: 1px solid #E5E5E0 !important;
+      background: #FFFFFF;
+      border: 1px solid #E5E5E0;
       box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.04);
     }
     .light .arch-card:hover {
-      border-color: #C5A880 !important;
+      border-color: #C5A880;
       box-shadow: 0 12px 30px -4px rgba(197, 168, 128, 0.18);
+    }
+
+    /* CRITICAL OVERRIDE: Any text inside an image overlay is ALWAYS crisp white in both light and dark mode */
+    .on-image, .on-image *, .hero-card-title, .hero-card-desc, .hero-card-location, .slide-badge-white {
+      color: #FFFFFF !important;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.95), 0 0 2px rgba(0, 0, 0, 0.9) !important;
+    }
+    .hero-card-location {
+      color: #F6D8A9 !important;
     }
 
     /* Metric boxes in Hero */
@@ -175,22 +181,16 @@
       background: rgba(255, 255, 255, 0.04) !important;
       border: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
-    .dark .metric-box .metric-num {
-      color: #FFFFFF !important;
-    }
-    .dark .metric-box .metric-lbl {
-      color: #94A3B8 !important;
-    }
+    .dark .metric-box .metric-num { color: #FFFFFF !important; }
+    .dark .metric-box .metric-lbl { color: #94A3B8 !important; }
+    
     .light .metric-box {
       background: #FFFFFF !important;
       border: 1px solid #E5E5E0 !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-    .light .metric-box .metric-num {
-      color: #0F172A !important;
-    }
-    .light .metric-box .metric-lbl {
-      color: #64748B !important;
-    }
+    .light .metric-box .metric-num { color: #0F172A !important; }
+    .light .metric-box .metric-lbl { color: #64748B !important; }
 
     /* Form Inputs & Selects */
     .dark input, .dark select, .dark textarea {
@@ -198,63 +198,57 @@
       color: #FFFFFF !important;
       border-color: rgba(255, 255, 255, 0.15) !important;
     }
-    .dark input::placeholder, .dark textarea::placeholder {
-      color: #94A3B8 !important;
-    }
+    .dark input::placeholder, .dark textarea::placeholder { color: #94A3B8 !important; }
+    
     .light input, .light select, .light textarea {
       background-color: #FFFFFF !important;
       color: #0F172A !important;
       border-color: #D1D5DB !important;
     }
-    .light input::placeholder, .light textarea::placeholder {
-      color: #9CA3AF !important;
+    .light input::placeholder, .light textarea::placeholder { color: #9CA3AF !important; }
+
+    /* Custom Colored Range Sliders (Calculator) */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 8px;
+      border-radius: 4px;
+      outline: none;
+      transition: background 0.15s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #C5A880;
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+      cursor: pointer;
+      transition: transform 0.1s ease, background-color 0.2s ease;
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+      background: #B39265;
     }
 
-    /* Scrim and slide text visibility */
-    .slide-scrim {
-      background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.55) 60%, rgba(10,12,16,0.98) 100%) !important;
-    }
-    .slide-title {
-      color: #FFFFFF !important;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,0.8);
-    }
-    .slide-badge {
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    
     /* Horizontal Stream (Воронка) Utilities */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    
     .stream-card {
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-      perspective: 1000px;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
     }
     .stream-card:hover {
-      transform: translateY(-6px) scale(1.02);
+      transform: translateY(-5px);
     }
     
     /* Custom Scrollbar for rest of page */
-    ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
-    }
-    ::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.05);
-    }
-    .dark ::-webkit-scrollbar-track {
-      background: #0A0C10;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C5A880;
-      border-radius: 4px;
-    }
+    ::-webkit-scrollbar { width: 7px; height: 7px; }
+    ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
+    .dark ::-webkit-scrollbar-track { background: #0A0C10; }
+    ::-webkit-scrollbar-thumb { background: #C5A880; border-radius: 4px; }
   </style>
 </head>
 
@@ -388,7 +382,7 @@
         <div class="lg:col-span-8">
           <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight text-neutral-900 dark:text-white font-condensed leading-[0.92]">
             ЗАЩОТО КАЧЕСТВЕНОТО<br/>
-            <span class="text-transparent bg-clip-text" style="background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 45%, #C5A880 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            <span class="text-transparent bg-clip-text hero-headline-gradient font-black">
               СТРОИТЕЛСТВО НИ СВЪРЗВА
             </span>
           </h1>
@@ -414,9 +408,7 @@
         
         <!-- Main Flagship Hero Card: Сграда «Панорама» (aspect-[16/10] / aspect-[4/5]) -->
         <div class="lg:col-span-8 group relative rounded-2xl overflow-hidden border border-neutral-200 dark:border-white/10 bg-neutral-950 aspect-[16/10] sm:aspect-[16/9] shadow-xl">
-          <img 
-            src="https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF" 
-            alt="Сграда Панорама Бургас - Точев и Ко" 
+          <img src="images/panorama_flagship.jpg" alt="Сграда Панорама Бургас - Точев и Ко" 
             class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
           />
           <div class="absolute inset-0 slide-scrim"></div>
@@ -437,14 +429,14 @@
           </div>
 
           <!-- Bottom Card Content -->
-          <div class="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 text-white">
-            <div class="text-xs uppercase tracking-widest text-[#C5A880] font-semibold mb-1">
+          <div class="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 right-4 sm:right-8 on-image">
+            <div class="hero-card-location text-xs uppercase tracking-widest font-semibold mb-1">
               гр. Бургас, ж.к. Изгрев (до Peugeot)
             </div>
-            <h2 class="text-2xl sm:text-4xl md:text-5xl font-bold font-condensed uppercase tracking-tight text-white mb-2">
+            <h2 class="hero-card-title text-2xl sm:text-4xl md:text-5xl font-bold font-condensed uppercase tracking-tight mb-2">
               СГРАДА «ПАНОРАМА» — НОВИЯТ АРХИТЕКТУРЕН СИМВОЛ
             </h2>
-            <p class="text-xs sm:text-sm text-neutral-300 max-w-2xl line-clamp-2 mb-4 font-light hidden sm:block">
+            <p class="hero-card-desc text-xs sm:text-sm max-w-2xl line-clamp-2 mb-4 font-light hidden sm:block">
               Модерна жилищна сграда с 10 надземни етажа, панорамни гледки към Бургаския залив, паркоместа с фотоволтаично захранване и луксозни общи части.
             </p>
             <div class="flex items-center gap-3">
@@ -1034,25 +1026,27 @@
 
           <!-- Standard 4-Step Payment Breakdown -->
           <div class="pt-6 border-t border-neutral-200 dark:border-white/10">
-            <h4 class="text-xs uppercase tracking-wider font-bold text-neutral-500 mb-3 font-condensed">
+            <h4 class="text-xs uppercase tracking-wider font-bold text-neutral-600 dark:text-neutral-400 mb-3 font-condensed">
               Етапно финансиране при строителство:
             </h4>
-            <div class="grid grid-cols-3 gap-3 text-center">
-              <div class="p-3 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-neutral-200 dark:border-white/5">
-                <span class="text-[10px] text-neutral-500 uppercase block">1. Предварителен договор (20%)</span>
-                <span id="breakdownStep1" class="text-sm font-mono font-bold text-neutral-900 dark:text-white mt-1 block">17,000 €</span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+              <div class="p-4 rounded-xl bg-white dark:bg-[#12151E] border-t-4 border-t-emerald-500 border border-neutral-200 dark:border-white/10 shadow-sm">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-condensed">1. Предварителен (20%)</span>
+                <span id="breakdownStep1" class="text-lg font-mono font-extrabold text-neutral-900 dark:text-white mt-1.5 block">17,000 €</span>
+                <span class="text-[10px] text-neutral-500 mt-0.5 block">При предварителен договор</span>
               </div>
-              <div class="p-3 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-neutral-200 dark:border-white/5">
-                <span class="text-[10px] text-neutral-500 uppercase block">2. При Акт 14 (30%)</span>
-                <span id="breakdownStep2" class="text-sm font-mono font-bold text-neutral-900 dark:text-white mt-1 block">25,500 €</span>
+              <div class="p-4 rounded-xl bg-white dark:bg-[#12151E] border-t-4 border-t-[#C5A880] border border-neutral-200 dark:border-white/10 shadow-sm">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#C5A880]/15 text-[#B39265] dark:text-[#C5A880] font-condensed">2. Акт 14 (30%)</span>
+                <span id="breakdownStep2" class="text-lg font-mono font-extrabold text-neutral-900 dark:text-white mt-1.5 block">25,500 €</span>
+                <span class="text-[10px] text-neutral-500 mt-0.5 block">Груб строеж &amp; покрив</span>
               </div>
-              <div class="p-3 rounded-lg bg-black/[0.02] dark:bg-white/[0.02] border border-neutral-200 dark:border-white/5">
-                <span class="text-[10px] text-neutral-500 uppercase block">3. При Акт 16 (50%)</span>
-                <span id="breakdownStep3" class="text-sm font-mono font-bold text-neutral-900 dark:text-white mt-1 block">42,500 €</span>
+              <div class="p-4 rounded-xl bg-white dark:bg-[#12151E] border-t-4 border-t-sky-500 border border-neutral-200 dark:border-white/10 shadow-sm">
+                <span class="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-sky-500/10 text-sky-600 dark:text-sky-400 font-condensed">3. Акт 16 (50%)</span>
+                <span id="breakdownStep3" class="text-lg font-mono font-extrabold text-neutral-900 dark:text-white mt-1.5 block">42,500 €</span>
+                <span class="text-[10px] text-neutral-500 mt-0.5 block">Въвеждане в експлоатация</span>
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- Monthly Result Card (5 cols) -->
@@ -1503,13 +1497,23 @@
     let currentViewMode = 'funnel';
     let autoStreamTimer = null;
 
+    function getHighResImage(p) {
+      const id = p.id;
+      if (id === 'proj-01') return 'images/panorama_flagship.jpg';
+      if (id === 'proj-02' || id === 'proj-03') return 'images/trapezica_urban.jpg';
+      if (id === 'proj-04' || id === 'proj-07') return 'images/kraimorie_sea.jpg';
+      if (id === 'proj-06' || id === 'proj-12') return 'images/sofia_residence.jpg';
+      if (id === 'proj-23' || id === 'proj-24' || id === 'proj-34') return 'images/violet_garden.jpg';
+      if (['proj-05', 'proj-08', 'proj-13', 'proj-14', 'proj-15', 'proj-16', 'proj-18'].includes(id)) return 'images/boutique_city.jpg';
+      return 'images/modern_block.jpg';
+    }
+
     function renderProjects() {
       const funnelTrack = document.getElementById('funnelScrollTrack');
       const gridContainer = document.getElementById('projectsGrid');
       const searchVal = (document.getElementById('projectSearchInput').value || '').toLowerCase().trim();
 
       const filtered = ALL_PROJECTS.filter(p => {
-        // Category check
         if (currentCategory === 'active') {
           if (p.category !== 'act14' && p.category !== 'construction') return false;
         } else if (currentCategory === 'pre_act16') {
@@ -1518,12 +1522,10 @@
           if (p.category !== 'completed') return false;
         }
 
-        // Location check
         if (currentLocation !== 'all') {
           if (!p.location.includes(currentLocation)) return false;
         }
 
-        // Search text check
         if (searchVal) {
           const haystack = (p.name + ' ' + p.location + ' ' + p.full_title + ' ' + p.status).toLowerCase();
           if (!haystack.includes(searchVal)) return false;
@@ -1541,113 +1543,56 @@
 
       document.getElementById('noResultsState').classList.add('hidden');
 
-      // 1. Build 3D Funnel Cards (Horizontal Slides)
       let funnelHtml = '';
       let gridHtml = '';
 
-      filtered.forEach((p, idx) => {
-        // Badge color logic
-        let badgeBg = 'bg-black/70 border border-white/20 text-white';
+      filtered.forEach((p) => {
+        let badgeBg = 'bg-black/75 border border-white/20 text-white';
         if (p.category === 'act14') badgeBg = 'bg-[#C5A880] text-black font-extrabold';
         else if (p.category === 'construction') badgeBg = 'bg-sky-500 text-black font-bold';
         else if (p.category === 'pre_act16') badgeBg = 'bg-amber-400 text-black font-bold';
-        else if (p.category === 'completed') badgeBg = 'bg-emerald-600/90 text-white font-medium';
+        else if (p.category === 'completed') badgeBg = 'bg-emerald-600 text-white font-medium';
 
         const isPanorama = p.id === 'proj-01';
+        const imgSrc = getHighResImage(p);
 
-        // 3D Funnel Stream Card
+        // 1. Sleek, Compact 3D Funnel Card (Split design: photo top + high-contrast solid body bottom)
         funnelHtml += `
-          <div class="stream-card w-[310px] sm:w-[360px] md:w-[410px] flex-shrink-0 rounded-2xl overflow-hidden arch-card group relative aspect-[10/14] flex flex-col justify-end p-6 select-none cursor-pointer snap-start" onclick="openProjectModal('${p.id}')">
-            <!-- Full Bleed Image with zoom -->
-            <img 
-              src="${p.image}" 
-              alt="${p.name}" 
-              loading="lazy" 
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              onerror="this.src='https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF'"
-            />
+          <div class="stream-card w-[280px] sm:w-[320px] md:w-[340px] flex-shrink-0 rounded-2xl overflow-hidden arch-card group flex flex-col justify-between shadow-md select-none cursor-pointer snap-start transition-all" onclick="openProjectModal('${p.id}')">
             
-            <!-- Multi-Stop Deep Gradient Scrim for 100% High Contrast Text -->
-            <div class="absolute inset-0 slide-scrim transition-opacity duration-300 group-hover:opacity-90"></div>
-            
-            <!-- Floating Top Badges -->
-            <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
-              <span class="slide-badge px-3 py-1 rounded-full text-[10px] sm:text-[11px] uppercase tracking-wider font-condensed font-bold ${badgeBg}">
-                ${p.status}
-              </span>
-              <span class="slide-badge text-xs font-mono text-white bg-black/60 border border-white/20 px-2.5 py-0.5 rounded-full">
-                ${p.num} / 34
-              </span>
-            </div>
-
-            <!-- Bottom Architectural Content -->
-            <div class="relative z-10 text-white">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
-                <span class="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C5A880] font-condensed">
-                  ${p.location}
-                </span>
-              </div>
-
-              <h3 class="text-2xl sm:text-3xl font-bold font-condensed uppercase tracking-tight text-white mb-2 leading-tight slide-title group-hover:text-[#C5A880] transition-colors">
-                ${p.name}
-              </h3>
-
-              <p class="text-xs text-neutral-200 line-clamp-2 leading-relaxed mb-4 font-light">
-                ${p.full_title}
-              </p>
-
-              <div class="pt-3 border-t border-white/15 flex items-center justify-between gap-2" onclick="event.stopPropagation()">
-                ` + (isPanorama ? `
-                  <a href="panorama.html" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-[#C5A880] hover:bg-[#B39265] text-neutral-950 font-condensed uppercase tracking-wider text-xs font-bold transition shadow-md">
-                    <span>Пълна презентация →</span>
-                  </a>
-                ` : `
-                  <button onclick="openProjectModal('${p.id}')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-white/20 hover:bg-white/30 backdrop-blur-md text-white border border-white/25 font-condensed uppercase tracking-wider text-xs font-semibold transition">
-                    <span>Паспорт на обекта</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                  </button>
-                `) + `
-                <button onclick="openProjectModal('${p.id}')" class="text-xs uppercase tracking-wider text-neutral-300 hover:text-white font-mono px-2 py-1">
-                  Инфо
-                </button>
-              </div>
-            </div>
-          </div>
-        `;
-
-        // 2. Full Grid Card
-        gridHtml += `
-          <div class="arch-card group rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 shadow-md">
-            <div class="relative w-full aspect-[4/3] bg-neutral-900 overflow-hidden cursor-pointer" onclick="openProjectModal('${p.id}')">
+            <!-- Top Image Frame (h-[210px]) -->
+            <div class="relative w-full h-[210px] bg-neutral-900 overflow-hidden">
               <img 
-                src="${p.image}" 
+                src="${imgSrc}" 
                 alt="${p.name}" 
                 loading="lazy" 
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                onerror="this.src='https://tochevbg.com/sites/default/files/styles/object/public/photo-object/2024-07/436.%203d.Transportna.view_.2.night-2.webp?itok=DlT_iQfF'"
               />
-              <div class="absolute inset-0 slide-scrim opacity-80 group-hover:opacity-60 transition-opacity"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
               
-              <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between pointer-events-none">
-                <span class="slide-badge px-2.5 py-1 rounded text-[10px] uppercase tracking-wider font-condensed ${badgeBg} shadow-md">
+              <!-- Floating Top Badges -->
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none z-10">
+                <span class="slide-badge px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-condensed font-bold ${badgeBg}">
                   ${p.status}
                 </span>
-                <span class="slide-badge text-[11px] font-mono text-white/90 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded">
+                <span class="slide-badge text-[11px] font-mono text-white bg-black/60 border border-white/20 px-2 py-0.5 rounded-full">
                   ${p.num} / 34
                 </span>
               </div>
 
-              <div class="absolute bottom-3 left-3.5 right-3.5 text-white">
-                <div class="text-[11px] uppercase tracking-wider text-[#C5A880] font-semibold">
+              <!-- Location Tag over photo -->
+              <div class="absolute bottom-2.5 left-3 right-3 flex items-center gap-1.5 text-white">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                <span class="text-[10px] uppercase tracking-wider text-[#F3D5A5] font-bold font-condensed drop-shadow">
                   ${p.location}
-                </div>
+                </span>
               </div>
             </div>
 
-            <div class="p-5 flex flex-col justify-between flex-grow">
+            <!-- Bottom Solid Card Panel (100% Guaranteed High Contrast) -->
+            <div class="p-4 sm:p-5 flex flex-col justify-between flex-grow bg-white dark:bg-[#12151E] border-t border-neutral-100 dark:border-white/10">
               <div>
-                <h3 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white leading-tight mb-2 group-hover:text-[#C5A880] transition-colors">
+                <h3 class="text-lg font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white leading-tight mb-1.5 group-hover:text-[#C5A880] transition-colors">
                   ${p.name}
                 </h3>
                 <p class="text-xs text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed">
@@ -1655,9 +1600,9 @@
                 </p>
               </div>
 
-              <div class="pt-4 mt-4 border-t border-neutral-200 dark:border-white/10 flex items-center justify-between">
+              <div class="pt-3 mt-3 border-t border-neutral-100 dark:border-white/10 flex items-center justify-between" onclick="event.stopPropagation()">
                 ` + (isPanorama ? `
-                  <a href="panorama.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C5A880] hover:underline uppercase tracking-wider font-condensed">
+                  <a href="panorama.html" class="inline-flex items-center gap-1 text-xs font-bold text-[#C5A880] hover:text-[#B39265] uppercase tracking-wider font-condensed">
                     <span>Пълна презентация →</span>
                   </a>
                 ` : `
@@ -1667,7 +1612,66 @@
                   </button>
                 `) + `
                 <button onclick="openProjectModal('${p.id}')" class="text-[11px] uppercase tracking-wider text-neutral-400 hover:text-neutral-900 dark:hover:text-white font-mono">
-                  Инфо
+                  № ${p.num}
+                </button>
+              </div>
+            </div>
+
+          </div>
+        `;
+
+        // 2. Full Grid Card
+        gridHtml += `
+          <div class="arch-card group rounded-2xl overflow-hidden flex flex-col justify-between shadow-md select-none">
+            <div class="relative w-full aspect-[16/10] bg-neutral-900 overflow-hidden cursor-pointer" onclick="openProjectModal('${p.id}')">
+              <img 
+                src="${imgSrc}" 
+                alt="${p.name}" 
+                loading="lazy" 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30"></div>
+              
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                <span class="slide-badge px-2.5 py-0.5 rounded-full text-[10px] uppercase tracking-wider font-condensed font-bold ${badgeBg}">
+                  ${p.status}
+                </span>
+                <span class="slide-badge text-[11px] font-mono text-white bg-black/60 border border-white/20 px-2 py-0.5 rounded-full">
+                  ${p.num} / 34
+                </span>
+              </div>
+
+              <div class="absolute bottom-2.5 left-3 right-3 flex items-center gap-1.5 text-white">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#C5A880]"></span>
+                <span class="text-[10px] uppercase tracking-wider text-[#F3D5A5] font-bold font-condensed drop-shadow">
+                  ${p.location}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5 flex flex-col justify-between flex-grow bg-white dark:bg-[#12151E] border-t border-neutral-100 dark:border-white/10">
+              <div>
+                <h3 class="text-xl font-bold font-condensed uppercase tracking-tight text-neutral-900 dark:text-white leading-tight mb-2 group-hover:text-[#C5A880] transition-colors">
+                  ${p.name}
+                </h3>
+                <p class="text-xs text-neutral-600 dark:text-neutral-300 line-clamp-2 leading-relaxed">
+                  ${p.full_title}
+                </p>
+              </div>
+
+              <div class="pt-4 mt-4 border-t border-neutral-100 dark:border-white/10 flex items-center justify-between">
+                ` + (isPanorama ? `
+                  <a href="panorama.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#C5A880] hover:text-[#B39265] uppercase tracking-wider font-condensed">
+                    <span>Пълна презентация →</span>
+                  </a>
+                ` : `
+                  <button onclick="openProjectModal('${p.id}')" class="inline-flex items-center gap-1 text-xs font-bold text-neutral-800 dark:text-neutral-200 hover:text-[#C5A880] uppercase tracking-wider font-condensed transition">
+                    <span>Паспорт на обекта</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                  </button>
+                `) + `
+                <button onclick="openProjectModal('${p.id}')" class="text-[11px] uppercase tracking-wider text-neutral-400 hover:text-neutral-900 dark:hover:text-white font-mono">
+                  № ${p.num}
                 </button>
               </div>
             </div>
@@ -1900,10 +1904,27 @@
     }
 
     // 5. MORTGAGE CALCULATOR
+    function updateRangeTrack(elem, min, max, val) {
+      if (!elem) return;
+      const pct = ((val - min) / (max - min)) * 100;
+      const isDark = document.documentElement.classList.contains('dark');
+      const emptyColor = isDark ? 'rgba(255, 255, 255, 0.12)' : '#E2E8F0';
+      elem.style.background = `linear-gradient(to right, #C5A880 0%, #C5A880 ${pct}%, ${emptyColor} ${pct}%, ${emptyColor} 100%)`;
+    }
+
     function recalcMortgage() {
-      const price = parseInt(document.getElementById('calcPriceRange').value);
-      const downPercent = parseInt(document.getElementById('calcDownpayRange').value);
-      const months = parseInt(document.getElementById('calcMonthsRange').value);
+      const priceRange = document.getElementById('calcPriceRange');
+      const downRange = document.getElementById('calcDownpayRange');
+      const monthsRange = document.getElementById('calcMonthsRange');
+
+      const price = parseInt(priceRange.value);
+      const downPercent = parseInt(downRange.value);
+      const months = parseInt(monthsRange.value);
+
+      // Update Colored Fill Tracks for Sliders
+      updateRangeTrack(priceRange, 40000, 250000, price);
+      updateRangeTrack(downRange, 10, 60, downPercent);
+      updateRangeTrack(monthsRange, 60, 360, months);
 
       document.getElementById('calcPriceDisplay').innerText = price.toLocaleString('de-DE') + ' €';
       const downpayEur = Math.round(price * (downPercent / 100));
@@ -1951,10 +1972,12 @@
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
         localStorage.setItem('tochev_theme', 'light');
+        recalcMortgage();
       } else {
         document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
         localStorage.setItem('tochev_theme', 'dark');
+        recalcMortgage();
       }
     }
 
